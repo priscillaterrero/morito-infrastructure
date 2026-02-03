@@ -46,6 +46,8 @@
       position: relative;
       overflow: hidden;
       text-align: center;
+      background: linear-gradient(135deg, #d88916 0%, #c47a10 50%, #b86e0a 100%);
+      color: #ffffff;
     }
 
     .announcement-bar-slider__wrapper {
@@ -80,20 +82,23 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.6rem;
-      padding: 1rem 1.5rem;
+      gap: 0.8rem;
+      padding: 1.1rem 1.5rem;
       margin: 0;
-      font-size: 1.2rem;
-      letter-spacing: 0.1rem;
+      font-size: 1.25rem;
+      letter-spacing: 0.08rem;
       text-transform: uppercase;
-      font-weight: 600;
+      font-weight: 700;
+      font-family: brandon-grotesque, 'Helvetica Neue', Arial, sans-serif;
+      color: #ffffff;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
     }
 
     @media screen and (max-width: 749px) {
       .announcement-bar__message {
-        font-size: 1.1rem;
+        font-size: 1.05rem;
         padding: 1rem 1.2rem;
-        letter-spacing: 0.05rem;
+        letter-spacing: 0.04rem;
         min-height: 4rem;
       }
 
@@ -109,17 +114,23 @@
     }
 
     .announcement-bar__icon svg {
-      width: 1.6rem;
-      height: 1.6rem;
+      width: 1.8rem;
+      height: 1.8rem;
+      stroke: #ffffff;
+      filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.1));
     }
 
     .announcement-bar__link {
-      display: block;
+      display: flex;
       text-decoration: none;
       min-height: 4.4rem;
-      display: flex;
       align-items: center;
       justify-content: center;
+      color: #ffffff;
+    }
+
+    .announcement-bar__link:hover {
+      color: #fff8ee;
     }
   </style>
 

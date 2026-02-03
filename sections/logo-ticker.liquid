@@ -1,0 +1,227 @@
+{%- if section.blocks.size > 0 -%}
+<div class="logo-ticker-section" aria-label="Trusted by leading brands">
+  {%- if section.settings.heading != blank -%}
+    <p class="logo-ticker__heading">{{ section.settings.heading | escape }}</p>
+  {%- endif -%}
+  <div class="logo-ticker__track-wrapper">
+    <div class="logo-ticker__track" style="--ticker-speed: {{ section.settings.speed }}s;">
+      {%- for block in section.blocks -%}
+        <div class="logo-ticker__item" {{ block.shopify_attributes }}>
+          {%- if block.settings.logo != blank -%}
+            <img
+              src="{{ block.settings.logo | image_url: width: 300 }}"
+              srcset="{{ block.settings.logo | image_url: width: 150 }} 1x, {{ block.settings.logo | image_url: width: 300 }} 2x"
+              alt="{{ block.settings.logo.alt | default: block.settings.name | escape }}"
+              width="{{ block.settings.logo.width }}"
+              height="{{ block.settings.logo.height }}"
+              loading="lazy"
+              style="max-height: {{ section.settings.logo_height }}px;"
+            >
+          {%- else -%}
+            <span class="logo-ticker__placeholder">{{ block.settings.name | escape }}</span>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+      {%- comment -%} Duplicate set for seamless infinite scroll {%- endcomment -%}
+      {%- for block in section.blocks -%}
+        <div class="logo-ticker__item" aria-hidden="true">
+          {%- if block.settings.logo != blank -%}
+            <img
+              src="{{ block.settings.logo | image_url: width: 300 }}"
+              srcset="{{ block.settings.logo | image_url: width: 150 }} 1x, {{ block.settings.logo | image_url: width: 300 }} 2x"
+              alt=""
+              width="{{ block.settings.logo.width }}"
+              height="{{ block.settings.logo.height }}"
+              loading="lazy"
+              style="max-height: {{ section.settings.logo_height }}px;"
+            >
+          {%- else -%}
+            <span class="logo-ticker__placeholder">{{ block.settings.name | escape }}</span>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+<style>
+  .logo-ticker-section {
+    padding: 3rem 0;
+    overflow: hidden;
+    background-color: var(--color-morito-cream, #fffcf9);
+  }
+
+  .logo-ticker__heading {
+    text-align: center;
+    font-family: var(--font-heading-family);
+    font-size: 1.2rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-morito-brown, #2b1f1f);
+    opacity: 0.6;
+    margin: 0 0 2.5rem 0;
+    font-weight: 600;
+  }
+
+  .logo-ticker__track-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  }
+
+  .logo-ticker__track {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    width: max-content;
+    animation: tickerScroll var(--ticker-speed, 30s) linear infinite;
+  }
+
+  @keyframes tickerScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .logo-ticker__item {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo-ticker__item img {
+    width: auto;
+    object-fit: contain;
+    opacity: 0.6;
+    filter: grayscale(100%);
+    transition: opacity 0.3s ease, filter 0.3s ease;
+  }
+
+  @media (hover: hover) {
+    .logo-ticker__track:hover {
+      animation-play-state: paused;
+    }
+
+    .logo-ticker__item img:hover {
+      opacity: 1;
+      filter: grayscale(0%);
+    }
+  }
+
+  .logo-ticker__placeholder {
+    font-family: var(--font-heading-family);
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-morito-brown, #2b1f1f);
+    opacity: 0.35;
+    white-space: nowrap;
+    padding: 0 1rem;
+  }
+
+  @media screen and (max-width: 749px) {
+    .logo-ticker-section {
+      padding: 2rem 0;
+    }
+
+    .logo-ticker__heading {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .logo-ticker__track {
+      gap: 3rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .logo-ticker__track {
+      animation: none;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: auto;
+      gap: 2rem 3rem;
+      padding: 0 2rem;
+    }
+
+    .logo-ticker__item[aria-hidden="true"] {
+      display: none;
+    }
+
+    .logo-ticker__track-wrapper {
+      -webkit-mask-image: none;
+      mask-image: none;
+    }
+  }
+</style>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Logo Ticker",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Trusted by"
+    },
+    {
+      "type": "range",
+      "id": "logo_height",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "label": "Logo height",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "min": 15,
+      "max": 60,
+      "step": 5,
+      "unit": "s",
+      "label": "Scroll speed",
+      "default": 30
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Client Logo",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Client name",
+          "default": "Client Name"
+        },
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Logo Ticker",
+      "blocks": [
+        { "type": "logo", "settings": { "name": "Macy's" } },
+        { "type": "logo", "settings": { "name": "Horizon Media" } },
+        { "type": "logo", "settings": { "name": "Porcelanosa" } },
+        { "type": "logo", "settings": { "name": "Ford Foundation" } },
+        { "type": "logo", "settings": { "name": "Hot Bread Kitchen" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
