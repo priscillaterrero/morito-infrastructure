@@ -1,0 +1,58 @@
+<div class="container">
+<div class="page-findus-stores">
+  {% if section.settings.title != blank %}<div class="findus-storestitle">{{ section.settings.title }}</div>{% endif %}
+  
+  <div class="page-findus-stores-tb">
+      <table class="findus-store">
+        <tbody>
+          <tr>
+            <th>STORE</th>
+          </tr>
+          {% for block in section.blocks %}
+          <tr>
+            <td><a href="{{ block.settings.link }}" target="_blank">{{ block.settings.title }}</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+  </div>
+</div>
+</div>
+
+{% schema %}
+  {
+    "name": "Online Stores",
+    "settings": [
+	  {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Online Stores"
+      }
+	],
+    "blocks": [
+      {
+        "type": "store",
+        "name": "Store",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Store"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link"
+          }
+      	]
+   	  }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

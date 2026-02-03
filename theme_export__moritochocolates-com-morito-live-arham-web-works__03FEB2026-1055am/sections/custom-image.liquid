@@ -1,0 +1,66 @@
+<div class="page-width-container">
+{% for block in section.blocks %}
+    {%- case block.type -%}
+      {%- when 'image' -%}
+<div class="custom-image-main">
+    <div class="image-banner-main">
+   <img src="{{ block.settings.image-top | img_url:'master' }}">
+    </div>
+</div>
+ {%- when 'text' -%}
+      <div class="text-with-custom">
+       {{ block.settings.text-top }}
+      </div>
+     
+{% endcase %}
+{% endfor %}
+</div>
+{% schema %}
+  {
+    "name": "Custom Image",
+    "settings": [
+       
+    ],
+    "blocks":[
+      {
+         "type": "image",
+        "name":  "image",  
+          "settings": [
+            {
+            "type": "image_picker",
+            "id": "image-top",
+            "label":  "Image"
+            }
+            
+          ]
+        
+      },
+        {
+         "type": "text",
+        "name":  "text",  
+          "settings": [
+            {
+            "type": "richtext",
+            "id": "text-top",
+            "label":  "Add text"
+            }
+            
+          ]
+     }
+      
+     
+    ],
+         "presets": [
+        {
+        "name": "Custom Image with text",
+        "category": "Custom Image with Text"
+        }
+        ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

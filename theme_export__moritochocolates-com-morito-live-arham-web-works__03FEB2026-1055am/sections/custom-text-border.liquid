@@ -1,0 +1,37 @@
+      <div class="page-width-container">
+      <div class="steps heading">
+      <div class="step-border">
+     
+      {% if section.settings.add-border-text != blank %}
+        <img src="{{ section.settings.add-border-text | img_url:'master' }}">
+      {% endif %}
+    
+      </div>
+      </div>
+      </div>
+      {% schema %}
+      {
+      "name": "Add custom-text",
+  "settings": [ {
+      "type": "image_picker",
+      "id": "add-border-text",
+      "label": "Add Text"
+      }
+
+    
+      ],
+      "presets":[
+      
+      {
+      "name": "Add custom-text",
+      "category": "Add custom-text"
+      }
+      ]
+      }
+      {% endschema %}
+      
+      {% stylesheet %}
+      {% endstylesheet %}
+      
+      {% javascript %}
+      {% endjavascript %}

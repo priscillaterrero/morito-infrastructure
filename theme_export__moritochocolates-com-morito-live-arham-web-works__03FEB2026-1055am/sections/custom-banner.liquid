@@ -1,0 +1,47 @@
+
+  <div class="row-banner">
+    
+    <div class="box-custom-banner first">
+      <div class="box-banner">
+         <img src="{{ section.settings.image1 | img_url:'master' }}">
+      </div>
+    </div>
+    
+    
+    <div class="box-custom-banner second">
+      <div class="box-banner">
+  <img src="{{ section.settings.image2 | img_url:'master' }}">
+      </div>
+    </div>
+    
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Custom Banner",
+    "settings": [
+        {
+        "type": "image_picker",
+        "id": "image1",
+        "label":  "Image"
+        },
+      {
+        "type": "image_picker",
+        "id": "image2",
+        "label":  "Image"
+        }
+    ],
+    "presets": [
+        {
+        "name": "Custom banner",
+        "category": "Custom banner"
+        }
+        ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,58 @@
+<div class="container about-origin-main">
+<!--   first section image -->
+{% if section.settings.image_1 != blank %}
+  <div class="origin-image">
+  <img src={{section.settings.image_1 | img_url:'master'}}  width="367" height="93"> 
+  </div>
+  {% endif %}
+
+<!--   second image-text -->
+  <div class="about-origin-first">
+    <div class="image-left">
+      {% if section.settings.image_2 != blank %}
+      <div class="pf-image-left">
+      <img src={{section.settings.image_2 | img_url:'master'}} width="300" height="450">
+      </div>
+      {% endif %}
+      <div class="image-text-main">
+        <div  class="image-text">
+         <span class="text-first">{{section.settings.content_1}}</span>
+          {{section.settings.content_2}}
+         </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Origin-about",
+    "settings": [
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image"
+    },
+       {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image"
+    },
+    {
+      "type": "textarea",
+      "id": "content_1",
+      "label": "Content 1"
+    },
+    {
+      "type": "richtext",
+      "id": "content_2",
+      "label": "Content 2"
+    }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

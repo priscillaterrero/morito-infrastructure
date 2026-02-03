@@ -1,0 +1,38 @@
+<div class="container">
+<div class="page-findus-richtext">
+  {% if section.settings.title != blank %}<div class="findus-richtitle">{{ section.settings.title }}</div>{% endif %}
+  {% if section.settings.subtitle != blank %}<div class="findus-richsubtitle">{{ section.settings.subtitle }}</div>{% endif %}
+  {% if section.settings.text != blank %}<div class="findus-richtext">{{ section.settings.text }}</div>{% endif %}    
+</div>
+</div>
+
+{% schema %}
+  {
+    "name": "Rich Text",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Heading"
+      },
+	  {
+        "type": "textarea",
+        "id": "subtitle",
+        "label": "Sub Heading",
+        "default": "Sub Heading"
+      },
+	  {
+        "type": "textarea",
+        "id": "text",
+        "label": "Text"
+      }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

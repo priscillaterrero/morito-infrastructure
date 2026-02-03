@@ -1,0 +1,37 @@
+
+{% if product.handle contains 'chocolate-gift-bag-set-variety-of-3' or product.handle contains 'kit' or product.handle contains 'variety-pack' or product.handle contains 'hazelnut-gift-bag-set-of'%}  
+  <div class="page-width {{ product.title | handle }}">
+    <div class="tab">
+      <button class="tablinks" onclick="openCity(event, 'Description')">Description</button>
+  <!--     <button class="tablinks" onclick="openCity(event, 'Ingredients')">Ingredients</button> -->
+    </div>
+    
+    <div id="Description" class="tabcontent">
+      <p>{{ product.description }}</p>
+    </div>
+    
+    <div id="Ingredients" class="tabcontent">
+      <p>{{ product.metafields.custom.ingredients }}</p> 
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Product Description",
+    "class": "product_descriprion_section",
+    "settings": [],
+    "presets": [
+      {
+        "name": "Product Description"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+
