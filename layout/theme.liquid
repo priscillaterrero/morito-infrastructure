@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="theme-color" content="">
+    <meta name="theme-color" content="#003a13">
     <link rel="canonical" href="{{ canonical_url }}">
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
 
@@ -27,6 +27,18 @@
     {% if page_description %}
       <meta name="description" content="{{ page_description | escape }}">
     {% endif %}
+
+    {%- comment -%} Google Site Verification — se activará al desplegar en producción {%- endcomment -%}
+    <meta name="google-site-verification" content="6GsZBJjDrP1TDpKmEYlSDP_avALSRR5D698lCB04R10" />
+
+    {%- comment -%} Robots meta tag — controla indexación por página {%- endcomment -%}
+    {%- if request.page_type == 'password' -%}
+      <meta name="robots" content="noindex, nofollow">
+    {%- elsif template.name == 'search' or template.name == 'cart' -%}
+      <meta name="robots" content="noindex, follow">
+    {%- else -%}
+      <meta name="robots" content="index, follow">
+    {%- endif -%}
 
     {% render 'meta-tags' %}
 {% style %}
@@ -199,8 +211,10 @@
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
      {{ 'custom.css' | asset_url | stylesheet_tag }}
- <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    {%- comment -%} FontAwesome — carga non-blocking via media swap {%- endcomment -%}
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"
+      media="print" onload="this.media='all'" />
     {%- unless settings.type_body_font.system? -%}
       <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
     {%- endunless -%}
@@ -217,7 +231,7 @@
       document.documentElement.classList.add('shopify-design-mode');
     }
     </script>
-  <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous" defer="defer"></script>
     {% render 'judgeme_core' %}
 </head>
 
@@ -279,10 +293,12 @@
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
-      <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-      <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    {%- comment -%} Slick Carousel — carga non-blocking {%- endcomment -%}
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" media="print" onload="this.media='all'" />
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" defer="defer"></script>
 
     <script>
+      {%- comment -%} Tabs UI — producto {%- endcomment -%}
       function openCity(evt, cityName) {
         var i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("tabcontent");
@@ -297,17 +313,19 @@
         evt.currentTarget.className += " active";
       }
 
-    $('.rating-link a[href^="#"]').on('click',function (e) {
-    console.log('in');
-    e.preventDefault();
-    var target = this.hash;
-    var $target = $(target);
-    $('html, body').stop().animate({
-    'scrollTop': $target.offset().top
-    }, 900, 'swing', function () {
-    // window.location.hash = target;
-    });
-    });
+      {%- comment -%} Smooth scroll para rating-link — se ejecuta cuando jQuery está listo {%- endcomment -%}
+      document.addEventListener('DOMContentLoaded', function() {
+        if (typeof jQuery !== 'undefined') {
+          jQuery('.rating-link a[href^="#"]').on('click', function(e) {
+            e.preventDefault();
+            var target = this.hash;
+            var $target = jQuery(target);
+            jQuery('html, body').stop().animate({
+              'scrollTop': $target.offset().top
+            }, 900, 'swing');
+          });
+        }
+      });
     </script>
     
   </body>
