@@ -1,0 +1,46 @@
+      {% assign product = section.settings.select_main_pro %}
+      <div class="page-width-container">
+      <div class="custom-product-main">
+      <div class="select-product-temp">
+      {% if section.settings.image1 != blank  %}
+      <img src="{{ section.settings.image1 | img_url: 'grande' }}" alt="">
+      {% else %}
+      <img src="{{ product.images[0] | img_url: 'grande' }}" alt="">
+      {% endif  %}
+      </div>
+      <div class="btn_more btn">
+      <a class="button_learn_more button button--secondary" href="{{ product.url }}">Learn More</a>
+      </div>
+      </div>
+      </div>
+      
+      {% schema %}
+      {
+      "name": "custom-product",
+      "settings": [
+      {
+      "type": "image_picker",
+      "id": "image1",
+      "label": "Select Image"
+      },
+      {
+      "type": "product",
+      "id": "select_main_pro",
+      "label": "Select Product"
+      }
+      ],
+      "presets":[
+      
+      {
+      "name": "Custom Product",
+      "category": "Custom Product"
+      }
+      ]
+      }
+      {% endschema %}
+      
+      {% stylesheet %}
+      {% endstylesheet %}
+      
+      {% javascript %}
+      {% endjavascript %}

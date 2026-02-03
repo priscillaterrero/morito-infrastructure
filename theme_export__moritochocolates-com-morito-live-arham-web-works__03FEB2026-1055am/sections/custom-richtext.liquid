@@ -1,0 +1,36 @@
+        <div class="page-width-container">
+        <div class="contact-text">
+        <h2 class="h1 text-center">{{ section.settings.text1 }}</h2>
+        {{ section.settings.text2 }}
+        </div>
+        </div>
+
+{% schema %}
+  {
+    "name": "custom-richtext",
+    "settings": [
+        {
+        "type": "text",
+        "id": "text1",
+        "label":  "Add Title"
+        },
+       {
+        "type": "richtext",
+        "id": "text2",
+        "label":  "Add content"
+        }
+    ],
+      "presets": [
+        {
+        "name": "Custom Richtext",
+        "category": "custom richtext"
+        }
+        ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

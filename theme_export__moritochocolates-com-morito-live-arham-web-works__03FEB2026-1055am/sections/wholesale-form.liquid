@@ -1,0 +1,226 @@
+      <div class="container wholesale">
+      {{ page.content }}
+      <div class="wholesale-con">
+  <div class="standard">
+      <iframe src="https://www.meetmable.com/referralwidget/standard/morito-chocolates" width="500" height="580" scrolling="no" style="margin:0 auto;border:none;display:block;max-width:100%;"></iframe>
+  </div>    
+    <span  class="text-morito">
+      {{section.settings.morito1}}
+      {{section.settings.morito_link}}</span>
+       <div class="wholesale-btn">
+        <iframe src="https://www.meetmable.com/referralwidget/button/morito-chocolates" width="330" height="50" scrolling="no" style="margin:0 auto;border:none;display:block;max-width:100%;"></iframe>
+      </div>
+       </div>
+        <div class="wholesale-form">
+        <div class="wholesale-main">
+        {% if section.settings.title != blank %} 
+        <h4 class="Styles__Typography">{{section.settings.title}}</h4>
+        {% endif %}
+        
+        {% if section.settings.title != blank %} 
+        <p color="#666666">{{section.settings.subtitle}}</p>
+        {% endif %}
+        
+        </div>
+      <div class="cm-bg">
+          <div class="cm_bg_grid_info">
+            <div class="components__Perks">
+              <div class="icon-svg">
+              {{section.settings.svg_code1}}   
+              </div>
+            </div>
+            <div class="return-main">
+            <div class="free-return">
+            <h5 class="return_text">{{section.settings.free-return}}</h5>
+            </div>
+            </div>
+            <div class="free-buying">
+            {% if  section.settings.risk-free != blank %}
+            <div class="risk-free"><p color="#666666">{{section.settings.risk-free}}</p></div>
+            {% endif %}
+            </div>
+          </div>
+      
+        <div class="cm_bg_grid_info">
+          <div class="components__Perks">
+          <div class="icon-svg">
+          {{section.settings.svg_code2}}   
+          </div>
+          </div>
+          <div class="return-main">
+          <div class="net-return">
+          <h5 class="return_text">{{section.settings.net-return}}</h5>
+          </div>
+          </div>
+          <div class="free-buying">
+          {% if section.settings.stress-free != blank %}
+          <div class="stress-free"><p color="#666666">{{section.settings.stress-free}}</p></div>
+          {% endif %}
+          </div>
+        </div>
+      </div>
+      
+      {% if section.settings.new-fair-title != blank %}
+      <h5 class="new-fair-title">{{ section.settings.new-fair-title }}</h5>
+      {% endif %}
+      {% if section.settings.style_desc != blank %} <p class="Styles__desc">{{section.settings.style_desc}}</p>{% endif %}
+      {% if section.settings.btn_text != blank %}
+      <div class="button-wholesale">
+      <a href="{{section.settings.btn_url}}" target="_blank" variant="primary" aria-disabled="false" class="Button__StyledButton-iECYIl fGvEJx">{{section.settings.btn_text}}</a>
+      </div>
+      {% endif  %}
+      
+      <div class="components main">
+      <div class="components-icon">
+      {{section.settings.icon_svg1}}   
+      <p color="#888888" class="Styles__icon">{{section.settings.icon_text1}}</p>
+      <p class="text-comp__icon">{{section.settings.number1}}</p>
+      </div>
+      <div class="components__line"></div>
+      
+      <div class="components-icon">
+      {{section.settings.icon_svg2}}   
+      <p color="#888888" class="Styles__icon">{{section.settings.icon_text2}}</p>
+      <p class="text-comp__icon">{{section.settings.number2}}</p>
+      </div>
+      <div class="components__line"></div>
+      
+      <div class="components-icon">
+      {{section.settings.icon_svg3}}   
+      <p color="#888888" class="Styles__icon">{{section.settings.icon_text3}}</p>
+      <p class="text-comp__icon">{{section.settings.number3}}</p>
+      </div>
+      </div>
+      </div>
+    
+      </div>
+      {% schema %}
+      {
+      "name": "Wholesale Form",
+      "settings": [
+      {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+      },
+      {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle"
+      },
+      {
+      "type": "textarea",
+      "id": "svg_code1",
+      "label": "Add svg code"
+      },
+      {
+      "type": "textarea",
+      "id": "svg_code2",
+      "label": "Add svg code"
+      },
+      {
+      "type": "text",
+      "id": "free-return",
+      "label": "Text"
+      },
+      {
+      "type": "text",
+      "id": "net-return",
+      "label": "Text"
+      },
+      {
+      "type": "text",
+      "id": "risk-free",
+      "label": "Text"
+      },
+      {
+      "type": "text",
+      "id": "stress-free",
+      "label": "Text"
+      },
+      {
+      "type": "textarea",
+      "id": "style_desc",
+      "label": "Text"
+      },
+      
+      {
+      "type": "text",
+      "id": "new-fair-title",
+      "label": "Text"
+      },
+      {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Text"
+      },
+      {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Button URL"
+      },
+      {
+      "type": "textarea",
+      "id": "icon_svg1",
+      "label": "Svg"
+      },
+      {
+      "type": "text",
+      "id": "icon_text1",
+      "label": "Text"
+      },
+      {
+      "type": "text",
+      "id": "number1",
+      "label": "Text"
+      },
+      {
+      "type": "textarea",
+      "id": "icon_svg2",
+      "label": "Svg"
+      },
+      {
+      "type": "text",
+      "id": "icon_text2",
+      "label": "Text"
+      },
+      {
+      "type": "text",
+      "id": "number2",
+      "label": "Text"
+      },
+      {
+      "type": "textarea",
+      "id": "icon_svg3",
+      "label": "Svg"
+      },
+      {
+      "type": "text",
+      "id": "icon_text3",
+      "label": "Text"
+      },
+      {
+      "type": "text",
+      "id": "number3",
+      "label": "Text"
+      },
+      {
+      "type": "textarea",
+       "id": "morito1",
+      "label": "Text"
+      },
+      
+      {
+      "type": "richtext",
+      "id": "morito_link",
+      "label": "Text"
+      }
+      ]
+      }
+      {% endschema %}
+      
+      {% stylesheet %}
+      {% endstylesheet %}
+      
+      {% javascript %}
+      {% endjavascript %}

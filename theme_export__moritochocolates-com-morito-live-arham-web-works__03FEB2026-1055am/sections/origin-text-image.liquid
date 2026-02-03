@@ -1,0 +1,72 @@
+<div class="container about-origin-main">
+<!--   tHIRD IMAGE-TEXT -->
+{% if section.settings.text1 %}
+  <div class="only-text-main">
+    <div class="text-center">
+      <h2 data-pf-type="Heading" class="content">
+        <span class="content-main">{{section.settings.text1}}</span>
+       </h2>
+    </div>
+  </div>
+  {% endif %}
+
+<!--   Fourt section -->
+{% for block in section.blocks  %}
+  {% if  block.settings.image != blank %}
+  <div class="image-caco-main">
+    <div class="value-driven">
+      <div  class="supply-img">
+        <img src={{ block.settings.image| img_url:'master' }} width="367" height="201"  class="image-ccao">
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  
+<!--  five section  -->
+{% if block.settings.content != blank %}
+    <div class="our-caco">
+      <div class="pf-c-our-caco">
+       {{ block.settings.content }}
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+
+
+{% schema %}
+  {
+    "name": "origin-text-image",
+    "settings": [
+    {
+      "type": "textarea",
+      "id": "text1",
+      "label": "Text"
+    }
+    ],
+        "blocks": [
+      {
+        "type": "image-text",
+        "name": "Image with Text",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "richtext",
+            "id": "content",
+            "label": "Content"
+          }
+      	]
+   	  }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

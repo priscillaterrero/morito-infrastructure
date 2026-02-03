@@ -1,0 +1,103 @@
+<div class="container">
+<div class="page-findus-stores">
+  {% if section.settings.title != blank %}<div class="findus-storestitle">{{ section.settings.title }}</div>{% endif %}
+  
+  <div class="page-findus-press">        
+    <div class="grid grid__uniform">
+      {% for block in section.blocks %}
+      {% case block.settings.width %}
+      {% when '25%' %}
+      {%- assign block_width = 'wide--one-quarter post-large--one-quarter large--one-quarter medium--one-half' -%}
+      {% when '33%' %}
+      {%- assign block_width = 'wide--one-third post-large--one-third large--one-third medium--one-half' -%}
+      {% when '50%' %}
+      {%- assign block_width = 'wide--one-half post-large--one-half large--one-half medium--one-half' -%}
+      {% when '66%' %}
+      {%- assign block_width = 'wide--two-thirds post-large--two-thirds large--two-thirds medium--one-half small--grid__item' -%}
+      {% when '75%' %}
+      {%- assign block_width = 'wide--three-quarters post-large--three-quarters large--three-quarters medium--one-half small--grid__item' -%}
+      {% when '100%' %}
+      {%- assign block_width = 'one-whole' -%}
+    {% endcase %}
+      
+      {% if block.settings.image != blank %}
+      <div class="grid__item small--one-whole {{ block_width }} text-center">
+        <a href="{{ block.settings.link }}" target="_blank">
+          <img src="{{ block.settings.image | img_url: 'master' }}" alt="">
+        </a>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+</div>
+{% schema %}
+  {
+    "name": "Press",
+    "settings": [
+	  {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Press"
+      }
+	],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Logo",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link"
+          },
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "25%",
+            "options": [
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+              {
+                "value": "75%",
+                "label": "75%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          }
+      	]
+   	  }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
