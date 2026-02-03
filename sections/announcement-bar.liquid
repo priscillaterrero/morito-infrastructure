@@ -89,6 +89,19 @@
       font-weight: 600;
     }
 
+    @media screen and (max-width: 749px) {
+      .announcement-bar__message {
+        font-size: 1.1rem;
+        padding: 1rem 1.2rem;
+        letter-spacing: 0.05rem;
+        min-height: 4rem;
+      }
+
+      .announcement-bar-slider__wrapper {
+        min-height: 4.4rem;
+      }
+    }
+
     .announcement-bar__icon {
       display: inline-flex;
       align-items: center;
@@ -103,6 +116,10 @@
     .announcement-bar__link {
       display: block;
       text-decoration: none;
+      min-height: 4.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   </style>
 
@@ -137,12 +154,35 @@
         if (autoplay) {
           interval = setInterval(nextSlide, speed);
 
+          /* Pause on hover (desktop) */
           slider.addEventListener('mouseenter', function() {
             clearInterval(interval);
           });
 
           slider.addEventListener('mouseleave', function() {
             interval = setInterval(nextSlide, speed);
+          });
+
+          /* Pause on touch (mobile) — tap pauses, tap again resumes */
+          var touchPaused = false;
+          slider.addEventListener('touchstart', function(e) {
+            if (e.target.closest('a')) return;
+            if (!touchPaused) {
+              clearInterval(interval);
+              touchPaused = true;
+            } else {
+              interval = setInterval(nextSlide, speed);
+              touchPaused = false;
+            }
+          }, { passive: true });
+
+          /* Resume when page loses visibility and comes back */
+          document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+              clearInterval(interval);
+            } else if (!touchPaused) {
+              interval = setInterval(nextSlide, speed);
+            }
           });
         }
       })();
