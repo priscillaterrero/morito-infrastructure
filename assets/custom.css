@@ -604,8 +604,8 @@ a.button_learn_more.button.button--secondary {
    ========================================================================== */
 
 .footer {
-  background-color: #5C3928;
-  color: var(--color-morito-cream);
+  background-color: #7A5243;
+  color: #ffffff;
 }
 
 .footer .footer__content-top {
@@ -618,7 +618,7 @@ a.button_learn_more.button.button--secondary {
   font-weight: bold;
   letter-spacing: 1px;
   line-height: 31px;
-  color: var(--color-morito-gold);
+  color: #ffffff;
   font-family: Montserrat Thin;
 }
 
@@ -627,7 +627,7 @@ a.button_learn_more.button.button--secondary {
   letter-spacing: 2px;
   line-height: 2em;
   font-family: brandon-grotesque, sans-serif;
-  color: rgba(255, 252, 249, 0.85);
+  color: #ffffff;
 }
 
 .footer-block__details-content .list-menu__item--link:hover,
