@@ -1,0 +1,549 @@
+{%- comment -%}
+  Corporate Gifting & Special Events Section
+  Premium landing page for B2B and event inquiries
+{%- endcomment -%}
+
+<style>
+  /* ══════════════════════════════════════════════════════════════════════════
+     Corporate Gifting Section — Organic Luxury Palette
+     ══════════════════════════════════════════════════════════════════════════ */
+
+  .corporate-gifting {
+    background-color: #F9F5F0;
+  }
+
+  /* ── Hero Banner ── */
+  .cg-hero {
+    background-color: #332520;
+    padding: 80px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cg-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at center, rgba(214, 138, 89, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cg-hero__title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: #F9F5F0;
+    margin: 0 0 16px;
+    position: relative;
+    letter-spacing: -0.02em;
+  }
+
+  .cg-hero__subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: #E6DCCF;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+    position: relative;
+  }
+
+  /* ── Value Props Section ── */
+  .cg-values {
+    padding: 70px 40px;
+    background-color: #F9F5F0;
+  }
+
+  .cg-values__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .cg-value-card {
+    text-align: center;
+    padding: 30px 20px;
+  }
+
+  .cg-value-card__icon {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+    color: #D68A59;
+  }
+
+  .cg-value-card__title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #332520;
+    margin: 0 0 10px;
+  }
+
+  .cg-value-card__text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    color: #332520;
+    opacity: 0.75;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ── Occasions Section ── */
+  .cg-occasions {
+    padding: 70px 40px;
+    background-color: #E6DCCF;
+  }
+
+  .cg-occasions__header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .cg-occasions__title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #332520;
+    margin: 0 0 12px;
+  }
+
+  .cg-occasions__subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.05rem;
+    color: #332520;
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  .cg-occasions__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .cg-occasion-card {
+    background-color: #F9F5F0;
+    padding: 35px 25px;
+    text-align: center;
+    border-radius: 4px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  @media (hover: hover) {
+    .cg-occasion-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px -10px rgba(51, 37, 32, 0.15);
+    }
+  }
+
+  .cg-occasion-card__icon {
+    font-size: 2rem;
+    margin-bottom: 12px;
+  }
+
+  .cg-occasion-card__title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #332520;
+    margin: 0 0 8px;
+  }
+
+  .cg-occasion-card__text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    color: #332520;
+    opacity: 0.7;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* ── Products Preview Section ── */
+  .cg-products {
+    padding: 70px 40px;
+    background-color: #F9F5F0;
+  }
+
+  .cg-products__header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .cg-products__title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #332520;
+    margin: 0 0 12px;
+  }
+
+  .cg-products__subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.05rem;
+    color: #332520;
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  .cg-products__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .cg-product-card {
+    background-color: #F9F5F0;
+    text-align: center;
+    padding: 25px;
+    border: 1px solid #E6DCCF;
+    border-radius: 4px;
+  }
+
+  .cg-product-card__image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border-radius: 2px;
+  }
+
+  .cg-product-card__title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #332520;
+    margin: 0 0 6px;
+  }
+
+  .cg-product-card__text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    color: #332520;
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  /* ── CTA Section ── */
+  .cg-cta {
+    padding: 80px 40px;
+    background-color: #332520;
+    text-align: center;
+  }
+
+  .cg-cta__title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #F9F5F0;
+    margin: 0 0 16px;
+  }
+
+  .cg-cta__text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.05rem;
+    color: #E6DCCF;
+    max-width: 550px;
+    margin: 0 auto 30px;
+    line-height: 1.7;
+  }
+
+  .cg-cta__buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cg-cta__btn {
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 16px 36px;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .cg-cta__btn--primary {
+    background-color: #D68A59;
+    color: #fff;
+    border: 2px solid #D68A59;
+  }
+
+  .cg-cta__btn--secondary {
+    background-color: transparent;
+    color: #F9F5F0;
+    border: 2px solid #F9F5F0;
+  }
+
+  @media (hover: hover) {
+    .cg-cta__btn--primary:hover {
+      background-color: #c47a4a;
+      border-color: #c47a4a;
+    }
+
+    .cg-cta__btn--secondary:hover {
+      background-color: #F9F5F0;
+      color: #332520;
+    }
+  }
+
+  /* ── Testimonial Quote ── */
+  .cg-testimonial {
+    padding: 60px 40px;
+    background-color: #E6DCCF;
+    text-align: center;
+  }
+
+  .cg-testimonial__quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-style: italic;
+    color: #332520;
+    max-width: 700px;
+    margin: 0 auto 20px;
+    line-height: 1.6;
+  }
+
+  .cg-testimonial__author {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #332520;
+    margin: 0;
+  }
+
+  .cg-testimonial__company {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    color: #D68A59;
+    margin: 4px 0 0;
+  }
+
+  /* ══════════════════════════════════════════════════════════════════════════
+     Responsive
+     ══════════════════════════════════════════════════════════════════════════ */
+
+  @media screen and (max-width: 989px) {
+    .cg-values__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cg-occasions__grid,
+    .cg-products__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .cg-hero {
+      padding: 60px 24px;
+    }
+
+    .cg-hero__title {
+      font-size: 2.2rem;
+    }
+
+    .cg-hero__subtitle {
+      font-size: 1rem;
+    }
+
+    .cg-values,
+    .cg-occasions,
+    .cg-products,
+    .cg-cta {
+      padding: 50px 24px;
+    }
+
+    .cg-values__grid,
+    .cg-occasions__grid,
+    .cg-products__grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .cg-occasions__title,
+    .cg-products__title,
+    .cg-cta__title {
+      font-size: 1.8rem;
+    }
+
+    .cg-testimonial__quote {
+      font-size: 1.3rem;
+    }
+
+    .cg-cta__buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .cg-cta__btn {
+      width: 100%;
+      max-width: 280px;
+    }
+  }
+
+  /* ── Reduced Motion ── */
+  @media (prefers-reduced-motion: reduce) {
+    .cg-occasion-card {
+      transition: none;
+    }
+  }
+</style>
+
+<section class="corporate-gifting" id="CorporateGifting-{{ section.id }}">
+  <!-- Hero Banner -->
+  <div class="cg-hero">
+    <h1 class="cg-hero__title">{{ section.settings.hero_title | default: "Chocolate for Special Events & Corporate Gifting" }}</h1>
+    <p class="cg-hero__subtitle">{{ section.settings.hero_subtitle | default: "Thoughtfully crafted vegan chocolate for teams, clients, weddings, and celebrations. Made with love in Brooklyn." }}</p>
+  </div>
+
+  <!-- Value Props -->
+  <div class="cg-values">
+    <div class="cg-values__grid">
+      <div class="cg-value-card">
+        <div class="cg-value-card__icon">🌱</div>
+        <h3 class="cg-value-card__title">100% Vegan</h3>
+        <p class="cg-value-card__text">Plant-based, dairy-free chocolate that everyone can enjoy — perfect for diverse teams and guests.</p>
+      </div>
+      <div class="cg-value-card">
+        <div class="cg-value-card__icon">✋</div>
+        <h3 class="cg-value-card__title">Small Batch</h3>
+        <p class="cg-value-card__text">Handcrafted in Brooklyn with meticulous attention to quality. Each piece is made with care.</p>
+      </div>
+      <div class="cg-value-card">
+        <div class="cg-value-card__icon">🎁</div>
+        <h3 class="cg-value-card__title">Custom Packaging</h3>
+        <p class="cg-value-card__text">Branded boxes, personalized notes, and elegant presentation for memorable gifting.</p>
+      </div>
+      <div class="cg-value-card">
+        <div class="cg-value-card__icon">🚚</div>
+        <h3 class="cg-value-card__title">Bulk Orders</h3>
+        <p class="cg-value-card__text">Volume discounts and nationwide shipping. We handle orders of all sizes.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Occasions -->
+  <div class="cg-occasions">
+    <div class="cg-occasions__header">
+      <h2 class="cg-occasions__title">Perfect For Every Occasion</h2>
+      <p class="cg-occasions__subtitle">From intimate gatherings to large corporate events</p>
+    </div>
+    <div class="cg-occasions__grid">
+      <div class="cg-occasion-card">
+        <div class="cg-occasion-card__icon">🏢</div>
+        <h3 class="cg-occasion-card__title">Corporate Events</h3>
+        <p class="cg-occasion-card__text">Client appreciation, team celebrations, and company milestones.</p>
+      </div>
+      <div class="cg-occasion-card">
+        <div class="cg-occasion-card__icon">💍</div>
+        <h3 class="cg-occasion-card__title">Weddings</h3>
+        <p class="cg-occasion-card__text">Elegant favors for guests or sweet additions to your dessert table.</p>
+      </div>
+      <div class="cg-occasion-card">
+        <div class="cg-occasion-card__icon">🎄</div>
+        <h3 class="cg-occasion-card__title">Holiday Gifting</h3>
+        <p class="cg-occasion-card__text">Seasonal gifts for employees, partners, and valued clients.</p>
+      </div>
+      <div class="cg-occasion-card">
+        <div class="cg-occasion-card__icon">🎉</div>
+        <h3 class="cg-occasion-card__title">Special Celebrations</h3>
+        <p class="cg-occasion-card__text">Birthdays, anniversaries, baby showers, and more.</p>
+      </div>
+      <div class="cg-occasion-card">
+        <div class="cg-occasion-card__icon">🤝</div>
+        <h3 class="cg-occasion-card__title">Client Gifts</h3>
+        <p class="cg-occasion-card__text">Thank-you gifts that make a lasting impression.</p>
+      </div>
+      <div class="cg-occasion-card">
+        <div class="cg-occasion-card__icon">📦</div>
+        <h3 class="cg-occasion-card__title">Gift Boxes</h3>
+        <p class="cg-occasion-card__text">Curated assortments ready to impress any recipient.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Products Preview -->
+  <div class="cg-products">
+    <div class="cg-products__header">
+      <h2 class="cg-products__title">Our Gifting Collection</h2>
+      <p class="cg-products__subtitle">Premium chocolate sticks in a variety of irresistible flavors</p>
+    </div>
+    <div class="cg-products__grid">
+      <div class="cg-product-card">
+        <img class="cg-product-card__image" src="{{ 'Coconut Vegan White Chocolate.jpeg' | asset_url }}" alt="Coconut Vegan White Chocolate" loading="lazy">
+        <h3 class="cg-product-card__title">Coconut</h3>
+        <p class="cg-product-card__text">Vegan White Chocolate</p>
+      </div>
+      <div class="cg-product-card">
+        <img class="cg-product-card__image" src="{{ 'Hazelnu Dark Chocolate.jpeg' | asset_url }}" alt="Hazelnut Dark Chocolate" loading="lazy">
+        <h3 class="cg-product-card__title">Hazelnut</h3>
+        <p class="cg-product-card__text">Dark Chocolate</p>
+      </div>
+      <div class="cg-product-card">
+        <img class="cg-product-card__image" src="{{ 'Salted Peanut Dark chocolate.jpeg' | asset_url }}" alt="Salted Peanut Dark Chocolate" loading="lazy">
+        <h3 class="cg-product-card__title">Salted Peanut</h3>
+        <p class="cg-product-card__text">Dark Chocolate</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Testimonial -->
+  <div class="cg-testimonial">
+    <blockquote class="cg-testimonial__quote">"Morito's chocolates were the perfect gift for our team. Beautiful packaging, incredible taste, and everyone loved that they were vegan!"</blockquote>
+    <p class="cg-testimonial__author">— Happy Corporate Client</p>
+    <p class="cg-testimonial__company">New York, NY</p>
+  </div>
+
+  <!-- CTA -->
+  <div class="cg-cta">
+    <h2 class="cg-cta__title">Ready to Create Something Special?</h2>
+    <p class="cg-cta__text">Tell us about your event and we'll craft the perfect chocolate experience for your guests.</p>
+    <div class="cg-cta__buttons">
+      <a href="mailto:info@moritochocolates.com?subject=Corporate%20Gifting%20Inquiry" class="cg-cta__btn cg-cta__btn--primary">Get in Touch</a>
+      <a href="/pages/contact-us" class="cg-cta__btn cg-cta__btn--secondary">Contact Form</a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Corporate Gifting",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title",
+      "default": "Chocolate for Special Events & Corporate Gifting"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_subtitle",
+      "label": "Hero Subtitle",
+      "default": "Thoughtfully crafted vegan chocolate for teams, clients, weddings, and celebrations. Made with love in Brooklyn."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Corporate Gifting"
+    }
+  ]
+}
+{% endschema %}
