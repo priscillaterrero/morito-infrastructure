@@ -90,14 +90,38 @@
         tabindex="-1"
       >
         <div class="slideshow__media banner__media media hero-kb-wrapper">
-          <img
-            class="hero-kb-image"
-            src="{{ 'Heroimage.jpg' | asset_url }}"
-            sizes="100vw"
-            loading="eager"
-            alt="Morito Chocolates — Premium Artisanal Collection"
-            fetchpriority="high"
-          >
+          {%- if block.settings.hero_image_file != blank -%}
+            <img
+              class="hero-kb-image"
+              src="{{ block.settings.hero_image_file | asset_url }}"
+              sizes="100vw"
+              loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+              alt="{{ block.settings.heading | escape }} — Morito Chocolates"
+              {% if forloop.first %}fetchpriority="high"{% endif %}
+            >
+          {%- elsif block.settings.image -%}
+            <img
+              class="hero-kb-image"
+              src="{{ block.settings.image | image_url: width: 1920 }}"
+              srcset="{{ block.settings.image | image_url: width: 750 }} 750w,
+                      {{ block.settings.image | image_url: width: 1100 }} 1100w,
+                      {{ block.settings.image | image_url: width: 1500 }} 1500w,
+                      {{ block.settings.image | image_url: width: 1920 }} 1920w"
+              sizes="100vw"
+              loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+              alt="{{ block.settings.image.alt | default: block.settings.heading | escape }}"
+              {% if forloop.first %}fetchpriority="high"{% endif %}
+            >
+          {%- else -%}
+            <img
+              class="hero-kb-image"
+              src="{{ 'Heroimage.jpg' | asset_url }}"
+              sizes="100vw"
+              loading="eager"
+              alt="Morito Chocolates"
+              fetchpriority="high"
+            >
+          {%- endif -%}
           <div class="hero-overlay" aria-hidden="true"></div>
         </div>
         <div class="slideshow__text-wrapper banner__content banner__content--{{ block.settings.box_align }}{% if block.settings.show_text_box == false %} banner--desktop-transparent{% endif %}">
@@ -307,15 +331,36 @@
   /* ── Mobile adjustments ── */
   @media screen and (max-width: 749px) {
     h2.banner__heading {
-      font-size: 48px;
-      line-height: 58px;
-      padding-left: 20px;
-      padding-right: 20px;
+      font-size: 36px;
+      line-height: 44px;
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+
+    .slideshow__text .banner__text {
+      margin-top: 12px;
+      margin-bottom: 70px; /* Space for button below */
     }
 
     .slideshow__text .banner__text span {
-      font-size: 1.2rem;
-      padding: 6px 14px;
+      font-size: 0.95rem;
+      padding: 6px 12px;
+      line-height: 1.4;
+    }
+
+    /* Reposition button on mobile — clear of text */
+    .slideshow__slide .banner__buttons {
+      position: absolute;
+      bottom: 20px;
+      left: 16px;
+      right: auto;
+      padding-right: 0;
+      text-align: left;
+    }
+
+    .slideshow__slide .banner__buttons a.button-banner {
+      padding: 12px 24px;
+      font-size: 0.85rem;
     }
 
     .hero-kb-image {
@@ -457,6 +502,12 @@
           "type": "image_picker",
           "id": "image",
           "label": "t:sections.slideshow.blocks.slide.settings.image.label"
+        },
+        {
+          "type": "text",
+          "id": "hero_image_file",
+          "label": "HD Image (assets/ filename)",
+          "info": "Overrides image picker. Use exact filename from assets/ folder."
         },
         {
           "type": "text",
