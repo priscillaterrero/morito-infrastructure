@@ -1,0 +1,569 @@
+{%- comment -%}
+  Special Events & B2B Orders Section
+  Landing page for B2B customers to configure custom orders
+{%- endcomment -%}
+
+<style>
+  .special-events {
+    background-color: #F9F5F0;
+  }
+
+  .se-hero {
+    background-color: #332520;
+    padding: 100px 40px;
+    text-align: center;
+    position: relative;
+  }
+
+  .se-hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at center, rgba(214, 138, 89, 0.2) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .se-hero__title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #F9F5F0;
+    margin: 0 0 20px;
+    position: relative;
+  }
+
+  .se-hero__subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    color: #E6DCCF;
+    max-width: 650px;
+    margin: 0 auto;
+    line-height: 1.7;
+    position: relative;
+  }
+
+  .se-section {
+    padding: 80px 40px;
+  }
+
+  .se-section--alt {
+    background-color: #E6DCCF;
+  }
+
+  .se-section--dark {
+    background-color: #332520;
+  }
+
+  .se-section-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .se-section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #332520;
+    margin: 0 0 12px;
+  }
+
+  .se-section--dark .se-section-title {
+    color: #F9F5F0;
+  }
+
+  .se-section-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    color: #332520;
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  .se-section--dark .se-section-subtitle {
+    color: #F9F5F0;
+    opacity: 0.8;
+  }
+
+  /* Steps */
+  .se-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .se-step {
+    text-align: center;
+    padding: 30px 20px;
+  }
+
+  .se-step__number {
+    width: 60px;
+    height: 60px;
+    background-color: #D68A59;
+    color: #fff;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+  }
+
+  .se-step__title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #332520;
+    margin: 0 0 10px;
+  }
+
+  .se-step__text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    color: #332520;
+    opacity: 0.75;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Products Grid */
+  .se-products__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .se-product-card {
+    background-color: #F9F5F0;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .se-product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px -15px rgba(51, 37, 32, 0.2);
+  }
+
+  .se-product-card__image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+  }
+
+  .se-product-card__content {
+    padding: 20px;
+    text-align: center;
+  }
+
+  .se-product-card__title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #332520;
+    margin: 0 0 6px;
+  }
+
+  .se-product-card__desc {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    color: #332520;
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  /* Config Options */
+  .se-config__container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 50px;
+    box-shadow: 0 10px 40px -10px rgba(51, 37, 32, 0.1);
+  }
+
+  .se-config__intro {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .se-config__options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  .se-config__option {
+    text-align: center;
+    padding: 25px;
+    background-color: #F9F5F0;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease;
+  }
+
+  .se-config__option:hover {
+    border-color: #D68A59;
+  }
+
+  .se-config__option-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+  }
+
+  .se-config__option-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #332520;
+    margin: 0 0 8px;
+  }
+
+  .se-config__option-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    color: #332520;
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  /* Pricing */
+  .se-pricing__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .se-pricing-card {
+    background-color: #F9F5F0;
+    border-radius: 8px;
+    padding: 40px 30px;
+    text-align: center;
+  }
+
+  .se-pricing-card--featured {
+    background-color: #D68A59;
+    transform: scale(1.05);
+  }
+
+  .se-pricing-card__tier {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #D68A59;
+    margin: 0 0 10px;
+  }
+
+  .se-pricing-card--featured .se-pricing-card__tier {
+    color: #F9F5F0;
+  }
+
+  .se-pricing-card__qty {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #332520;
+    margin: 0 0 8px;
+  }
+
+  .se-pricing-card--featured .se-pricing-card__qty {
+    color: #fff;
+  }
+
+  .se-pricing-card__desc {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    color: #332520;
+    opacity: 0.7;
+    margin: 0 0 20px;
+  }
+
+  .se-pricing-card--featured .se-pricing-card__desc {
+    color: #F9F5F0;
+    opacity: 0.9;
+  }
+
+  .se-pricing-card__features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 25px;
+    text-align: left;
+  }
+
+  .se-pricing-card__feature {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    color: #332520;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(51, 37, 32, 0.1);
+  }
+
+  .se-pricing-card--featured .se-pricing-card__feature {
+    color: #fff;
+    border-bottom-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .se-pricing-card__feature::before {
+    content: '✓ ';
+    color: #D68A59;
+  }
+
+  .se-pricing-card--featured .se-pricing-card__feature::before {
+    color: #F9F5F0;
+  }
+
+  /* CTA */
+  .se-cta {
+    padding: 100px 40px;
+    background-color: #E6DCCF;
+    text-align: center;
+  }
+
+  .se-cta__title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #332520;
+    margin: 0 0 16px;
+  }
+
+  .se-cta__text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    color: #332520;
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto 35px;
+    line-height: 1.7;
+  }
+
+  .se-cta__btn {
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 18px 50px;
+    background-color: #D68A59;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+  }
+
+  .se-cta__btn:hover {
+    background-color: #332520;
+    transform: translateY(-2px);
+  }
+
+  /* Responsive */
+  @media screen and (max-width: 989px) {
+    .se-steps { grid-template-columns: repeat(2, 1fr); }
+    .se-products__grid { grid-template-columns: repeat(2, 1fr); }
+    .se-config__options { grid-template-columns: 1fr; }
+    .se-pricing__grid { grid-template-columns: 1fr; max-width: 400px; }
+    .se-pricing-card--featured { transform: none; }
+  }
+
+  @media screen and (max-width: 749px) {
+    .se-hero { padding: 70px 24px; }
+    .se-hero__title { font-size: 2.4rem; }
+    .se-section { padding: 60px 24px; }
+    .se-steps, .se-products__grid { grid-template-columns: 1fr; }
+    .se-config__container { padding: 30px 20px; }
+    .se-section-title { font-size: 2rem; }
+    .se-cta__title { font-size: 2rem; }
+  }
+</style>
+
+<section class="special-events">
+  <!-- Hero -->
+  <div class="se-hero">
+    <h1 class="se-hero__title">{{ section.settings.hero_title }}</h1>
+    <p class="se-hero__subtitle">{{ section.settings.hero_subtitle }}</p>
+  </div>
+
+  <!-- How It Works -->
+  <div class="se-section">
+    <div class="se-section-header">
+      <h2 class="se-section-title">How It Works</h2>
+      <p class="se-section-subtitle">Custom orders made simple</p>
+    </div>
+    <div class="se-steps">
+      <div class="se-step">
+        <div class="se-step__number">1</div>
+        <h3 class="se-step__title">Choose Flavors</h3>
+        <p class="se-step__text">Select from our signature chocolate stick flavors or create a custom mix.</p>
+      </div>
+      <div class="se-step">
+        <div class="se-step__number">2</div>
+        <h3 class="se-step__title">Set Quantity</h3>
+        <p class="se-step__text">From 50 to 5,000+ pieces — we scale to your event needs.</p>
+      </div>
+      <div class="se-step">
+        <div class="se-step__number">3</div>
+        <h3 class="se-step__title">Customize</h3>
+        <p class="se-step__text">Add your branding, custom labels, or choose elegant gift boxes.</p>
+      </div>
+      <div class="se-step">
+        <div class="se-step__number">4</div>
+        <h3 class="se-step__title">We Deliver</h3>
+        <p class="se-step__text">Fresh chocolates delivered on your schedule, anywhere in the US.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Products -->
+  <div class="se-section se-section--alt">
+    <div class="se-section-header">
+      <h2 class="se-section-title">Available Flavors</h2>
+      <p class="se-section-subtitle">Mix and match to create your perfect assortment</p>
+    </div>
+    <div class="se-products__grid">
+      <div class="se-product-card">
+        <img class="se-product-card__image" src="{{ 'Coconut Vegan White Chocolate.jpeg' | asset_url }}" alt="Coconut" loading="lazy">
+        <div class="se-product-card__content">
+          <h3 class="se-product-card__title">Coconut</h3>
+          <p class="se-product-card__desc">Vegan White Chocolate</p>
+        </div>
+      </div>
+      <div class="se-product-card">
+        <img class="se-product-card__image" src="{{ 'Hazelnu Dark Chocolate.jpeg' | asset_url }}" alt="Hazelnut" loading="lazy">
+        <div class="se-product-card__content">
+          <h3 class="se-product-card__title">Hazelnut</h3>
+          <p class="se-product-card__desc">Dark Chocolate</p>
+        </div>
+      </div>
+      <div class="se-product-card">
+        <img class="se-product-card__image" src="{{ 'Salted Peanut Dark chocolate.jpeg' | asset_url }}" alt="Salted Peanut" loading="lazy">
+        <div class="se-product-card__content">
+          <h3 class="se-product-card__title">Salted Peanut</h3>
+          <p class="se-product-card__desc">Dark Chocolate</p>
+        </div>
+      </div>
+      <div class="se-product-card">
+        <img class="se-product-card__image" src="{{ 'Heroimage.jpg' | asset_url }}" alt="Custom Mix" loading="lazy">
+        <div class="se-product-card__content">
+          <h3 class="se-product-card__title">Custom Mix</h3>
+          <p class="se-product-card__desc">Your Selection</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Configure -->
+  <div class="se-section">
+    <div class="se-section-header">
+      <h2 class="se-section-title">Configure Your Order</h2>
+      <p class="se-section-subtitle">Flexible options for every event</p>
+    </div>
+    <div class="se-config__container">
+      <div class="se-config__intro">
+        <p>Whether you need elegant wedding favors, corporate gifts, or treats for your team — we customize every order to your specifications.</p>
+      </div>
+      <div class="se-config__options">
+        <div class="se-config__option">
+          <div class="se-config__option-icon">📦</div>
+          <h3 class="se-config__option-title">Quantity</h3>
+          <p class="se-config__option-text">50, 100, 250, 500, 1000+ pieces</p>
+        </div>
+        <div class="se-config__option">
+          <div class="se-config__option-icon">🍫</div>
+          <h3 class="se-config__option-title">Flavors</h3>
+          <p class="se-config__option-text">Single or mixed assortments</p>
+        </div>
+        <div class="se-config__option">
+          <div class="se-config__option-icon">🎀</div>
+          <h3 class="se-config__option-title">Packaging</h3>
+          <p class="se-config__option-text">Bulk, gift boxes, or branded</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pricing -->
+  <div class="se-section se-section--dark">
+    <div class="se-section-header">
+      <h2 class="se-section-title">Pricing Tiers</h2>
+      <p class="se-section-subtitle">Volume discounts available</p>
+    </div>
+    <div class="se-pricing__grid">
+      <div class="se-pricing-card">
+        <p class="se-pricing-card__tier">Small Events</p>
+        <h3 class="se-pricing-card__qty">50-100 pcs</h3>
+        <p class="se-pricing-card__desc">Perfect for intimate gatherings</p>
+        <ul class="se-pricing-card__features">
+          <li class="se-pricing-card__feature">Standard packaging</li>
+          <li class="se-pricing-card__feature">3-5 flavor options</li>
+          <li class="se-pricing-card__feature">2-week lead time</li>
+        </ul>
+      </div>
+      <div class="se-pricing-card se-pricing-card--featured">
+        <p class="se-pricing-card__tier">Most Popular</p>
+        <h3 class="se-pricing-card__qty">250-500 pcs</h3>
+        <p class="se-pricing-card__desc">Ideal for corporate events</p>
+        <ul class="se-pricing-card__features">
+          <li class="se-pricing-card__feature">Custom packaging</li>
+          <li class="se-pricing-card__feature">All flavor options</li>
+          <li class="se-pricing-card__feature">10% volume discount</li>
+          <li class="se-pricing-card__feature">Priority support</li>
+        </ul>
+      </div>
+      <div class="se-pricing-card">
+        <p class="se-pricing-card__tier">Large Orders</p>
+        <h3 class="se-pricing-card__qty">1000+ pcs</h3>
+        <p class="se-pricing-card__desc">For major events & wholesale</p>
+        <ul class="se-pricing-card__features">
+          <li class="se-pricing-card__feature">Fully custom branding</li>
+          <li class="se-pricing-card__feature">Dedicated manager</li>
+          <li class="se-pricing-card__feature">20%+ discount</li>
+          <li class="se-pricing-card__feature">Flexible scheduling</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="se-cta">
+    <h2 class="se-cta__title">Ready to Place Your Order?</h2>
+    <p class="se-cta__text">Tell us about your event and we'll create a custom quote tailored to your needs.</p>
+    <a href="mailto:info@moritochocolates.com?subject=Special%20Events%20Inquiry" class="se-cta__btn">Request a Quote</a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Special Events B2B",
+  "settings": [
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title",
+      "default": "Special Events & Custom Orders"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_subtitle",
+      "label": "Hero Subtitle",
+      "default": "Configure your perfect chocolate order — choose quantity, flavors, and packaging for your special occasion."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Special Events B2B"
+    }
+  ]
+}
+{% endschema %}
