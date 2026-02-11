@@ -55,14 +55,14 @@
         "slide-3-corporate": {
           "type": "slide",
           "settings": {
-            "hero_image_file": "Slide 3, Especial events.png",
+            "hero_image_file": "Slide 3 Especial events.png",
             "heading": "Chocolate for",
             "heading2": "Special Events &",
             "heading3": "Corporate Gifting",
             "heading_size": "h0",
             "subheading": "Thoughtfully crafted vegan chocolate for teams, clients, weddings, and celebrations.",
             "button_label": "Inquire About Gifting",
-            "link": "shopify://pages/corporate-gifting",
+            "link": "shopify://pages/special-events",
             "button_style_secondary": false,
             "box_align": "middle-left",
             "show_text_box": false,
