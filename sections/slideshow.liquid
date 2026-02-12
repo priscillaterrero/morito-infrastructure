@@ -137,17 +137,14 @@
               </div>
             {%- endif -%}
 
-           
-     
-
-          </div>
-        </div>
- {%- if block.settings.button_label != blank -%}
-              <div class="banner__buttons">
+            {%- if block.settings.button_label != blank -%}
+              <div class="banner__buttons banner__buttons--inline">
                 <a{% if block.settings.link %} href="{{ block.settings.link }}"{% else %} role="link" aria-disabled="true"{% endif %} class="button-banner">{{ block.settings.button_label | escape }}</a>
               </div>
             {%- endif -%}
-        
+
+          </div>
+        </div>
       </div>
     {%- endfor -%}
   </div>
@@ -244,7 +241,7 @@
   /* ── Hero fadeInUp animation ── */
   .slideshow__text .banner__heading,
   .slideshow__text .banner__text,
-  .banner__buttons {
+  .slideshow__text .banner__buttons--inline {
     opacity: 0;
     transform: translateY(30px);
     animation: heroFadeInUp 1.2s ease-out forwards;
@@ -254,7 +251,7 @@
   .slideshow__text .banner__heading.second { animation-delay: 0.5s; }
   .slideshow__text .banner__heading.third  { animation-delay: 0.8s; }
   .slideshow__text .banner__text           { animation-delay: 1.1s; }
-  .banner__buttons                         { animation-delay: 1.4s; }
+  .slideshow__text .banner__buttons--inline { animation-delay: 1.4s; }
 
   @keyframes heroFadeInUp {
     to {
@@ -301,7 +298,7 @@
     display: inline-block;
   }
 
-  /* ── "Shop Now" button — improved contrast ── */
+  /* ── "Shop Now" button ── */
   .banner__buttons a.button-banner {
     color: #F9F5F0;
     background-color: rgba(51, 37, 32, 0.55);
@@ -317,6 +314,7 @@
     transition: background-color 0.3s ease, transform 0.3s ease;
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
+    display: inline-block;
   }
 
   @media (hover: hover) {
@@ -328,60 +326,130 @@
     }
   }
 
-  /* ── Mobile adjustments ── */
+  /* ── MOBILE: Text below image layout ── */
   @media screen and (max-width: 749px) {
-    /* Position text at TOP on mobile so images are visible */
-    .slideshow__text-wrapper.banner__content {
-      align-items: flex-start !important;
-      padding-top: 20px;
+    /* Make slide a vertical flex container */
+    .slideshow__slide.grid__item {
+      display: flex !important;
+      flex-direction: column !important;
+      position: relative;
     }
 
-    .slideshow__text.banner__box {
-      margin-top: 0;
+    /* Image area: fixed height, product fully visible */
+    .slideshow__slide .slideshow__media.banner__media {
+      position: relative !important;
+      width: 100%;
+      min-height: 55vh;
+      max-height: 65vh;
+      flex-shrink: 0;
     }
 
-    h2.banner__heading {
-      font-size: 28px;
-      line-height: 34px;
-      padding-left: 12px;
-      padding-right: 12px;
+    .slideshow__slide .hero-kb-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      animation-duration: 18s;
     }
 
-    h2.banner__heading.first,
-    h2.banner__heading.second,
-    h2.banner__heading.third {
-      padding: 4px 12px;
+    /* Reduce overlay on mobile — let product shine */
+    .slideshow__slide .hero-overlay {
+      background: linear-gradient(
+        180deg,
+        rgba(51, 37, 32, 0.05) 0%,
+        rgba(51, 37, 32, 0.10) 50%,
+        rgba(51, 37, 32, 0.25) 100%
+      );
+    }
+
+    /* Text area: below image with brand background */
+    .slideshow__slide .slideshow__text-wrapper.banner__content {
+      position: relative !important;
+      width: 100%;
+      padding: 24px 20px 20px;
+      background-color: #332520;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    .slideshow__slide .slideshow__text.banner__box {
+      background: transparent !important;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+    }
+
+    /* Headings: adapt for bottom strip */
+    .slideshow__slide h2.banner__heading {
+      font-size: 22px;
+      line-height: 28px;
       margin-bottom: 2px;
     }
 
-    .slideshow__text .banner__text {
-      margin-top: 8px;
+    .slideshow__slide h2.banner__heading.first {
+      background-color: transparent;
+      color: #F9F5F0;
+      display: inline;
+      padding: 2px 0;
+    }
+
+    .slideshow__slide h2.banner__heading.second,
+    .slideshow__slide h2.banner__heading.third {
+      background-color: transparent;
+      color: #D68A59;
+      display: inline;
+      padding: 2px 0;
+    }
+
+    /* Subtitle */
+    .slideshow__slide .slideshow__text .banner__text {
+      margin-top: 10px;
       margin-bottom: 0;
     }
 
-    .slideshow__text .banner__text span {
-      font-size: 0.85rem;
-      padding: 4px 10px;
-      line-height: 1.3;
-    }
-
-    /* Reposition button on mobile — bottom of slide */
-    .slideshow__slide .banner__buttons {
-      position: absolute;
-      bottom: 15px;
-      left: 12px;
-      right: auto;
-      padding-right: 0;
-      text-align: left;
-    }
-
-    .slideshow__slide .banner__buttons a.button-banner {
-      padding: 10px 20px;
+    .slideshow__slide .slideshow__text .banner__text span {
       font-size: 0.8rem;
+      padding: 0;
+      background-color: transparent;
+      color: #F9F5F0;
+      text-shadow: none;
+      opacity: 0.85;
+      letter-spacing: 0.06em;
     }
 
-    .hero-kb-image {
-      animation-duration: 18s;
+    /* Button inside text block */
+    .slideshow__slide .banner__buttons--inline {
+      margin-top: 14px;
+    }
+
+    .slideshow__slide .banner__buttons--inline a.button-banner {
+      padding: 10px 24px;
+      font-size: 0.78rem;
+      background-color: #D68A59;
+      border-color: #D68A59;
+      color: #fff;
+      text-shadow: none;
+      backdrop-filter: none;
+      border-radius: 4px;
+    }
+
+    .slideshow__slide .banner__buttons--inline a.button-banner:active {
+      background-color: #c07a4e;
+      transform: scale(0.97);
+    }
+
+    /* Gold accent line above text block */
+    .slideshow__slide .slideshow__text-wrapper.banner__content::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 20px;
+      right: 20px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #D68A59, transparent);
+      border-radius: 2px;
     }
   }
 
@@ -389,7 +457,7 @@
   @media (prefers-reduced-motion: reduce) {
     .slideshow__text .banner__heading,
     .slideshow__text .banner__text,
-    .banner__buttons {
+    .slideshow__text .banner__buttons--inline {
       opacity: 1;
       transform: none;
       animation: none;
