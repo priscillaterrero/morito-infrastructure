@@ -323,22 +323,23 @@
     }
   }
 
-  /* ═══════════════════════════════════════════
-     MOBILE — Image fits viewport, text integrated
-     ═══════════════════════════════════════════ */
+  /* ═══════════════════════════════════════════════════
+     MOBILE — Slide fits viewport WITH header visible
+     Header (~60px) + Announcement bar (~40px) = ~100px
+     Slide = 100dvh - 100px = remaining viewport
+     ═══════════════════════════════════════════════════ */
   @media screen and (max-width: 749px) {
 
-    /* ── Slide fills exactly the mobile viewport ── */
+    /* ── Slide: fit remaining viewport after header ── */
     .slideshow__slide.grid__item {
       position: relative !important;
       width: 100vw;
-      height: 100vh;
-      height: 100dvh; /* dynamic viewport height — accounts for browser chrome */
-      max-height: 100dvh;
+      height: calc(100dvh - 100px); /* viewport minus header + announcement bar */
+      max-height: calc(100dvh - 100px);
       overflow: hidden;
     }
 
-    /* ── Image: cover the full slide, no overflow ── */
+    /* ── Image: cover the slide area perfectly ── */
     .slideshow__slide .slideshow__media.banner__media {
       position: absolute !important;
       inset: 0;
@@ -350,30 +351,30 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 30%; /* slightly up — shows more product */
+      object-position: center 30%;
       animation-duration: 18s;
     }
 
-    /* ── Lighter overlay on mobile — product shines ── */
+    /* ── Optimized overlay: clear center, dark bottom for text ── */
     .slideshow__slide .hero-overlay {
       background: linear-gradient(
         180deg,
         rgba(51, 37, 32, 0.30) 0%,
         rgba(51, 37, 32, 0.05) 25%,
-        rgba(51, 37, 32, 0.05) 55%,
-        rgba(51, 37, 32, 0.50) 80%,
-        rgba(51, 37, 32, 0.70) 100%
+        rgba(51, 37, 32, 0.05) 50%,
+        rgba(51, 37, 32, 0.50) 75%,
+        rgba(51, 37, 32, 0.72) 100%
       );
     }
 
-    /* ── Text wrapper: anchored to bottom, integrated over image ── */
+    /* ── Text wrapper: anchored to bottom, over image ── */
     .slideshow__slide .slideshow__text-wrapper.banner__content {
       position: absolute !important;
-      bottom: 0;
+      bottom: 50px; /* space for button below */
       left: 0;
       right: 0;
       top: auto !important;
-      padding: 0 16px 22px;
+      padding: 0 16px;
       display: flex;
       align-items: flex-end;
       justify-content: flex-start;
@@ -387,33 +388,35 @@
       pointer-events: auto;
     }
 
-    /* ── Headings: NO background, text-shadow for contrast ── */
+    /* ── Headings: no bg, text-shadow for contrast, +2pt vs before ── */
     .slideshow__slide h2.banner__heading {
-      font-size: 24px;
-      line-height: 30px;
+      font-size: 26px; /* was 24px → +2pt */
+      line-height: 32px;
       margin-bottom: 1px;
       background: none !important;
       padding: 0;
       text-shadow:
-        0 1px 3px rgba(0, 0, 0, 0.7),
-        0 2px 10px rgba(0, 0, 0, 0.4);
+        0 1px 3px rgba(0, 0, 0, 0.8),
+        0 2px 10px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(0, 0, 0, 0.3);
     }
 
     .slideshow__slide h2.banner__heading.first {
-      color: #F9F5F0; /* cream white */
+      color: #F9F5F0;
     }
 
     .slideshow__slide h2.banner__heading.second {
-      color: #D68A59; /* copper/gold accent */
+      color: #D68A59;
     }
 
     .slideshow__slide h2.banner__heading.third {
-      color: #F9F5F0; /* cream white */
+      color: #F9F5F0;
     }
 
-    /* ── Subtitle: clean, no bg ── */
+    /* ── Subtitle: clean, with spacing to avoid button overlap ── */
     .slideshow__slide .slideshow__text .banner__text {
-      margin-top: 8px;
+      margin-top: 6px;
+      margin-bottom: 0;
     }
 
     .slideshow__slide .slideshow__text .banner__text span {
@@ -422,25 +425,25 @@
       background: none;
       color: #F9F5F0;
       text-shadow:
-        0 1px 3px rgba(0, 0, 0, 0.7),
-        0 2px 8px rgba(0, 0, 0, 0.3);
+        0 1px 3px rgba(0, 0, 0, 0.8),
+        0 2px 8px rgba(0, 0, 0, 0.4);
       opacity: 0.9;
       letter-spacing: 0.05em;
     }
 
-    /* ── Button: bottom-left, minimal, integrated ── */
+    /* ── Button: absolute bottom-right, BELOW text to prevent overlap ── */
     .slideshow__slide .banner__buttons {
       position: absolute;
-      bottom: 22px;
+      bottom: 14px;
       right: 16px;
       left: auto;
       padding: 0;
     }
 
     .slideshow__slide .banner__buttons a.button-banner {
-      padding: 10px 20px;
-      font-size: 0.75rem;
-      background-color: rgba(214, 138, 89, 0.85); /* copper with slight transparency */
+      padding: 9px 18px;
+      font-size: 0.72rem;
+      background-color: rgba(214, 138, 89, 0.85);
       border: 1.5px solid #D68A59;
       color: #fff;
       text-shadow: none;
@@ -456,11 +459,16 @@
     }
   }
 
-  /* ── Small phones (iPhone SE, etc.) ── */
+  /* ── Small phones (iPhone SE, Galaxy A series) ── */
   @media screen and (max-width: 374px) {
+    .slideshow__slide.grid__item {
+      height: calc(100dvh - 90px);
+      max-height: calc(100dvh - 90px);
+    }
+
     .slideshow__slide h2.banner__heading {
-      font-size: 20px;
-      line-height: 26px;
+      font-size: 22px;
+      line-height: 28px;
     }
 
     .slideshow__slide .slideshow__text .banner__text span {
@@ -468,8 +476,8 @@
     }
 
     .slideshow__slide .banner__buttons a.button-banner {
-      padding: 8px 16px;
-      font-size: 0.7rem;
+      padding: 8px 14px;
+      font-size: 0.68rem;
     }
   }
 
