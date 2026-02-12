@@ -170,6 +170,16 @@
     background-color: #332520;
   }
 
+  /* Always visible button (when no product linked) */
+  .best-sellers__add-btn--visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+  }
+
   .best-sellers__add-form {
     margin: 0;
     padding: 0;
@@ -300,7 +310,7 @@
             </form>
           {%- else -%}
             <h3 class="best-sellers__product-title">{{ block.settings.image_file | remove: '.jpeg' | remove: '.jpg' | remove: '.png' }}</h3>
-            <p class="best-sellers__price">-</p>
+            <a href="/collections/all-products" class="best-sellers__add-btn best-sellers__add-btn--visible">Shop Now</a>
           {%- endif -%}
         </div>
       </div>
