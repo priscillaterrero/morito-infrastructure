@@ -522,7 +522,7 @@
     box-shadow:
       0 8px 32px rgba(51, 37, 32, 0.15),
       inset 0 1px 0 rgba(255, 255, 255, 0.4);
-    max-width: 500px;
+    max-width: 550px;
   }
 
   .slideshow__text.glass-effect h2.banner__heading {
@@ -531,6 +531,7 @@
     text-shadow: none;
     padding: 0;
     margin-bottom: 4px;
+    white-space: nowrap;
   }
 
   .slideshow__text.glass-effect h2.banner__heading.first {
@@ -544,6 +545,15 @@
     padding: 0;
     font-size: 1.1rem;
     opacity: 0.85;
+  }
+
+  /* Glass effect text alignment variants */
+  .slideshow__text.glass-effect.slideshow__text--left {
+    text-align: left;
+  }
+
+  .slideshow__text.glass-effect.slideshow__text--right {
+    text-align: right;
   }
 
   /* Glass effect button inside the box */
@@ -564,33 +574,84 @@
     border-color: #D68A59;
   }
 
-  /* Mobile adjustments for glass effect */
+  /* ═══════════════════════════════════════════════════
+     MOBILE GLASS EFFECT - Matches slides 1 & 2 style
+     Clean text overlay without opaque box
+     ═══════════════════════════════════════════════════ */
   @media screen and (max-width: 749px) {
+    /* Override glass effect on mobile to match clean text style */
     .slideshow__text.glass-effect {
-      padding: 24px 28px !important;
-      max-width: 85%;
-      margin: 0 auto;
+      background: none !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      border: none !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+      max-width: 100%;
+      margin: 0;
+      border-radius: 0;
     }
 
     .slideshow__text.glass-effect h2.banner__heading {
-      font-size: 22px !important;
-      line-height: 28px !important;
+      font-size: 24px !important;
+      line-height: 30px !important;
+      white-space: normal;
+      color: #F9F5F0 !important;
+      text-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.8),
+        0 2px 10px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(0, 0, 0, 0.3) !important;
+    }
+
+    .slideshow__text.glass-effect h2.banner__heading.first {
+      color: #F9F5F0 !important;
+    }
+
+    .slideshow__text.glass-effect h2.banner__heading.second {
+      color: #D68A59 !important;
+    }
+
+    .slideshow__text.glass-effect h2.banner__heading.third {
+      color: #F9F5F0 !important;
     }
 
     .slideshow__text.glass-effect .banner__text span {
-      font-size: 0.9rem;
+      background: none;
+      color: #F9F5F0;
+      font-size: 0.82rem;
+      text-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.8),
+        0 2px 8px rgba(0, 0, 0, 0.4);
+      opacity: 0.9;
     }
 
+    /* Position text at bottom left like slides 1 & 2 */
     .slideshow__slide:has(.glass-effect) .slideshow__text-wrapper.banner__content {
-      bottom: 80px;
+      bottom: 50px;
+      left: 0;
+      right: 0;
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
+      padding: 0 16px;
+    }
+
+    .slideshow__slide:has(.glass-effect) .slideshow__text.glass-effect {
+      text-align: left !important;
     }
 
     .slideshow__slide:has(.glass-effect) .banner__buttons {
-      bottom: 20px;
-      right: 50%;
-      transform: translateX(50%);
+      bottom: 14px;
+      right: 16px;
+      left: auto;
+      transform: none;
+    }
+
+    .slideshow__slide:has(.glass-effect) .banner__buttons a.button-banner {
+      background-color: rgba(214, 138, 89, 0.85);
+      border: 1.5px solid #D68A59;
+      color: #fff;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
     }
   }
 </style>

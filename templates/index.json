@@ -64,13 +64,13 @@
             "button_label": "Inquire About Gifting",
             "link": "shopify://pages/special-events",
             "button_style_secondary": false,
-            "box_align": "middle-center",
+            "box_align": "middle-left",
             "show_text_box": true,
             "glass_effect": true,
-            "text_alignment": "center",
+            "text_alignment": "left",
             "image_overlay_opacity": 0,
             "color_scheme": "accent-1",
-            "text_alignment_mobile": "center"
+            "text_alignment_mobile": "left"
           }
         },
         "slide-4-coconut": {
@@ -85,13 +85,13 @@
             "button_label": "Explore Gifting",
             "link": "shopify://pages/special-events",
             "button_style_secondary": false,
-            "box_align": "middle-center",
+            "box_align": "middle-right",
             "show_text_box": true,
             "glass_effect": true,
-            "text_alignment": "center",
+            "text_alignment": "right",
             "image_overlay_opacity": 0,
             "color_scheme": "accent-1",
-            "text_alignment_mobile": "center"
+            "text_alignment_mobile": "left"
           }
         }
       },
@@ -173,6 +173,7 @@
       ],
       "settings": {
         "image": "shopify://shop_images/MatchaStrawberryclear.png",
+        "animated_border": true,
         "height": "small",
         "desktop_image_width": "medium",
         "layout": "text_first",
@@ -290,12 +291,12 @@
             "button_style_secondary_2": true
           }
         },
-        "aa388ed1-065b-4736-9564-369705df4e18": {
-          "type": "video",
+        "mission-video-grid": {
+          "type": "video_grid",
           "settings": {
-            "video_file": "our-mission-video.mp4",
-            "video_url": "",
-            "video_poster": ""
+            "video_file_1": "mission-video-1.mp4",
+            "video_file_2": "mission-video-2.mp4",
+            "video_file_3": "mission-video-3.mp4"
           }
         }
       },
@@ -303,7 +304,7 @@
         "1660625540951e2c3f-0",
         "1660625540951e2c3f-1",
         "1660625540951e2c3f-2",
-        "aa388ed1-065b-4736-9564-369705df4e18"
+        "mission-video-grid"
       ],
       "settings": {
         "desktop_content_position": "center",

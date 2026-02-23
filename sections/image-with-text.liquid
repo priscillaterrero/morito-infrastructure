@@ -1,5 +1,110 @@
 {{ 'component-image-with-text.css' | asset_url | stylesheet_tag }}
 
+<style>
+  /* ═══════════════════════════════════════════════════
+     ANIMATED CHOCOLATE BORDER EFFECT
+     Subtle glowing border that travels around the image
+     ═══════════════════════════════════════════════════ */
+  .image-with-text__media--animated-border {
+    position: relative;
+    border-radius: 12px;
+    overflow: visible !important;
+  }
+
+  .image-with-text__media--animated-border::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 14px;
+    padding: 3px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 25%,
+      #D68A59 45%,
+      #8B5A3C 50%,
+      #D68A59 55%,
+      transparent 75%,
+      transparent 100%
+    );
+    background-size: 300% 100%;
+    animation: chocolateBorderFlow 4s linear infinite;
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .image-with-text__media--animated-border::after {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 16px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 30%,
+      rgba(214, 138, 89, 0.3) 45%,
+      rgba(139, 90, 60, 0.4) 50%,
+      rgba(214, 138, 89, 0.3) 55%,
+      transparent 70%,
+      transparent 100%
+    );
+    background-size: 300% 100%;
+    animation: chocolateBorderFlow 4s linear infinite;
+    filter: blur(8px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  @keyframes chocolateBorderFlow {
+    0% {
+      background-position: 100% 0;
+    }
+    100% {
+      background-position: -100% 0;
+    }
+  }
+
+  .image-with-text__media--animated-border img {
+    border-radius: 10px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Mobile adjustments */
+  @media screen and (max-width: 749px) {
+    .image-with-text__media--animated-border::before {
+      inset: -2px;
+      border-radius: 10px;
+      padding: 2px;
+    }
+
+    .image-with-text__media--animated-border::after {
+      inset: -4px;
+      border-radius: 12px;
+      filter: blur(6px);
+    }
+
+    .image-with-text__media--animated-border img {
+      border-radius: 8px;
+    }
+  }
+
+  /* Reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    .image-with-text__media--animated-border::before,
+    .image-with-text__media--animated-border::after {
+      animation: none;
+      background: linear-gradient(90deg, #D68A59, #8B5A3C, #D68A59);
+      background-size: 100% 100%;
+    }
+  }
+</style>
+
 {%- style -%}
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
@@ -17,7 +122,7 @@
 <div class="image-with-text image-with-text--{{ section.settings.content_layout }} page-width isolate{% if settings.text_boxes_border_thickness > 0 and settings.text_boxes_border_opacity > 0 and settings.media_border_thickness > 0 and settings.media_border_opacity > 0 %} collapse-borders{% endif %}{% unless section.settings.color_scheme == 'background-1' and settings.media_border_thickness > 0 and settings.text_boxes_shadow_opacity == 0 and settings.text_boxes_border_thickness == 0 or settings.text_boxes_border_opacity == 0 %} collapse-corners{% endunless %} section-{{ section.id }}-padding">
   <div class="image-with-text__grid grid grid--gapless grid--1-col grid--{% if section.settings.desktop_image_width == 'medium' %}2-col-tablet{% else %}3-col-tablet{% endif %}{% if section.settings.layout == 'text_first' %} image-with-text__grid--reverse{% endif %}">
     <div class="image-with-text__media-item image-with-text__media-item--{{ section.settings.desktop_image_width }} image-with-text__media-item--{{ section.settings.desktop_content_position }} grid__item">
-      <div class="image-with-text__media image-with-text__media--{{ section.settings.height }} gradient color-{{ section.settings.color_scheme }} global-media-settings {% if section.settings.image != blank %}media{% else %}image-with-text__media--placeholder placeholder{% endif %}"
+      <div class="image-with-text__media image-with-text__media--{{ section.settings.height }} gradient color-{{ section.settings.color_scheme }} global-media-settings {% if section.settings.image != blank %}media{% else %}image-with-text__media--placeholder placeholder{% endif %}{% if section.settings.animated_border %} image-with-text__media--animated-border{% endif %}"
         {% if section.settings.height == 'adapt' and section.settings.image != blank %} style="padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;"{% endif %}
       >
         {%- if section.settings.image != blank -%}
@@ -79,6 +184,13 @@
       "type": "image_picker",
       "id": "image",
       "label": "t:sections.image-with-text.settings.image.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "animated_border",
+      "label": "Animated Chocolate Border",
+      "info": "Adds a subtle glowing chocolate-colored border that animates around the image.",
+      "default": false
     },
     {
       "type": "select",
