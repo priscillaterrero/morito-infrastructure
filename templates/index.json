@@ -72,12 +72,34 @@
             "color_scheme": "accent-1",
             "text_alignment_mobile": "center"
           }
+        },
+        "slide-4-coconut": {
+          "type": "slide",
+          "settings": {
+            "hero_image_file": "Coconut cherry.png",
+            "heading": "Artisan",
+            "heading2": "Chocolate",
+            "heading3": "Mini Cups",
+            "heading_size": "h0",
+            "subheading": "Handcrafted mini cups with premium ingredients - perfect for gifting.",
+            "button_label": "Explore Gifting",
+            "link": "shopify://pages/special-events",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "glass_effect": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "accent-1",
+            "text_alignment_mobile": "center"
+          }
         }
       },
       "block_order": [
         "slide-1-sticks",
         "slide-2-minicups",
-        "slide-3-corporate"
+        "slide-3-corporate",
+        "slide-4-coconut"
       ],
       "settings": {
         "layout": "full_bleed",

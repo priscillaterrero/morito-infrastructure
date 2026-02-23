@@ -211,6 +211,18 @@
     100% { transform: scale(1)    translate(0, 0); }
   }
 
+  /* Reduced zoom for slides with glass effect (corporate/gifting) */
+  @keyframes kenBurnsSubtle {
+    0%   { transform: scale(1)    translate(0, 0); }
+    50%  { transform: scale(1.03) translate(-0.2%, -0.3%); }
+    100% { transform: scale(1)    translate(0, 0); }
+  }
+
+  .slideshow__slide:has(.glass-effect) .hero-kb-image {
+    animation: kenBurnsSubtle 18s ease-in-out infinite;
+    object-position: center center;
+  }
+
   /* ── Dark gradient overlay for text contrast ── */
   .hero-overlay {
     position: absolute;
