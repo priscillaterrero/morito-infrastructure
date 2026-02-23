@@ -125,7 +125,7 @@
           <div class="hero-overlay" aria-hidden="true"></div>
         </div>
         <div class="slideshow__text-wrapper banner__content banner__content--{{ block.settings.box_align }}{% if block.settings.show_text_box == false %} banner--desktop-transparent{% endif %}">
-          <div class="slideshow__text banner__box content-container content-container--full-width-mobile color-{{ block.settings.color_scheme }} gradient slideshow__text--{{ block.settings.text_alignment }} slideshow__text-mobile--{{ block.settings.text_alignment_mobile }}">
+          <div class="slideshow__text banner__box content-container content-container--full-width-mobile color-{{ block.settings.color_scheme }} gradient slideshow__text--{{ block.settings.text_alignment }} slideshow__text-mobile--{{ block.settings.text_alignment_mobile }}{% if block.settings.glass_effect %} glass-effect{% endif %}">
             {%- if block.settings.heading != blank -%}
               <h2 class="banner__heading first {{ block.settings.heading_size }}">{{ block.settings.heading | escape }}</h2>
              <h2 class="banner__heading second {{ block.settings.heading_size }}">{{ block.settings.heading2 | escape }}</h2>
@@ -495,6 +495,92 @@
       animation: none;
     }
   }
+
+  /* ═══════════════════════════════════════════════════
+     GLASS EFFECT - Elegant translucent text box
+     For Corporate Gifting and special slides
+     ═══════════════════════════════════════════════════ */
+  .slideshow__text.glass-effect {
+    background: rgba(249, 245, 240, 0.85) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    padding: 40px 50px !important;
+    box-shadow:
+      0 8px 32px rgba(51, 37, 32, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    max-width: 500px;
+  }
+
+  .slideshow__text.glass-effect h2.banner__heading {
+    background: none !important;
+    color: #332520 !important;
+    text-shadow: none;
+    padding: 0;
+    margin-bottom: 4px;
+  }
+
+  .slideshow__text.glass-effect h2.banner__heading.first {
+    color: #D68A59 !important;
+  }
+
+  .slideshow__text.glass-effect .banner__text span {
+    background: none;
+    color: #332520;
+    text-shadow: none;
+    padding: 0;
+    font-size: 1.1rem;
+    opacity: 0.85;
+  }
+
+  /* Glass effect button inside the box */
+  .glass-effect + .banner__buttons,
+  .slideshow__slide:has(.glass-effect) .banner__buttons {
+    margin-top: 20px;
+  }
+
+  .slideshow__slide:has(.glass-effect) .banner__buttons a.button-banner {
+    background-color: #332520;
+    border-color: #332520;
+    color: #F9F5F0;
+    text-shadow: none;
+  }
+
+  .slideshow__slide:has(.glass-effect) .banner__buttons a.button-banner:hover {
+    background-color: #D68A59;
+    border-color: #D68A59;
+  }
+
+  /* Mobile adjustments for glass effect */
+  @media screen and (max-width: 749px) {
+    .slideshow__text.glass-effect {
+      padding: 24px 28px !important;
+      max-width: 85%;
+      margin: 0 auto;
+    }
+
+    .slideshow__text.glass-effect h2.banner__heading {
+      font-size: 22px !important;
+      line-height: 28px !important;
+    }
+
+    .slideshow__text.glass-effect .banner__text span {
+      font-size: 0.9rem;
+    }
+
+    .slideshow__slide:has(.glass-effect) .slideshow__text-wrapper.banner__content {
+      bottom: 80px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .slideshow__slide:has(.glass-effect) .banner__buttons {
+      bottom: 20px;
+      right: 50%;
+      transform: translateX(50%);
+    }
+  }
 </style>
 
 {%- if request.design_mode -%}
@@ -734,6 +820,13 @@
           "id": "show_text_box",
           "label": "t:sections.slideshow.blocks.slide.settings.show_text_box.label",
           "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "glass_effect",
+          "label": "Glass Effect (Translucent Box)",
+          "info": "Adds an elegant translucent background to the text area. Best for Corporate/Gifting slides.",
+          "default": false
         },
         {
           "type": "select",

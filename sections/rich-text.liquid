@@ -18,6 +18,37 @@
   }
 {%- endstyle -%}
 
+<style>
+  /* Video styling for Our Mission section */
+  .mission-video-wrapper {
+    width: 100%;
+    max-width: 600px;
+    margin: 30px auto 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(51, 37, 32, 0.15);
+  }
+
+  .mission-video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .mission-video-wrapper {
+      max-width: 100%;
+      margin: 20px 16px 0;
+      border-radius: 8px;
+    }
+
+    .mission-video {
+      border-radius: 8px;
+    }
+  }
+</style>
+
 <div class="isolate{% unless section.settings.full_width %} page-width{% endunless %}">
   <div class="rich-text content-container color-{{ section.settings.color_scheme }} gradient{% if section.settings.full_width %} rich-text--full-width content-container--full-width{% endif %} section-{{ section.id }}-padding">
     <div class="rich-text__wrapper rich-text__wrapper--{{ section.settings.desktop_content_position }}{% if section.settings.full_width %} page-width{% endif %}">
@@ -48,6 +79,25 @@
                 {%- when 'image' -%}
             <div class="first_image_mission">
               <img src="{{ block.settings.image_first | img_url:'master' }}">
+            </div>
+              {%- when 'video' -%}
+            <div class="mission-video-wrapper" {{ block.shopify_attributes }}>
+              <video
+                class="mission-video"
+                autoplay
+                muted
+                loop
+                playsinline
+                poster="{{ block.settings.video_poster | img_url:'master' }}"
+              >
+                {%- if block.settings.video_file != blank -%}
+                  <source src="{{ block.settings.video_file | asset_url }}" type="video/mp4">
+                {%- endif -%}
+                {%- if block.settings.video_url != blank -%}
+                  <source src="{{ block.settings.video_url }}" type="video/mp4">
+                {%- endif -%}
+                Your browser does not support the video tag.
+              </video>
             </div>
           {%- endcase -%}
         {%- endfor -%}
@@ -307,16 +357,40 @@
       {
       "type": "image",
       "name": "Image",
-   
+
       "settings": [
         {
           "type": "image_picker",
           "id": "image_first",
           "label": "Add Image"
-          
+
         }
 
-   
+
+      ]
+    },
+    {
+      "type": "video",
+      "name": "Video",
+      "settings": [
+        {
+          "type": "text",
+          "id": "video_file",
+          "label": "Video File (from assets/)",
+          "info": "Enter the filename from assets/ folder (e.g., our-mission-video.mp4)"
+        },
+        {
+          "type": "url",
+          "id": "video_url",
+          "label": "Video URL (external)",
+          "info": "Alternative: paste a direct MP4 URL"
+        },
+        {
+          "type": "image_picker",
+          "id": "video_poster",
+          "label": "Video Poster Image",
+          "info": "Thumbnail shown before video loads"
+        }
       ]
     }
   ],
