@@ -89,23 +89,43 @@
         aria-label="{{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"
         tabindex="-1"
       >
-        <div class="slideshow__media banner__media media{% if block.settings.image == blank %} placeholder{% endif %}">
-          {%- if block.settings.image -%}
+        <div class="slideshow__media banner__media media hero-kb-wrapper">
+          {%- if block.settings.hero_image_file != blank -%}
             <img
-              srcset="{{ block.settings.image | image_url }} {{ block.settings.image.width }}w"
+              class="hero-kb-image"
+              src="{{ block.settings.hero_image_file | asset_url }}"
               sizes="100vw"
-              src="{{ block.settings.image | image_url: 'width: master' }}"
-              loading="lazy"
-              alt="{{ block.settings.image.alt | escape }}"
-              width="{{ block.settings.image.width }}"
-              height="{{ block.settings.image.width | divided_by: block.settings.image.aspect_ratio | round }}"
+              loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+              alt="{{ block.settings.heading | escape }} — Morito Chocolates"
+              {% if forloop.first %}fetchpriority="high"{% endif %}
+            >
+          {%- elsif block.settings.image -%}
+            <img
+              class="hero-kb-image"
+              src="{{ block.settings.image | image_url: width: 1920 }}"
+              srcset="{{ block.settings.image | image_url: width: 750 }} 750w,
+                      {{ block.settings.image | image_url: width: 1100 }} 1100w,
+                      {{ block.settings.image | image_url: width: 1500 }} 1500w,
+                      {{ block.settings.image | image_url: width: 1920 }} 1920w"
+              sizes="100vw"
+              loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+              alt="{{ block.settings.image.alt | default: block.settings.heading | escape }}"
+              {% if forloop.first %}fetchpriority="high"{% endif %}
             >
           {%- else -%}
-            {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+            <img
+              class="hero-kb-image"
+              src="{{ 'Heroimage.jpg' | asset_url }}"
+              sizes="100vw"
+              loading="eager"
+              alt="Morito Chocolates"
+              fetchpriority="high"
+            >
           {%- endif -%}
+          <div class="hero-overlay" aria-hidden="true"></div>
         </div>
         <div class="slideshow__text-wrapper banner__content banner__content--{{ block.settings.box_align }}{% if block.settings.show_text_box == false %} banner--desktop-transparent{% endif %}">
-          <div class="slideshow__text banner__box content-container content-container--full-width-mobile color-{{ block.settings.color_scheme }} gradient slideshow__text--{{ block.settings.text_alignment }} slideshow__text-mobile--{{ block.settings.text_alignment_mobile }}">
+          <div class="slideshow__text banner__box content-container content-container--full-width-mobile color-{{ block.settings.color_scheme }} gradient slideshow__text--{{ block.settings.text_alignment }} slideshow__text-mobile--{{ block.settings.text_alignment_mobile }}{% if block.settings.glass_effect %} glass-effect{% endif %}">
             {%- if block.settings.heading != blank -%}
               <h2 class="banner__heading first {{ block.settings.heading_size }}">{{ block.settings.heading | escape }}</h2>
              <h2 class="banner__heading second {{ block.settings.heading_size }}">{{ block.settings.heading2 | escape }}</h2>
@@ -116,18 +136,13 @@
                 <span>{{ block.settings.subheading | escape }}</span>
               </div>
             {%- endif -%}
-
-           
-     
-
           </div>
         </div>
- {%- if block.settings.button_label != blank -%}
-              <div class="banner__buttons">
-                <a{% if block.settings.link %} href="{{ block.settings.link }}"{% else %} role="link" aria-disabled="true"{% endif %} class="button-banner">{{ block.settings.button_label | escape }}</a>
-              </div>
-            {%- endif -%}
-        
+        {%- if block.settings.button_label != blank -%}
+          <div class="banner__buttons">
+            <a{% if block.settings.link %} href="{{ block.settings.link }}"{% else %} role="link" aria-disabled="true"{% endif %} class="button-banner">{{ block.settings.button_label | escape }}</a>
+          </div>
+        {%- endif -%}
       </div>
     {%- endfor -%}
   </div>
@@ -173,6 +188,400 @@
     </noscript>
   {%- endif -%}
 </slideshow-component>
+
+<style>
+  /* ── Ken Burns animation on hero image ── */
+  .hero-kb-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-kb-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: kenBurns 22s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  @keyframes kenBurns {
+    0%   { transform: scale(1)    translate(0, 0); }
+    40%  { transform: scale(1.08) translate(-0.5%, -0.8%); }
+    70%  { transform: scale(1.05) translate(0.5%, 0.3%); }
+    100% { transform: scale(1)    translate(0, 0); }
+  }
+
+  /* ── Dark gradient overlay for text contrast ── */
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(51, 37, 32, 0.15) 0%,
+      rgba(51, 37, 32, 0.30) 40%,
+      rgba(51, 37, 32, 0.60) 75%,
+      rgba(51, 37, 32, 0.75) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* ── Ensure text sits above overlay ── */
+  .slideshow__text-wrapper.banner__content {
+    z-index: 2;
+    position: relative;
+  }
+
+  .banner__buttons {
+    z-index: 3;
+  }
+
+  /* ── Hero fadeInUp animation ── */
+  .slideshow__text .banner__heading,
+  .slideshow__text .banner__text,
+  .banner__buttons {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: heroFadeInUp 1.2s ease-out forwards;
+  }
+
+  .slideshow__text .banner__heading.first  { animation-delay: 0.2s; }
+  .slideshow__text .banner__heading.second { animation-delay: 0.5s; }
+  .slideshow__text .banner__heading.third  { animation-delay: 0.8s; }
+  .slideshow__text .banner__text           { animation-delay: 1.1s; }
+  .banner__buttons                         { animation-delay: 1.4s; }
+
+  @keyframes heroFadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* ── Hero heading — Organic Luxury palette ── */
+  h2.banner__heading {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+  }
+
+  h2.banner__heading.first {
+    background-color: #332520;
+    color: #F9F5F0;
+  }
+
+  h2.banner__heading.second,
+  h2.banner__heading.third {
+    background-color: #F9F5F0;
+    color: #332520;
+  }
+
+  /* ── Hero subtitle — improved contrast ── */
+  .slideshow__text .banner__text {
+    margin-top: 16px;
+  }
+
+  .slideshow__text .banner__text span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #F9F5F0;
+    text-shadow:
+      0 1px 4px rgba(0, 0, 0, 0.6),
+      0 2px 12px rgba(0, 0, 0, 0.35);
+    letter-spacing: 0.04em;
+    background-color: rgba(51, 37, 32, 0.45);
+    padding: 8px 20px;
+    border-radius: 4px;
+    display: inline-block;
+  }
+
+  /* ── "Shop Now" button — improved contrast ── */
+  .banner__buttons a.button-banner {
+    color: #F9F5F0;
+    background-color: rgba(51, 37, 32, 0.55);
+    border: 2px solid #F9F5F0;
+    text-decoration: none;
+    padding: 15px 35px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  @media (hover: hover) {
+    .banner__buttons a.button-banner:hover {
+      background-color: #D68A59;
+      border-color: #D68A59;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+  }
+
+  /* ═══════════════════════════════════════════════════
+     MOBILE — Slide fits viewport WITH header visible
+     Header (~60px) + Announcement bar (~40px) = ~100px
+     Slide = 100dvh - 100px = remaining viewport
+     ═══════════════════════════════════════════════════ */
+  @media screen and (max-width: 749px) {
+
+    /* ── Slide: fit remaining viewport after header ── */
+    .slideshow__slide.grid__item {
+      position: relative !important;
+      width: 100vw;
+      height: calc(100dvh - 100px); /* viewport minus header + announcement bar */
+      max-height: calc(100dvh - 100px);
+      overflow: hidden;
+    }
+
+    /* ── Image: cover the slide area perfectly ── */
+    .slideshow__slide .slideshow__media.banner__media {
+      position: absolute !important;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .slideshow__slide .hero-kb-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      animation-duration: 18s;
+    }
+
+    /* ── Optimized overlay: clear center, dark bottom for text ── */
+    .slideshow__slide .hero-overlay {
+      background: linear-gradient(
+        180deg,
+        rgba(51, 37, 32, 0.30) 0%,
+        rgba(51, 37, 32, 0.05) 25%,
+        rgba(51, 37, 32, 0.05) 50%,
+        rgba(51, 37, 32, 0.50) 75%,
+        rgba(51, 37, 32, 0.72) 100%
+      );
+    }
+
+    /* ── Text wrapper: anchored to bottom, over image ── */
+    .slideshow__slide .slideshow__text-wrapper.banner__content {
+      position: absolute !important;
+      bottom: 50px; /* space for button below */
+      left: 0;
+      right: 0;
+      top: auto !important;
+      padding: 0 16px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+      pointer-events: none;
+    }
+
+    .slideshow__slide .slideshow__text.banner__box {
+      background: transparent !important;
+      padding: 0;
+      margin: 0;
+      pointer-events: auto;
+    }
+
+    /* ── Headings: no bg, text-shadow for contrast, +2pt vs before ── */
+    .slideshow__slide h2.banner__heading {
+      font-size: 26px; /* was 24px → +2pt */
+      line-height: 32px;
+      margin-bottom: 1px;
+      background: none !important;
+      padding: 0;
+      text-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.8),
+        0 2px 10px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .slideshow__slide h2.banner__heading.first {
+      color: #F9F5F0;
+    }
+
+    .slideshow__slide h2.banner__heading.second {
+      color: #D68A59;
+    }
+
+    .slideshow__slide h2.banner__heading.third {
+      color: #F9F5F0;
+    }
+
+    /* ── Subtitle: clean, with spacing to avoid button overlap ── */
+    .slideshow__slide .slideshow__text .banner__text {
+      margin-top: 6px;
+      margin-bottom: 0;
+    }
+
+    .slideshow__slide .slideshow__text .banner__text span {
+      font-size: 0.82rem;
+      padding: 0;
+      background: none;
+      color: #F9F5F0;
+      text-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.8),
+        0 2px 8px rgba(0, 0, 0, 0.4);
+      opacity: 0.9;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Button: absolute bottom-right, BELOW text to prevent overlap ── */
+    .slideshow__slide .banner__buttons {
+      position: absolute;
+      bottom: 14px;
+      right: 16px;
+      left: auto;
+      padding: 0;
+    }
+
+    .slideshow__slide .banner__buttons a.button-banner {
+      padding: 9px 18px;
+      font-size: 0.72rem;
+      background-color: rgba(214, 138, 89, 0.85);
+      border: 1.5px solid #D68A59;
+      color: #fff;
+      text-shadow: none;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border-radius: 3px;
+      letter-spacing: 0.1em;
+    }
+
+    .slideshow__slide .banner__buttons a.button-banner:active {
+      background-color: #c07a4e;
+      transform: scale(0.97);
+    }
+  }
+
+  /* ── Small phones (iPhone SE, Galaxy A series) ── */
+  @media screen and (max-width: 374px) {
+    .slideshow__slide.grid__item {
+      height: calc(100dvh - 90px);
+      max-height: calc(100dvh - 90px);
+    }
+
+    .slideshow__slide h2.banner__heading {
+      font-size: 22px;
+      line-height: 28px;
+    }
+
+    .slideshow__slide .slideshow__text .banner__text span {
+      font-size: 0.75rem;
+    }
+
+    .slideshow__slide .banner__buttons a.button-banner {
+      padding: 8px 14px;
+      font-size: 0.68rem;
+    }
+  }
+
+  /* ── Reduced motion ── */
+  @media (prefers-reduced-motion: reduce) {
+    .slideshow__text .banner__heading,
+    .slideshow__text .banner__text,
+    .banner__buttons {
+      opacity: 1;
+      transform: none;
+      animation: none;
+    }
+
+    .hero-kb-image {
+      animation: none;
+    }
+  }
+
+  /* ═══════════════════════════════════════════════════
+     GLASS EFFECT - Elegant translucent text box
+     For Corporate Gifting and special slides
+     ═══════════════════════════════════════════════════ */
+  .slideshow__text.glass-effect {
+    background: rgba(249, 245, 240, 0.85) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    padding: 40px 50px !important;
+    box-shadow:
+      0 8px 32px rgba(51, 37, 32, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    max-width: 500px;
+  }
+
+  .slideshow__text.glass-effect h2.banner__heading {
+    background: none !important;
+    color: #332520 !important;
+    text-shadow: none;
+    padding: 0;
+    margin-bottom: 4px;
+  }
+
+  .slideshow__text.glass-effect h2.banner__heading.first {
+    color: #D68A59 !important;
+  }
+
+  .slideshow__text.glass-effect .banner__text span {
+    background: none;
+    color: #332520;
+    text-shadow: none;
+    padding: 0;
+    font-size: 1.1rem;
+    opacity: 0.85;
+  }
+
+  /* Glass effect button inside the box */
+  .glass-effect + .banner__buttons,
+  .slideshow__slide:has(.glass-effect) .banner__buttons {
+    margin-top: 20px;
+  }
+
+  .slideshow__slide:has(.glass-effect) .banner__buttons a.button-banner {
+    background-color: #332520;
+    border-color: #332520;
+    color: #F9F5F0;
+    text-shadow: none;
+  }
+
+  .slideshow__slide:has(.glass-effect) .banner__buttons a.button-banner:hover {
+    background-color: #D68A59;
+    border-color: #D68A59;
+  }
+
+  /* Mobile adjustments for glass effect */
+  @media screen and (max-width: 749px) {
+    .slideshow__text.glass-effect {
+      padding: 24px 28px !important;
+      max-width: 85%;
+      margin: 0 auto;
+    }
+
+    .slideshow__text.glass-effect h2.banner__heading {
+      font-size: 22px !important;
+      line-height: 28px !important;
+    }
+
+    .slideshow__text.glass-effect .banner__text span {
+      font-size: 0.9rem;
+    }
+
+    .slideshow__slide:has(.glass-effect) .slideshow__text-wrapper.banner__content {
+      bottom: 80px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .slideshow__slide:has(.glass-effect) .banner__buttons {
+      bottom: 20px;
+      right: 50%;
+      transform: translateX(50%);
+    }
+  }
+</style>
 
 {%- if request.design_mode -%}
   <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>
@@ -295,6 +704,12 @@
         },
         {
           "type": "text",
+          "id": "hero_image_file",
+          "label": "HD Image (assets/ filename)",
+          "info": "Overrides image picker. Use exact filename from assets/ folder."
+        },
+        {
+          "type": "text",
           "id": "heading",
           "default": "Image slide",
           "label": "t:sections.slideshow.blocks.slide.settings.heading.label"
@@ -405,6 +820,13 @@
           "id": "show_text_box",
           "label": "t:sections.slideshow.blocks.slide.settings.show_text_box.label",
           "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "glass_effect",
+          "label": "Glass Effect (Translucent Box)",
+          "info": "Adds an elegant translucent background to the text area. Best for Corporate/Gifting slides.",
+          "default": false
         },
         {
           "type": "select",

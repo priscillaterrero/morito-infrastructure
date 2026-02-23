@@ -2,26 +2,58 @@
    Morito Chocolates — Custom Styles
    Theme: Taste v3.0.1 (Shopify 2.0)
 
-   Brand Color Tokens (mapped to theme CSS variables):
-   --color-base-accent-1   : Brand Green (#003a13)
-   --color-base-text        : Dark Brown (#2d1e1f)
-   --color-base-background-1: Cream (#fffcf9)
-   --color-base-background-2: Light Blue (#e4f6ff)
+   "Organic Luxury" Design System — 4 Tonos:
+   Dark Mocha (#332520)  — Texto
+   Organic Cream (#F9F5F0) — Fondo principal
+   Roasted Rust (#D68A59) — Acentos / botones
+   Warm Taupe (#E6DCCF) — Secciones alternas / footer
    ========================================================================== */
 
 :root {
+  /* Organic Luxury Palette */
+  --color-morito-text: #332520;
+  --color-morito-cream: #F9F5F0;
+  --color-morito-rust: #D68A59;
+  --color-morito-taupe: #E6DCCF;
+
+  /* Legacy tokens (mapped to new palette) */
   --color-morito-green: #013712;
-  --color-morito-brown: #2b1f1f;
-  --color-morito-cream: #fffcf9;
-  --color-morito-gold: #d88916;
-  --color-morito-bg-light: #eff3f4;
-  --color-morito-bg-warm: #f3ece5;
-  --color-morito-separator: #f1ebdd;
+  --color-morito-brown: #332520;
+  --color-morito-gold: #D68A59;
+  --color-morito-bg-light: #F9F5F0;
+  --color-morito-bg-warm: #F9F5F0;
+  --color-morito-separator: #E6DCCF;
+
+  /* Typography */
+  --font-body-family: 'Montserrat', sans-serif;
+  --font-heading-family: 'Playfair Display', serif;
+  --font-heading-weight: 700;
 }
 
 /* ==========================================================================
    Base & Layout
    ========================================================================== */
+
+body {
+  background-color: var(--color-morito-cream);
+  color: var(--color-morito-text);
+  font-family: var(--font-body-family);
+}
+
+h1, h2, h3, h4, h5, h6,
+.h0, .h1, .h2, .h3, .h4, .h5 {
+  font-family: var(--font-heading-family);
+  font-weight: var(--font-heading-weight);
+  color: var(--color-morito-text);
+}
+
+/* Sections that need white/cream background to stand out */
+.slideshow,
+.shopify-section--header,
+.product,
+.cart {
+  background-color: transparent;
+}
 
 .section + .section {
   margin-top: 0;
@@ -150,20 +182,20 @@ h2.banner__heading {
   font-size: 102px;
   line-height: 121px;
   font-weight: 900;
-  font-family: var(--font-heading-family);
+  font-family: 'Playfair Display', serif;
   padding-left: 50px;
   padding-right: 50px;
 }
 
 h2.banner__heading.first {
-  background-color: var(--color-morito-brown);
-  color: #ffffff;
+  background-color: #332520;
+  color: #F9F5F0;
 }
 
 h2.banner__heading.second,
 h2.banner__heading.third {
-  background-color: var(--color-morito-cream);
-  color: var(--color-morito-brown);
+  background-color: #F9F5F0;
+  color: #332520;
 }
 
 .banner__box {
@@ -187,12 +219,20 @@ h2.banner__heading.third {
 }
 
 .banner__buttons a {
-  color: #fff;
-  background-color: transparent;
-  border: 2px solid white;
+  color: #F9F5F0;
+  background-color: rgba(51, 37, 32, 0.55);
+  border: 2px solid #F9F5F0;
   text-decoration: none;
-  padding: 15px 30px;
-  font-weight: bold;
+  padding: 15px 35px;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 /* Head text blocks (slideshow overlay) */
@@ -591,25 +631,38 @@ a.button_learn_more.button.button--secondary {
    Footer
    ========================================================================== */
 
+.footer {
+  background-color: var(--color-morito-taupe);
+  color: var(--color-morito-text);
+}
+
+.footer .footer__content-top {
+  padding-top: 4rem;
+  padding-bottom: 3rem;
+}
+
 .footer-block__heading {
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 700;
   letter-spacing: 1px;
   line-height: 31px;
-  color: var(--color-morito-green);
-  font-family: Montserrat Thin;
+  color: var(--color-morito-text);
+  font-family: var(--font-heading-family);
 }
 
 .footer-block__details-content .list-menu__item--link {
   font-weight: 400;
   letter-spacing: 2px;
   line-height: 2em;
-  font-family: brandon-grotesque, sans-serif;
+  font-family: var(--font-body-family);
+  color: var(--color-morito-text);
+  opacity: 0.8;
 }
 
 .footer-block__details-content .list-menu__item--link:hover,
 .copyright__content a:hover {
   text-decoration: none;
+  color: var(--color-morito-gold);
 }
 
 .footer-block.grid__item .list-social {
@@ -619,6 +672,23 @@ a.button_learn_more.button.button--secondary {
 .list-social__link {
   padding: 0;
   padding-right: 15px;
+}
+
+/* Footer social icon images */
+.footer .list-social__link img {
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+@media (hover: hover) {
+  .footer .list-social__link:hover img {
+    opacity: 1;
+  }
+}
+
+/* Footer "Follow us" heading override */
+.footer .footer__content-top h2.footer-block__heading {
+  color: var(--color-morito-gold);
 }
 
 /* ==========================================================================
@@ -1654,12 +1724,15 @@ p.text-comp__icon {
 
 @media only screen and (max-width: 420px) {
   .banner__buttons {
-    bottom: 35px;
-    padding-right: 12px;
+    bottom: 18px;
+    left: 12px;
+    right: auto;
+    padding-right: 0;
   }
 
   .banner__buttons a {
-    padding: 10px;
+    padding: 10px 20px;
+    font-size: 0.8rem;
   }
 
   .rich-text__text.rte p {
@@ -1712,8 +1785,10 @@ p.text-comp__icon {
   }
 
   .banner__buttons {
-    bottom: 30px;
-    padding-right: 20px;
+    bottom: 20px;
+    left: 16px;
+    right: auto;
+    padding-right: 0;
   }
 }
 
@@ -2127,6 +2202,21 @@ html {
 .btn,
 .shopify-payment-button__button {
   transition: all 0.3s ease;
+  font-family: var(--font-body-family);
+}
+
+@media (hover: hover) {
+  .button:hover,
+  .btn:hover,
+  .shopify-payment-button__button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(51, 37, 32, 0.15);
+  }
+}
+
+.button:active,
+.btn:active {
+  transform: translateY(0);
 }
 
 /* Focus styles for accessibility */
@@ -2156,4 +2246,25 @@ html {
   .slideshow__slide.is-active .slideshow__media {
     transform: none;
   }
+}
+
+/* ==========================================================================
+   Cleanup — Hide floating chat widgets (injected by apps)
+   ========================================================================== */
+
+#tidio-chat,
+.tidio-chat,
+[id*="gorgias"],
+[class*="chat-widget"],
+[class*="chat-bubble"],
+iframe[title*="chat" i] {
+  display: none !important;
+}
+
+/* ==========================================================================
+   Header Logo — consistent sizing
+   ========================================================================== */
+
+.header__heading-logo {
+  max-width: 160px;
 }

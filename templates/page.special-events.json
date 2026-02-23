@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "main": {
+      "type": "special-events",
+      "settings": {
+        "hero_title": "Special Events & Custom Orders",
+        "hero_subtitle": "Configure your perfect chocolate order — choose quantity, flavors, and packaging for weddings, corporate events, and celebrations."
+      }
+    }
+  },
+  "order": ["main"]
+}

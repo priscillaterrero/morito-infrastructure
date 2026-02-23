@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "main": {
+      "type": "corporate-gifting",
+      "settings": {
+        "hero_title": "Chocolate for Special Events & Corporate Gifting",
+        "hero_subtitle": "Thoughtfully crafted vegan chocolate for teams, clients, weddings, and celebrations. Made with love in Brooklyn."
+      }
+    }
+  },
+  "order": ["main"]
+}

@@ -1,0 +1,11 @@
+# Brand assets — reference only, not part of Shopify theme
+brand-assets/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+*.swp
+*.swo

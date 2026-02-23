@@ -1,0 +1,403 @@
+{%- comment -%}
+  Best Sellers — Premium product cards with HD images & levitation hover
+{%- endcomment -%}
+
+<style>
+  /* ── Best Sellers Section ── */
+  .best-sellers {
+    background-color: #F9F5F0;
+    padding: 60px 0 80px;
+  }
+
+  .best-sellers__header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .best-sellers__title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 2.8rem;
+    color: #332520;
+    margin: 0 0 8px;
+    letter-spacing: -0.02em;
+  }
+
+  .best-sellers__subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: #332520;
+    opacity: 0.65;
+    margin: 0;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── 3-Column Grid ── */
+  .best-sellers__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* ── Product Card ── */
+  .best-sellers__card {
+    background-color: #F9F5F0;
+    border: none;
+    border-radius: 0;
+    overflow: visible;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── Levitation Hover ── */
+  .levitate-hover {
+    box-shadow: 0 10px 20px -10px rgba(51, 37, 32, 0.1);
+    transition:
+      transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      box-shadow 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform, box-shadow;
+  }
+
+  @media (hover: hover) {
+    .levitate-hover:hover {
+      transform: translateY(-10px) scale(1.03) rotate(1.5deg);
+      box-shadow:
+        0 25px 50px -15px rgba(51, 37, 32, 0.18),
+        0 10px 25px -8px rgba(51, 37, 32, 0.1);
+    }
+
+    .levitate-hover:hover .best-sellers__add-btn {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .levitate-hover:hover .best-sellers__image-wrapper img {
+      transform: scale(1.02);
+    }
+  }
+
+  /* ── Image Wrapper — seamless background fusion ── */
+  .best-sellers__image-wrapper {
+    background-color: #F9F5F0;
+    border: none;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .best-sellers__image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border: none;
+    outline: none;
+    transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .best-sellers__image-link {
+    display: block;
+    text-decoration: none;
+    border: none;
+    outline: none;
+  }
+
+  /* ── Product Info ── */
+  .best-sellers__info {
+    text-align: center;
+    padding: 20px 10px 15px;
+    background-color: #F9F5F0;
+    position: relative;
+  }
+
+  .best-sellers__product-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #332520;
+    margin: 0 0 6px;
+    line-height: 1.3;
+  }
+
+  .best-sellers__product-title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .best-sellers__price {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #332520;
+    opacity: 0.75;
+    margin: 0 0 18px;
+  }
+
+  /* ── Add to Cart Button — appears from below on hover ── */
+  .best-sellers__add-btn {
+    display: inline-block;
+    background-color: #D68A59;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: none;
+    padding: 14px 32px;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(12px);
+    transition:
+      opacity 0.35s ease,
+      transform 0.35s ease,
+      background-color 0.25s ease;
+    pointer-events: none;
+    border-radius: 2px;
+  }
+
+  .best-sellers__add-btn:hover {
+    background-color: #332520;
+  }
+
+  /* Always visible button (when no product linked) */
+  .best-sellers__add-btn--visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+  }
+
+  .best-sellers__add-form {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* ── "View All" link ── */
+  .best-sellers__view-all {
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  .best-sellers__view-all a {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #332520;
+    text-decoration: none;
+    border-bottom: 2px solid #D68A59;
+    padding-bottom: 4px;
+    transition: color 0.3s ease, border-color 0.3s ease;
+  }
+
+  @media (hover: hover) {
+    .best-sellers__view-all a:hover {
+      color: #D68A59;
+    }
+  }
+
+  /* ── Mobile: 1 Column ── */
+  @media screen and (max-width: 749px) {
+    .best-sellers {
+      padding: 40px 0 60px;
+    }
+
+    .best-sellers__grid {
+      grid-template-columns: 1fr;
+      gap: 35px;
+      padding: 0 24px;
+      max-width: 480px;
+    }
+
+    .best-sellers__title {
+      font-size: 2rem;
+    }
+
+    .best-sellers__add-btn {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .levitate-hover {
+      box-shadow: 0 8px 16px -8px rgba(51, 37, 32, 0.12);
+    }
+  }
+
+  /* ── Tablet: 2 Columns ── */
+  @media screen and (min-width: 750px) and (max-width: 989px) {
+    .best-sellers__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+  }
+
+  /* ── Reduced Motion ── */
+  @media (prefers-reduced-motion: reduce) {
+    .levitate-hover,
+    .best-sellers__image-wrapper img,
+    .best-sellers__add-btn {
+      transition: none;
+    }
+
+    .levitate-hover:hover {
+      transform: none;
+    }
+  }
+</style>
+
+<section class="best-sellers" id="BestSellers-{{ section.id }}">
+  <div class="best-sellers__header page-width">
+    {%- if section.settings.title != blank -%}
+      <h2 class="best-sellers__title">{{ section.settings.title | escape }}</h2>
+    {%- endif -%}
+    {%- if section.settings.subtitle != blank -%}
+      <p class="best-sellers__subtitle">{{ section.settings.subtitle | escape }}</p>
+    {%- endif -%}
+  </div>
+
+  <div class="best-sellers__grid">
+    {%- for block in section.blocks -%}
+      {%- assign product = block.settings.product -%}
+      <div class="best-sellers__card levitate-hover" {{ block.shopify_attributes }}>
+        <a href="{{ product.url | default: '#' }}" class="best-sellers__image-link" aria-label="{{ product.title | escape | default: block.settings.image_file }}">
+          <div class="best-sellers__image-wrapper">
+            {%- if block.settings.image_file != blank -%}
+              <img
+                src="{{ block.settings.image_file | asset_url }}"
+                alt="{{ product.title | escape | default: block.settings.image_file }}"
+                loading="lazy"
+                width="800"
+                height="800"
+              >
+            {%- elsif product.featured_media -%}
+              <img
+                src="{{ product.featured_media | image_url: width: 800 }}"
+                alt="{{ product.featured_media.alt | escape }}"
+                loading="lazy"
+                width="800"
+                height="800"
+              >
+            {%- else -%}
+              {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- endif -%}
+          </div>
+        </a>
+
+        <div class="best-sellers__info">
+          {%- if product != blank -%}
+            <h3 class="best-sellers__product-title">
+              <a href="{{ product.url }}">{{ product.title }}</a>
+            </h3>
+            <p class="best-sellers__price">{{ product.price | money }}</p>
+            <form method="post" action="/cart/add" class="best-sellers__add-form">
+              <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+              <button type="submit" class="best-sellers__add-btn">Add to Cart</button>
+            </form>
+          {%- else -%}
+            <h3 class="best-sellers__product-title">{{ block.settings.image_file | remove: '.jpeg' | remove: '.jpg' | remove: '.png' }}</h3>
+            <a href="/collections/all-products" class="best-sellers__add-btn best-sellers__add-btn--visible">Shop Now</a>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+
+  {%- if section.settings.show_view_all and section.settings.collection != blank -%}
+    <div class="best-sellers__view-all">
+      <a href="{{ section.settings.collection.url }}">View All</a>
+    </div>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Best Sellers",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Best Sellers / Perfect Gifting",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Our most-loved chocolate sticks — handcrafted in Brooklyn."
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "default": false,
+      "label": "Show 'View All' link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product_card",
+      "name": "Product Card",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "image_file",
+          "label": "HD Image filename (from assets/)",
+          "info": "Exact filename including extension, e.g. Coconut Vegan White Chocolate.jpeg"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Best Sellers",
+      "blocks": [
+        {
+          "type": "product_card",
+          "settings": {
+            "image_file": "Coconut Vegan White Chocolate.jpeg"
+          }
+        },
+        {
+          "type": "product_card",
+          "settings": {
+            "image_file": "Hazelnu Dark Chocolate.jpeg"
+          }
+        },
+        {
+          "type": "product_card",
+          "settings": {
+            "image_file": "Salted Peanut Dark chocolate.jpeg"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,194 +1,108 @@
-{%- if section.blocks.size > 0 -%}
-  <div class="announcement-bar-slider color-{{ section.blocks.first.settings.color_scheme }} gradient" role="region" aria-label="{{ 'sections.header.announcement' | t }}" data-autoplay="{{ section.settings.auto_rotate }}" data-speed="{{ section.settings.change_slides_speed }}">
-    <div class="announcement-bar-slider__wrapper">
-      {%- for block in section.blocks -%}
-        {%- case block.type -%}
-          {%- when 'announcement' -%}
-            <div class="announcement-bar-slider__slide{% if forloop.first %} is-active{% endif %}" {{ block.shopify_attributes }}>
-              {%- if block.settings.text != blank -%}
-                {%- if block.settings.link != blank -%}
-                  <a href="{{ block.settings.link }}" class="announcement-bar__link link link--text focus-inset animate-arrow">
-                {%- endif -%}
-                    <p class="announcement-bar__message h5">
-                      {%- if block.settings.icon != 'none' -%}
-                        <span class="announcement-bar__icon">
-                          {%- case block.settings.icon -%}
-                            {%- when 'shipping' -%}
-                              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
-                            {%- when 'gift' -%}
-                              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>
-                            {%- when 'leaf' -%}
-                              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75"></path></svg>
-                            {%- when 'star' -%}
-                              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                            {%- when 'heart' -%}
-                              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                          {%- endcase -%}
-                        </span>
-                      {%- endif -%}
-                      {{ block.settings.text | escape }}
-                      {%- if block.settings.link != blank -%}
-                        {% render 'icon-arrow' %}
-                      {%- endif -%}
-                    </p>
-                {%- if block.settings.link != blank -%}
-                  </a>
-                {%- endif -%}
+<div class="marquee-bar" role="region" aria-label="{{ 'sections.header.announcement' | t }}">
+  <div class="marquee-bar__track">
+    {%- for i in (1..3) -%}
+      <div class="marquee-bar__content" {% if i > 1 %}aria-hidden="true"{% endif %}>
+        {%- if section.blocks.size > 0 -%}
+          {%- for block in section.blocks -%}
+            <span class="marquee-bar__item" {{ block.shopify_attributes }}>
+              {%- if block.settings.link != blank -%}
+                <a href="{{ block.settings.link }}" class="marquee-bar__link">
               {%- endif -%}
-            </div>
-        {%- endcase -%}
-      {%- endfor -%}
-    </div>
+              {{ block.settings.text | escape }}
+              {%- if block.settings.link != blank -%}
+                </a>
+              {%- endif -%}
+            </span>
+            <span class="marquee-bar__separator" aria-hidden="true">&bull;</span>
+          {%- endfor -%}
+        {%- else -%}
+          <span class="marquee-bar__item">{{ section.settings.default_text | escape }}</span>
+          <span class="marquee-bar__separator" aria-hidden="true">&bull;</span>
+        {%- endif -%}
+      </div>
+    {%- endfor -%}
   </div>
+</div>
 
-  <style>
-    .announcement-bar-slider {
-      position: relative;
-      overflow: hidden;
-      text-align: center;
+<style>
+  .marquee-bar {
+    background-color: #332520;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+  }
+
+  .marquee-bar__track {
+    display: flex;
+    width: max-content;
+    animation: marqueeScroll var(--marquee-speed, 25s) linear infinite;
+  }
+
+  @keyframes marqueeScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-33.333%); }
+  }
+
+  .marquee-bar__content {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .marquee-bar__item {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #F9F5F0;
+    padding: 1rem 0;
+    white-space: nowrap;
+  }
+
+  .marquee-bar__link {
+    color: #F9F5F0;
+    text-decoration: none;
+  }
+
+  .marquee-bar__link:hover {
+    color: #D68A59;
+  }
+
+  .marquee-bar__separator {
+    color: #D68A59;
+    padding: 0 2rem;
+    font-size: 1rem;
+  }
+
+  @media screen and (max-width: 749px) {
+    .marquee-bar__item {
+      font-size: 1.1rem;
+      padding: 0.9rem 0;
     }
 
-    .announcement-bar-slider__wrapper {
-      position: relative;
-      min-height: 4rem;
+    .marquee-bar__separator {
+      padding: 0 1.2rem;
     }
+  }
 
-    .announcement-bar-slider__slide {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      opacity: 0;
-      transform: translateY(100%);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-      pointer-events: none;
+  @media (hover: hover) {
+    .marquee-bar:hover .marquee-bar__track {
+      animation-play-state: paused;
     }
+  }
 
-    .announcement-bar-slider__slide.is-active {
-      position: relative;
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
-
-    .announcement-bar-slider__slide.is-exiting {
-      opacity: 0;
-      transform: translateY(-100%);
-    }
-
-    .announcement-bar__message {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.6rem;
-      padding: 1rem 1.5rem;
-      margin: 0;
-      font-size: 1.2rem;
-      letter-spacing: 0.1rem;
-      text-transform: uppercase;
-      font-weight: 600;
-    }
-
-    @media screen and (max-width: 749px) {
-      .announcement-bar__message {
-        font-size: 1.1rem;
-        padding: 1rem 1.2rem;
-        letter-spacing: 0.05rem;
-        min-height: 4rem;
-      }
-
-      .announcement-bar-slider__wrapper {
-        min-height: 4.4rem;
-      }
-    }
-
-    .announcement-bar__icon {
-      display: inline-flex;
-      align-items: center;
-      flex-shrink: 0;
-    }
-
-    .announcement-bar__icon svg {
-      width: 1.6rem;
-      height: 1.6rem;
-    }
-
-    .announcement-bar__link {
-      display: block;
-      text-decoration: none;
-      min-height: 4.4rem;
-      display: flex;
-      align-items: center;
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-bar__track {
+      animation: none;
       justify-content: center;
     }
-  </style>
 
-  {%- if section.blocks.size > 1 -%}
-    <script>
-      (function() {
-        var slider = document.querySelector('.announcement-bar-slider');
-        if (!slider) return;
-
-        var slides = slider.querySelectorAll('.announcement-bar-slider__slide');
-        if (slides.length <= 1) return;
-
-        var autoplay = slider.dataset.autoplay === 'true';
-        var speed = parseInt(slider.dataset.speed, 10) * 1000 || 5000;
-        var current = 0;
-        var interval;
-
-        function nextSlide() {
-          var prev = current;
-          current = (current + 1) % slides.length;
-
-          slides[prev].classList.add('is-exiting');
-          slides[prev].classList.remove('is-active');
-
-          setTimeout(function() {
-            slides[prev].classList.remove('is-exiting');
-          }, 500);
-
-          slides[current].classList.add('is-active');
-        }
-
-        if (autoplay) {
-          interval = setInterval(nextSlide, speed);
-
-          /* Pause on hover (desktop) */
-          slider.addEventListener('mouseenter', function() {
-            clearInterval(interval);
-          });
-
-          slider.addEventListener('mouseleave', function() {
-            interval = setInterval(nextSlide, speed);
-          });
-
-          /* Pause on touch (mobile) — tap pauses, tap again resumes */
-          var touchPaused = false;
-          slider.addEventListener('touchstart', function(e) {
-            if (e.target.closest('a')) return;
-            if (!touchPaused) {
-              clearInterval(interval);
-              touchPaused = true;
-            } else {
-              interval = setInterval(nextSlide, speed);
-              touchPaused = false;
-            }
-          }, { passive: true });
-
-          /* Resume when page loses visibility and comes back */
-          document.addEventListener('visibilitychange', function() {
-            if (document.hidden) {
-              clearInterval(interval);
-            } else if (!touchPaused) {
-              interval = setInterval(nextSlide, speed);
-            }
-          });
-        }
-      })();
-    </script>
-  {%- endif -%}
-{%- endif -%}
+    .marquee-bar__content:not(:first-child) {
+      display: none;
+    }
+  }
+</style>
 
 {% schema %}
 {
@@ -196,20 +110,20 @@
   "max_blocks": 12,
   "settings": [
     {
-      "type": "checkbox",
-      "id": "auto_rotate",
-      "label": "Auto-rotate announcements",
-      "default": true
+      "type": "text",
+      "id": "default_text",
+      "label": "Default text (when no blocks)",
+      "default": "PRE-ORDERS NOW OPEN  •  SHIPS FEB 9  •  FREE SHIPPING OVER $65  •  HANDCRAFTED IN BROOKLYN"
     },
     {
       "type": "range",
-      "id": "change_slides_speed",
-      "min": 3,
-      "max": 10,
-      "step": 1,
+      "id": "speed",
+      "min": 15,
+      "max": 50,
+      "step": 5,
       "unit": "s",
-      "label": "Change slides every",
-      "default": 5
+      "label": "Scroll speed",
+      "default": 25
     }
   ],
   "blocks": [
@@ -224,48 +138,6 @@
           "label": "t:sections.announcement-bar.blocks.announcement.settings.text.label"
         },
         {
-          "type": "select",
-          "id": "icon",
-          "label": "Icon",
-          "options": [
-            { "value": "none", "label": "None" },
-            { "value": "shipping", "label": "Shipping truck" },
-            { "value": "gift", "label": "Gift" },
-            { "value": "leaf", "label": "Leaf (eco)" },
-            { "value": "star", "label": "Star" },
-            { "value": "heart", "label": "Heart" }
-          ],
-          "default": "none"
-        },
-        {
-          "type": "select",
-          "id": "color_scheme",
-          "options": [
-            {
-              "value": "accent-1",
-              "label": "t:sections.all.colors.accent_1.label"
-            },
-            {
-              "value": "accent-2",
-              "label": "t:sections.all.colors.accent_2.label"
-            },
-            {
-              "value": "background-1",
-              "label": "t:sections.all.colors.background_1.label"
-            },
-            {
-              "value": "background-2",
-              "label": "t:sections.all.colors.background_2.label"
-            },
-            {
-              "value": "inverse",
-              "label": "t:sections.all.colors.inverse.label"
-            }
-          ],
-          "default": "accent-1",
-          "label": "t:sections.all.colors.label"
-        },
-        {
           "type": "url",
           "id": "link",
           "label": "t:sections.announcement-bar.blocks.announcement.settings.link.label"
@@ -278,22 +150,25 @@
       {
         "type": "announcement",
         "settings": {
-          "text": "Free shipping on orders over $50",
-          "icon": "shipping"
+          "text": "💝 PRE-ORDERS NOW OPEN"
         }
       },
       {
         "type": "announcement",
         "settings": {
-          "text": "Handcrafted vegan chocolates from Brooklyn, NY",
-          "icon": "leaf"
+          "text": "SHIPS FEB 9"
         }
       },
       {
         "type": "announcement",
         "settings": {
-          "text": "Perfect for corporate gifting",
-          "icon": "gift"
+          "text": "FREE SHIPPING OVER $65"
+        }
+      },
+      {
+        "type": "announcement",
+        "settings": {
+          "text": "HANDCRAFTED IN BROOKLYN"
         }
       }
     ]
