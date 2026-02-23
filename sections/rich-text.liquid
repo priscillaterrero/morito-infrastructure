@@ -19,14 +19,26 @@
 {%- endstyle -%}
 
 <style>
-  /* Video styling for Our Mission section */
+  /* ═══════════════════════════════════════════════════
+     VIDEO GRID - 3-column layout for Our Mission
+     Mobile: horizontal carousel
+     ═══════════════════════════════════════════════════ */
+  .mission-video-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 30px auto 0;
+    padding: 0 20px;
+  }
+
   .mission-video-wrapper {
     width: 100%;
-    max-width: 600px;
-    margin: 30px auto 0;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 8px 30px rgba(51, 37, 32, 0.15);
+    background: #f5f0eb;
   }
 
   .mission-video {
@@ -34,18 +46,90 @@
     height: auto;
     display: block;
     border-radius: 12px;
+    aspect-ratio: 9/16;
+    object-fit: cover;
   }
 
+  /* ═══════════════════════════════════════════════════
+     MOBILE CAROUSEL - Horizontal scroll with snap
+     ═══════════════════════════════════════════════════ */
   @media screen and (max-width: 749px) {
-    .mission-video-wrapper {
+    .mission-video-grid {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      gap: 16px;
+      padding: 0 16px 20px;
+      margin: 20px 0 0;
       max-width: 100%;
-      margin: 20px 16px 0;
-      border-radius: 8px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .mission-video-grid::-webkit-scrollbar {
+      display: none;
+    }
+
+    .mission-video-wrapper {
+      flex: 0 0 75%;
+      min-width: 75%;
+      scroll-snap-align: center;
+      border-radius: 10px;
     }
 
     .mission-video {
-      border-radius: 8px;
+      border-radius: 10px;
+      aspect-ratio: 9/16;
     }
+
+    /* Scroll indicator dots */
+    .mission-video-grid-container {
+      position: relative;
+    }
+
+    .mission-scroll-indicator {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .mission-scroll-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(51, 37, 32, 0.3);
+      transition: background 0.3s ease;
+    }
+
+    .mission-scroll-dot.active {
+      background: #D68A59;
+    }
+  }
+
+  /* Tablet: 2-column layout */
+  @media screen and (min-width: 750px) and (max-width: 989px) {
+    .mission-video-grid {
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 700px;
+    }
+
+    .mission-video-wrapper:last-child {
+      grid-column: span 2;
+      max-width: 50%;
+      margin: 0 auto;
+    }
+  }
+
+  /* Legacy single video styling */
+  .mission-video-single {
+    width: 100%;
+    max-width: 600px;
+    margin: 30px auto 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(51, 37, 32, 0.15);
   }
 </style>
 
@@ -81,7 +165,7 @@
               <img src="{{ block.settings.image_first | img_url:'master' }}">
             </div>
               {%- when 'video' -%}
-            <div class="mission-video-wrapper" {{ block.shopify_attributes }}>
+            <div class="mission-video-wrapper mission-video-single" {{ block.shopify_attributes }}>
               <video
                 class="mission-video"
                 autoplay
@@ -99,12 +183,63 @@
                 Your browser does not support the video tag.
               </video>
             </div>
+              {%- when 'video_grid' -%}
+            <div class="mission-video-grid-container" {{ block.shopify_attributes }}>
+              <div class="mission-video-grid">
+                {%- if block.settings.video_file_1 != blank -%}
+                  <div class="mission-video-wrapper">
+                    <video class="mission-video" autoplay muted loop playsinline>
+                      <source src="{{ block.settings.video_file_1 | asset_url }}" type="video/mp4">
+                    </video>
+                  </div>
+                {%- endif -%}
+                {%- if block.settings.video_file_2 != blank -%}
+                  <div class="mission-video-wrapper">
+                    <video class="mission-video" autoplay muted loop playsinline>
+                      <source src="{{ block.settings.video_file_2 | asset_url }}" type="video/mp4">
+                    </video>
+                  </div>
+                {%- endif -%}
+                {%- if block.settings.video_file_3 != blank -%}
+                  <div class="mission-video-wrapper">
+                    <video class="mission-video" autoplay muted loop playsinline>
+                      <source src="{{ block.settings.video_file_3 | asset_url }}" type="video/mp4">
+                    </video>
+                  </div>
+                {%- endif -%}
+              </div>
+              <div class="mission-scroll-indicator">
+                <span class="mission-scroll-dot active"></span>
+                <span class="mission-scroll-dot"></span>
+                <span class="mission-scroll-dot"></span>
+              </div>
+            </div>
           {%- endcase -%}
         {%- endfor -%}
       </div>
     </div>
   </div>
 </div>
+
+<script>
+  // Mobile video carousel scroll indicator
+  document.addEventListener('DOMContentLoaded', function() {
+    const videoGrid = document.querySelector('.mission-video-grid');
+    const dots = document.querySelectorAll('.mission-scroll-dot');
+
+    if (videoGrid && dots.length > 0) {
+      videoGrid.addEventListener('scroll', function() {
+        const scrollLeft = videoGrid.scrollLeft;
+        const itemWidth = videoGrid.querySelector('.mission-video-wrapper').offsetWidth + 16;
+        const activeIndex = Math.round(scrollLeft / itemWidth);
+
+        dots.forEach((dot, index) => {
+          dot.classList.toggle('active', index === activeIndex);
+        });
+      });
+    }
+  });
+</script>
 
 {% schema %}
 {
@@ -390,6 +525,31 @@
           "id": "video_poster",
           "label": "Video Poster Image",
           "info": "Thumbnail shown before video loads"
+        }
+      ]
+    },
+    {
+      "type": "video_grid",
+      "name": "Video Grid (3 columns)",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "video_file_1",
+          "label": "Video 1 (from assets/)",
+          "info": "Enter the filename from assets/ folder"
+        },
+        {
+          "type": "text",
+          "id": "video_file_2",
+          "label": "Video 2 (from assets/)",
+          "info": "Enter the filename from assets/ folder"
+        },
+        {
+          "type": "text",
+          "id": "video_file_3",
+          "label": "Video 3 (from assets/)",
+          "info": "Enter the filename from assets/ folder"
         }
       ]
     }
