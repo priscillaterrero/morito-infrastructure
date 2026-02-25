@@ -1,6 +1,14 @@
 # Brand assets — reference only, not part of Shopify theme
 brand-assets/
 
+# Large media files not supported by Shopify themes (50MB limit)
+*.MOV
+*.mov
+*.avi
+*.pptx
+*.pptx
+*.pdf
+
 # OS files
 .DS_Store
 Thumbs.db
