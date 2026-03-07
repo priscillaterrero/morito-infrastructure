@@ -22,3 +22,11 @@
 #### 2. Documentation Initialization
 - **Files:** `CLAUDEME.md` (created), `README.md` (reviewed, no changes needed)
 - **Purpose:** Establish persistent technical documentation for ongoing development sessions
+
+#### 3. Seasonal Content Cleanup - Announcement Bar
+- **File:** `config/settings_data.json`
+- **Change:** Replaced Valentine's Day promotional text in announcement bar with evergreen brand messaging
+- **Old text:** `Pre-Orders Now Open — Get your order before Valentine's Day ... Ships February 9 | Free Shipping...`
+- **New text:** `Crafted in Brooklyn. Shipped Nationwide. | Premium Plant-Based Chocolate | Free Shipping on orders over $65 | Corporate & bulk orders: info@moritochocolates.com`
+- **Skipped:** Valentine-related URLs in `page.find-us.json` and `settings_data.json` (legitimate press article links from Greenpointers, not promotional content)
+- **Rationale:** Remove time-sensitive seasonal content; replace with brand-reinforcing, atemporal messaging
