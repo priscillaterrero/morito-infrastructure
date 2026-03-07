@@ -34,15 +34,15 @@
 #### 4. Integrated Corporate Tracker (Marquee on Cacao Plantation)
 - **Files:** `sections/image-banner.liquid`, `templates/index.json`
 - **Change:** Glassmorphic corporate logo marquee, vertically centered on the cacao plantation image
-- **Logo assets (Shopify Files, loaded via `file_url` with string literals):**
+- **Logo assets:** `file_url` with `asset_url` fallback for maximum compatibility
   - `Cypresshills logo.png`, `ford foundation logo.png`, `Hotbread Kitchen logo.png`, `Macys logo.png`
   - `mexico now logo.png`, `One Horizon logo.png`, `Porcelanosa logo.png`, `TD Bank logo.png`
-- **Design specs:**
-  - Position: `top: 50%; transform: translateY(-50%); z-index: 10` — exact vertical center
-  - Background: `rgba(249, 245, 240, 0.82)` (Organic Cream 82% opacity)
-  - `backdrop-filter: blur(10px)` — plantation image visible through the silk-like strip
-  - Borders: `1px solid rgba(255, 255, 255, 0.3)` top and bottom — subtle glass edges
-  - Logo filter: Dark Mocha (#332520) CSS filter applied to all logos
-  - Infinite horizontal scroll animation (35s cycle, configurable via schema)
-- **Fix (v3):** Replaced variable-based `file_url` with string literal syntax (`{{ 'filename.png' | file_url }}`) — fixes logo loading issue
-- **Fix (v3):** Moved strip from `bottom: 0` to `top: 50%` per client request
+- **Design specs (v4 — current):**
+  - Position: `top: 50%; transform: translateY(-50%); width: 100%; z-index: 20`
+  - Strip height: `140px` desktop / `100px` mobile — prominent presence
+  - Logo size: `max-height: 60px` desktop / `40px` mobile
+  - Background: `rgba(249, 245, 240, 0.85)` (Organic Cream 85%)
+  - `backdrop-filter: blur(12px)` — silk-like translucent strip
+  - Borders: `1px solid rgba(255, 255, 255, 0.3)` top and bottom
+  - Logo filter: Dark Mocha (#332520) CSS filter
+  - Infinite scroll: 35s cycle, configurable via schema

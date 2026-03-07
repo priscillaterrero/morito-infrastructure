@@ -122,23 +122,27 @@
       {%- endif -%}
       <div class="corporate-marquee__track-wrapper">
         <div class="corporate-marquee__track" style="--marquee-speed: {{ section.settings.marquee_speed | default: 35 }}s;">
-          <div class="corporate-marquee__item"><img src="{{ 'Cypresshills logo.png' | file_url }}" alt="Cypress Hills" loading="lazy"></div>
-          <div class="corporate-marquee__item"><img src="{{ 'ford foundation logo.png' | file_url }}" alt="Ford Foundation" loading="lazy"></div>
-          <div class="corporate-marquee__item"><img src="{{ 'Hotbread Kitchen logo.png' | file_url }}" alt="Hot Bread Kitchen" loading="lazy"></div>
-          <div class="corporate-marquee__item"><img src="{{ 'Macys logo.png' | file_url }}" alt="Macys" loading="lazy"></div>
-          <div class="corporate-marquee__item"><img src="{{ 'mexico now logo.png' | file_url }}" alt="Mexico Now" loading="lazy"></div>
-          <div class="corporate-marquee__item"><img src="{{ 'One Horizon logo.png' | file_url }}" alt="One Horizon" loading="lazy"></div>
-          <div class="corporate-marquee__item"><img src="{{ 'Porcelanosa logo.png' | file_url }}" alt="Porcelanosa" loading="lazy"></div>
-          <div class="corporate-marquee__item"><img src="{{ 'TD Bank logo.png' | file_url }}" alt="TD Bank" loading="lazy"></div>
+          {%- assign marquee_logo_files = 'Cypresshills logo.png,ford foundation logo.png,Hotbread Kitchen logo.png,Macys logo.png,mexico now logo.png,One Horizon logo.png,Porcelanosa logo.png,TD Bank logo.png' | split: ',' -%}
+          {%- assign marquee_logo_alts = 'Cypress Hills,Ford Foundation,Hot Bread Kitchen,Macys,Mexico Now,One Horizon,Porcelanosa,TD Bank' | split: ',' -%}
+          {%- for logo_file in marquee_logo_files -%}
+            {%- assign logo_src = logo_file | file_url -%}
+            {%- if logo_src == blank or logo_src == '' -%}
+              {%- assign logo_src = logo_file | asset_url -%}
+            {%- endif -%}
+            <div class="corporate-marquee__item">
+              <img src="{{ logo_src }}" alt="{{ marquee_logo_alts[forloop.index0] }}" loading="lazy">
+            </div>
+          {%- endfor -%}
           {%- comment -%} Duplicate set for seamless infinite loop {%- endcomment -%}
-          <div class="corporate-marquee__item" aria-hidden="true"><img src="{{ 'Cypresshills logo.png' | file_url }}" alt="" loading="lazy"></div>
-          <div class="corporate-marquee__item" aria-hidden="true"><img src="{{ 'ford foundation logo.png' | file_url }}" alt="" loading="lazy"></div>
-          <div class="corporate-marquee__item" aria-hidden="true"><img src="{{ 'Hotbread Kitchen logo.png' | file_url }}" alt="" loading="lazy"></div>
-          <div class="corporate-marquee__item" aria-hidden="true"><img src="{{ 'Macys logo.png' | file_url }}" alt="" loading="lazy"></div>
-          <div class="corporate-marquee__item" aria-hidden="true"><img src="{{ 'mexico now logo.png' | file_url }}" alt="" loading="lazy"></div>
-          <div class="corporate-marquee__item" aria-hidden="true"><img src="{{ 'One Horizon logo.png' | file_url }}" alt="" loading="lazy"></div>
-          <div class="corporate-marquee__item" aria-hidden="true"><img src="{{ 'Porcelanosa logo.png' | file_url }}" alt="" loading="lazy"></div>
-          <div class="corporate-marquee__item" aria-hidden="true"><img src="{{ 'TD Bank logo.png' | file_url }}" alt="" loading="lazy"></div>
+          {%- for logo_file in marquee_logo_files -%}
+            {%- assign logo_src = logo_file | file_url -%}
+            {%- if logo_src == blank or logo_src == '' -%}
+              {%- assign logo_src = logo_file | asset_url -%}
+            {%- endif -%}
+            <div class="corporate-marquee__item" aria-hidden="true">
+              <img src="{{ logo_src }}" alt="" loading="lazy">
+            </div>
+          {%- endfor -%}
         </div>
       </div>
     </div>
@@ -156,13 +160,18 @@
     transform: translateY(-50%);
     left: 0;
     right: 0;
-    z-index: 10;
-    background: rgba(249, 245, 240, 0.82);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    width: 100%;
+    z-index: 20;
+    background: rgba(249, 245, 240, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-top: 1px solid rgba(255, 255, 255, 0.3);
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 18px 0;
+    padding: 0;
+    height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     overflow: hidden;
   }
 
@@ -213,8 +222,8 @@
 
   .corporate-marquee__item img {
     width: auto;
-    height: 32px;
-    max-height: 32px;
+    height: 60px;
+    max-height: 60px;
     object-fit: contain;
     filter: brightness(0) saturate(100%) invert(13%) sepia(18%) saturate(1042%) hue-rotate(324deg) brightness(96%) contrast(90%);
     transition: filter 0.3s ease;
@@ -244,12 +253,12 @@
   /* Mobile adjustments */
   @media screen and (max-width: 749px) {
     .corporate-marquee {
-      padding: 14px 0;
+      height: 100px;
     }
 
     .corporate-marquee__heading {
       font-size: 0.65rem;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .corporate-marquee__track {
@@ -257,8 +266,8 @@
     }
 
     .corporate-marquee__item img {
-      height: 24px;
-      max-height: 24px;
+      height: 40px;
+      max-height: 40px;
     }
 
     .corporate-marquee__name {
