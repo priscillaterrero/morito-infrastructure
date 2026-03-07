@@ -159,11 +159,7 @@
     right: 0;
     width: 100%;
     z-index: 20;
-    background: rgba(249, 245, 240, 0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-top: 1px solid rgba(255, 255, 255, 0.3);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.92);
     padding: 0;
     height: 100px;
     display: flex;
@@ -175,6 +171,18 @@
   /* Ensure parent banner is positioned for absolute child */
   .banner:has(.corporate-marquee) {
     position: relative;
+    max-height: 400px;
+    overflow: hidden;
+  }
+
+  .banner:has(.corporate-marquee) .banner__media {
+    max-height: 400px;
+  }
+
+  .banner:has(.corporate-marquee) .banner__media img {
+    height: 400px;
+    max-height: 400px;
+    object-fit: cover;
   }
 
   .corporate-marquee__heading {
@@ -219,11 +227,11 @@
 
   .corporate-marquee__item img {
     width: auto;
-    height: 50px;
-    max-height: 50px;
+    height: 45px;
+    max-height: 45px;
     object-fit: contain;
-    filter: grayscale(100%) contrast(1.2) opacity(0.7);
-    transition: filter 0.3s ease;
+    filter: grayscale(100%) opacity(0.55);
+    transition: filter 0.4s ease, transform 0.4s ease;
   }
 
   .corporate-marquee__name {
@@ -243,19 +251,27 @@
     }
 
     .corporate-marquee__item img:hover {
-      filter: grayscale(0%) contrast(1) opacity(1);
+      filter: grayscale(0%) opacity(1);
+      transform: scale(1.05);
     }
   }
 
   /* Mobile adjustments */
   @media screen and (max-width: 749px) {
+    .banner:has(.corporate-marquee),
+    .banner:has(.corporate-marquee) .banner__media,
+    .banner:has(.corporate-marquee) .banner__media img {
+      max-height: 300px;
+      height: 300px;
+    }
+
     .corporate-marquee {
-      height: 80px;
+      height: 70px;
     }
 
     .corporate-marquee__heading {
-      font-size: 0.65rem;
-      margin-bottom: 6px;
+      font-size: 0.6rem;
+      margin-bottom: 4px;
     }
 
     .corporate-marquee__track {
@@ -263,12 +279,12 @@
     }
 
     .corporate-marquee__item img {
-      height: 35px;
-      max-height: 35px;
+      height: 30px;
+      max-height: 30px;
     }
 
     .corporate-marquee__name {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
     }
   }
 

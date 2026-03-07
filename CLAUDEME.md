@@ -37,12 +37,13 @@
 - **Logo assets:** `file_url` with `asset_url` fallback for maximum compatibility
   - `Cypresshills logo.png`, `ford foundation logo.png`, `Hotbread Kitchen logo.png`, `Macys logo.png`
   - `mexico now logo.png`, `One Horizon logo.png`, `Porcelanosa logo.png`, `TD Bank logo.png`
-- **Design specs (v4 — current):**
-  - Position: `top: 50%; transform: translateY(-50%); width: 100%; z-index: 20`
-  - Strip height: `140px` desktop / `100px` mobile — prominent presence
-  - Logo size: `max-height: 60px` desktop / `40px` mobile
-  - Background: `rgba(249, 245, 240, 0.85)` (Organic Cream 85%)
-  - `backdrop-filter: blur(12px)` — silk-like translucent strip
-  - Borders: `1px solid rgba(255, 255, 255, 0.3)` top and bottom
-  - Logo filter: Dark Mocha (#332520) CSS filter
+- **Design specs (v5 — Luxury Execution):**
+  - Banner: `max-height: 400px` desktop / `300px` mobile — narrow, cinematic
+  - Strip: `rgba(255, 255, 255, 0.92)` — pure white, logo backgrounds blend seamlessly
+  - No backdrop-filter — clean fusion, no glass distortion
+  - No borders — invisible integration with image
+  - Strip height: `100px` desktop / `70px` mobile
+  - Logo size: `45px` desktop / `30px` mobile — generous negative space
+  - Logo filter: `grayscale(100%) opacity(0.55)` — elegant, shapes fully legible
+  - Hover: full color + subtle scale(1.05) with 0.4s ease
   - Infinite scroll: 35s cycle, configurable via schema
