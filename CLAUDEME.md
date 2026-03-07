@@ -31,17 +31,19 @@
 - **Skipped:** Valentine-related URLs in `page.find-us.json` and `settings_data.json` (legitimate press article links from Greenpointers, not promotional content)
 - **Rationale:** Remove time-sensitive seasonal content; replace with brand-reinforcing, atemporal messaging
 
-#### 4. Corporate Marquee on Image Banner (Cacao Plantation)
+#### 4. Integrated Corporate Tracker (Marquee on Cacao Plantation)
 - **Files:** `sections/image-banner.liquid`, `templates/index.json`
-- **Change:** Injected a glassmorphic corporate logo marquee into the image-banner section, positioned in the lower third
+- **Change:** Glassmorphic corporate logo marquee injected into the image-banner section (cacao plantation), lower third
+- **Logo assets (Shopify Files, loaded via `file_url`):**
+  - `Cypresshills logo.png`, `ford foundation logo.png`, `Hotbread Kitchen logo.png`, `Macys logo.png`
+  - `mexico now logo.png`, `One Horizon logo.png`, `Porcelanosa logo.png`, `TD Bank logo.png`
 - **Design specs:**
-  - Background: `rgba(249, 245, 240, 0.85)` (Organic Cream 85% opacity)
-  - `backdrop-filter: blur(8px)` — plantation image visible through the strip
+  - Background: `rgba(249, 245, 240, 0.82)` (Organic Cream 82% opacity)
+  - `backdrop-filter: blur(10px)` — plantation image visible through the silk-like strip
   - `border-top: 1px solid rgba(255, 255, 255, 0.3)` — subtle glass edge
-  - Logo filter: `brightness(0) saturate(100%) invert(13%) sepia(18%) saturate(1042%) hue-rotate(324deg) brightness(96%) contrast(90%)` — Dark Mocha tone
-  - Infinite horizontal scroll animation (35s default, configurable)
+  - Logo filter: `brightness(0) saturate(100%) invert(13%) sepia(18%) saturate(1042%) hue-rotate(324deg) brightness(96%) contrast(90%)` — Dark Mocha (#332520) tone
+  - Infinite horizontal scroll animation (35s cycle, configurable via schema)
   - Hover: pauses animation, removes filter to show original logo colors
-- **Schema additions:** `show_marquee` toggle, `marquee_heading`, `marquee_speed` range, `marquee_logo` block type
-- **Homepage config:** Enabled with 8 corporate logos (Ford Foundation, Macy's, TD Bank, Horizon Media, Porcelanosa, Hot Bread Kitchen, Brooklyn Navy Yard, WeWork)
+- **Schema:** `show_marquee` toggle, `marquee_heading` text, `marquee_speed` range (15-60s)
 - **Accessibility:** `prefers-reduced-motion` wraps to static grid, duplicate items hidden with `aria-hidden`
-- **Rationale:** Showcases corporate partnerships directly on the brand's origin imagery, reinforcing trust and premium positioning
+- **Rationale:** Corporate social proof integrated directly on brand origin imagery; glassmorphic strip reinforces premium positioning

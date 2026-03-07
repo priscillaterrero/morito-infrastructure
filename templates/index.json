@@ -265,67 +265,7 @@
         "show_marquee": true,
         "marquee_heading": "Trusted by",
         "marquee_speed": 35
-      },
-      "blocks": {
-        "marquee-logo-1": {
-          "type": "marquee_logo",
-          "settings": {
-            "name": "Ford Foundation"
-          }
-        },
-        "marquee-logo-2": {
-          "type": "marquee_logo",
-          "settings": {
-            "name": "Macy's"
-          }
-        },
-        "marquee-logo-3": {
-          "type": "marquee_logo",
-          "settings": {
-            "name": "TD Bank"
-          }
-        },
-        "marquee-logo-4": {
-          "type": "marquee_logo",
-          "settings": {
-            "name": "Horizon Media"
-          }
-        },
-        "marquee-logo-5": {
-          "type": "marquee_logo",
-          "settings": {
-            "name": "Porcelanosa"
-          }
-        },
-        "marquee-logo-6": {
-          "type": "marquee_logo",
-          "settings": {
-            "name": "Hot Bread Kitchen"
-          }
-        },
-        "marquee-logo-7": {
-          "type": "marquee_logo",
-          "settings": {
-            "name": "Brooklyn Navy Yard"
-          }
-        },
-        "marquee-logo-8": {
-          "type": "marquee_logo",
-          "settings": {
-            "name": "WeWork"
-          }
-        }
-      },
-      "block_order": [
-        "marquee-logo-1",
-        "marquee-logo-2",
-        "marquee-logo-3",
-        "marquee-logo-4",
-        "marquee-logo-5",
-        "marquee-logo-6",
-        "marquee-logo-7",
-        "marquee-logo-8"
-      ]
+      }
     },
     "1660625540fad4ab5a": {
       "type": "rich-text",

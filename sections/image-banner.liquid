@@ -115,45 +115,32 @@
   </div>
 
   {%- comment -%} Corporate Marquee — glassmorphic logo ticker on lower third {%- endcomment -%}
-  {%- assign marquee_logos = section.blocks | where: "type", "marquee_logo" -%}
-  {%- if section.settings.show_marquee and marquee_logos.size > 0 -%}
+  {%- if section.settings.show_marquee -%}
+    {%- assign logo_files = 'Cypresshills logo.png,ford foundation logo.png,Hotbread Kitchen logo.png,Macys logo.png,mexico now logo.png,One Horizon logo.png,Porcelanosa logo.png,TD Bank logo.png' | split: ',' -%}
+    {%- assign logo_names = 'Cypress Hills,Ford Foundation,Hot Bread Kitchen,Macys,Mexico Now,One Horizon,Porcelanosa,TD Bank' | split: ',' -%}
     <div class="corporate-marquee" aria-label="Trusted by leading organizations">
       {%- if section.settings.marquee_heading != blank -%}
         <p class="corporate-marquee__heading">{{ section.settings.marquee_heading | escape }}</p>
       {%- endif -%}
       <div class="corporate-marquee__track-wrapper">
         <div class="corporate-marquee__track" style="--marquee-speed: {{ section.settings.marquee_speed | default: 35 }}s;">
-          {%- for block in marquee_logos -%}
-            <div class="corporate-marquee__item" {{ block.shopify_attributes }}>
-              {%- if block.settings.logo != blank -%}
-                <img
-                  src="{{ block.settings.logo | image_url: width: 300 }}"
-                  srcset="{{ block.settings.logo | image_url: width: 150 }} 1x, {{ block.settings.logo | image_url: width: 300 }} 2x"
-                  alt="{{ block.settings.logo.alt | default: block.settings.name | escape }}"
-                  width="{{ block.settings.logo.width }}"
-                  height="{{ block.settings.logo.height }}"
-                  loading="lazy"
-                >
-              {%- else -%}
-                <span class="corporate-marquee__name">{{ block.settings.name | escape }}</span>
-              {%- endif -%}
+          {%- for logo in logo_files -%}
+            <div class="corporate-marquee__item">
+              <img
+                src="{{ logo | file_url }}"
+                alt="{{ logo_names[forloop.index0] }}"
+                loading="lazy"
+              >
             </div>
           {%- endfor -%}
-          {%- comment -%} Duplicate for seamless infinite scroll {%- endcomment -%}
-          {%- for block in marquee_logos -%}
+          {%- comment -%} Duplicate set for seamless infinite loop {%- endcomment -%}
+          {%- for logo in logo_files -%}
             <div class="corporate-marquee__item" aria-hidden="true">
-              {%- if block.settings.logo != blank -%}
-                <img
-                  src="{{ block.settings.logo | image_url: width: 300 }}"
-                  srcset="{{ block.settings.logo | image_url: width: 150 }} 1x, {{ block.settings.logo | image_url: width: 300 }} 2x"
-                  alt=""
-                  width="{{ block.settings.logo.width }}"
-                  height="{{ block.settings.logo.height }}"
-                  loading="lazy"
-                >
-              {%- else -%}
-                <span class="corporate-marquee__name">{{ block.settings.name | escape }}</span>
-              {%- endif -%}
+              <img
+                src="{{ logo | file_url }}"
+                alt=""
+                loading="lazy"
+              >
             </div>
           {%- endfor -%}
         </div>
@@ -173,9 +160,9 @@
     left: 0;
     right: 0;
     z-index: 3;
-    background: rgba(249, 245, 240, 0.85);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: rgba(249, 245, 240, 0.82);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-top: 1px solid rgba(255, 255, 255, 0.3);
     padding: 18px 0;
     overflow: hidden;
@@ -628,24 +615,6 @@
           "id": "button_style_secondary_2",
           "default": false,
           "label": "t:sections.image-banner.blocks.buttons.settings.button_style_secondary_2.label"
-        }
-      ]
-    },
-    {
-      "type": "marquee_logo",
-      "name": "Marquee Logo",
-      "settings": [
-        {
-          "type": "text",
-          "id": "name",
-          "label": "Client name",
-          "default": "Client Name"
-        },
-        {
-          "type": "image_picker",
-          "id": "logo",
-          "label": "Logo image",
-          "info": "Upload from Shopify Files. Will be filtered to Dark Mocha tone."
         }
       ]
     }
