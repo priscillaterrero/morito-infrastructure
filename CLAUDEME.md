@@ -47,3 +47,26 @@
   - Logo filter: `grayscale(100%) opacity(0.55)` — elegant, shapes fully legible
   - Hover: full color + subtle scale(1.05) with 0.4s ease
   - Infinite scroll: 35s cycle, configurable via schema
+
+## Session: 2026-03-09
+
+### Changes Made
+
+#### 1. Corporate Marquee Logo Update
+- **File:** `sections/image-banner.liquid`
+- **Change:** Updated all 8 logo URLs to use edited versions with transparent backgrounds (`_-_Edited.png`)
+
+#### 2. Decadent Flavors — Floating Levitation Effect (Marketing Identity Pillar)
+- **Files:** `sections/image-with-text.liquid`, `templates/index.json`
+- **Change:** Replaced animated chocolate border with high-end floating product effect
+- **Image:** Switched from `MatchaStrawberryclear.png` to `MatchaStrawberryclear_-_Edited.jpg` (transparent background)
+- **New schema setting:** `floating_image` checkbox (independent of `animated_border`)
+- **Design specs:**
+  - No borders, no containers — image floats freely
+  - Aura `::before` pseudo-element: `radial-gradient(circle, rgba(214, 138, 89, 0.15) 0%, rgba(249, 245, 240, 0) 70%)`
+  - Resting state: `filter: drop-shadow(0 10px 15px rgba(51, 37, 32, 0.2))`, `transition: all 0.6s ease-out`
+  - Hover state: `transform: translateY(-15px) scale(1.03)`, `filter: drop-shadow(0 25px 25px rgba(51, 37, 32, 0.15))`
+  - Section background: Organic Cream `#F9F5F0`
+  - Headings: Playfair Display enforced via `:has()` selector
+  - Mobile: touch `:active` fallback with reduced lift
+  - `prefers-reduced-motion`: transitions disabled

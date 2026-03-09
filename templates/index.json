@@ -174,8 +174,9 @@
         "166030431729745ef6-0"
       ],
       "settings": {
-        "image": "shopify://shop_images/MatchaStrawberryclear.png",
-        "animated_border": true,
+        "image": "shopify://shop_images/MatchaStrawberryclear_-_Edited.jpg",
+        "animated_border": false,
+        "floating_image": true,
         "height": "small",
         "desktop_image_width": "medium",
         "layout": "text_first",

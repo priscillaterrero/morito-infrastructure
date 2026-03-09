@@ -19,6 +19,7 @@ This repository contains the source code for Morito's E-commerce ecosystem. It s
 1.  **Inventory Logic:** Custom rules for "On-Demand" production buffering.
 2.  **Bundles System:** Component logic to handle composite products without overselling.
 3.  **UX Enhancements:** Custom cursors, mobile-first animations, and cart upselling algorithms.
+4.  **Marketing Identity:** Floating levitation effect on "Decadent Flavors" section with warm aura glow, drop-shadow, and hover animation for transparent-background product images.
 
 ---
 
