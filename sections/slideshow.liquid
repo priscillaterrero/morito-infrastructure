@@ -302,7 +302,7 @@
       0 1px 4px rgba(0, 0, 0, 0.6),
       0 2px 12px rgba(0, 0, 0, 0.35);
     letter-spacing: 0.04em;
-    background-color: rgba(51, 37, 32, 0.45);
+    background-color: rgba(51, 37, 32, 0.40);
     padding: 8px 20px;
     border-radius: 4px;
     display: inline-block;
@@ -311,7 +311,7 @@
   /* ── "Shop Now" button — improved contrast ── */
   .banner__buttons a.button-banner {
     color: #F9F5F0;
-    background-color: rgba(51, 37, 32, 0.55);
+    background-color: rgba(51, 37, 32, 0.45);
     border: 2px solid #F9F5F0;
     text-decoration: none;
     padding: 15px 35px;
@@ -363,8 +363,17 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 30%;
+      object-position: center 35%;
       animation-duration: 18s;
+      animation-name: kenBurnsMobile;
+    }
+
+    /* Mobile Ken Burns: reduced zoom so product feels complete with breathing room */
+    @keyframes kenBurnsMobile {
+      0%   { transform: scale(1)    translate(0, 0); }
+      40%  { transform: scale(1.04) translate(-0.3%, -0.4%); }
+      70%  { transform: scale(1.02) translate(0.2%, 0.2%); }
+      100% { transform: scale(1)    translate(0, 0); }
     }
 
     /* ── Optimized overlay: clear center, dark bottom for text ── */
@@ -513,7 +522,7 @@
      For Corporate Gifting and special slides
      ═══════════════════════════════════════════════════ */
   .slideshow__text.glass-effect {
-    background: rgba(249, 245, 240, 0.65) !important;
+    background: rgba(249, 245, 240, 0.45) !important;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.3);

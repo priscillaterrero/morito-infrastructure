@@ -70,3 +70,28 @@
   - Headings: Playfair Display enforced via `:has()` selector
   - Mobile: touch `:active` fallback with reduced lift
   - `prefers-reduced-motion`: transitions disabled
+
+#### 3. Mobile Carousel Zoom Optimization
+- **File:** `sections/slideshow.liquid`
+- **Change:** Reduced Ken Burns animation intensity on mobile for better product visibility
+- **Specs:**
+  - New `kenBurnsMobile` keyframe: max scale `1.04` (was `1.08` from desktop)
+  - `object-position: center 35%` (was `30%`) — more breathing room
+  - Product images feel complete, not zoomed-in on faces/details
+
+#### 4. Text Overlay Transparency Refinement
+- **File:** `sections/slideshow.liquid`
+- **Change:** Increased transparency on all text containers for better photo integration
+- **Specs:**
+  - Glass effect (desktop): `rgba(249, 245, 240, 0.45)` (was `0.65`)
+  - Subtitle background: `rgba(51, 37, 32, 0.40)` (was `0.45`)
+  - Button background: `rgba(51, 37, 32, 0.45)` (was `0.55`)
+  - Priscilla's product photography textures now visible through overlays
+
+#### 5. Announcement Bar Height Increase
+- **File:** `sections/announcement-bar.liquid`
+- **Change:** Increased vertical padding for bolder, more modern presence
+- **Specs:**
+  - Desktop padding: `1.4rem` (was `1rem`) — +40% taller
+  - Mobile padding: `1.15rem` (was `0.9rem`) — +28% taller
+  - Text remains centered via flexbox alignment
