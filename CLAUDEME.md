@@ -133,13 +133,34 @@
   - Generous spacing: gap `45px`, padding `28px`, title `1.35rem`, price `1.15rem`
 - **Accessibility:** `prefers-reduced-motion` disables all transitions and forces visible state
 
+#### 8. Best Sellers — Luxury Reconstruction (4K + Intensified 3D)
+- **File:** `sections/best-sellers.liquid`
+- **Change:** Image quality preservation, doubled tilt intensity, upgraded typography hierarchy
+- **4K Quality Preservation:**
+  - `object-fit: contain` (was `cover`) — no cropping, full product visible
+  - Image dimensions: `1200×1200` (was `800×800`) — sharper on retina
+  - Removed all `opacity` filters on price — full vivid Dark Mocha
+  - Resting drop-shadow: `0 18px 25px rgba(51,37,32, 0.18)` — deeper presence
+- **3D Intensity (Desktop):**
+  - `perspective(1200px)` (was `1000px`) — wider depth field
+  - Image hover: `translateZ(80px) scale(1.05)` (was `50px / 1.04`) — product pops off screen
+  - Dynamic hover shadow: `drop-shadow(0 35px 40px rgba(51,37,32, 0.25))` — shadow retreats as product lifts
+  - Card shadow on hover: `0 40px 80px -25px rgba(51,37,32, 0.28)` — dramatic depth
+  - Info: `translateZ(35px)` / Button: `translateZ(40px)` — increased layer separation
+  - JS tilt: ±14° Y / ±10° X (was ±8° / ±6°) — dramatic but controlled
+- **Typography Hierarchy (Desktop ≥990px):**
+  - Product title: `2.2rem` Playfair Display, `letter-spacing: -0.02em` (was `1.8rem`)
+  - Price: `1.8rem`, `font-weight: 600`, full opacity (was `1.5rem` / 500 / 0.75)
+  - Button: `15px 40px` padding, Roasted Rust `#D68A59` vibrante
+
 ---
 
 ### Sprint Summary — 2026-03-09
-All 6 optimization pillars completed:
+All 7 optimization rounds completed:
 1. Corporate Marquee — transparent-background logos
 2. Decadent Flavors — floating levitation effect with aura
 3. Mobile Carousel — reduced Ken Burns zoom
 4. Text Overlay Transparency — glass effect + subtitle + button
 5. Best Sellers — luxury polish with clean edited assets
-6. Best Sellers — 3D perspective tilt interaction + mobile IntersectionObserver entrance
+6. Best Sellers — 3D perspective tilt + IntersectionObserver entrance
+7. Best Sellers — 4K quality reconstruction + intensified 3D + typography hierarchy
