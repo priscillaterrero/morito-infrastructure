@@ -103,9 +103,7 @@
     }
 
     .best-sellers__card:hover .best-sellers__add-btn {
-      opacity: 1;
-      transform: translateY(0) translateZ(40px);
-      pointer-events: auto;
+      transform: translateZ(30px) scale(1.05);
     }
 
     .best-sellers__card:hover .best-sellers__info {
@@ -197,40 +195,35 @@
     display: inline-block;
   }
 
-  /* ── Add to Cart Button ── */
+  /* ── Add to Cart Button — Always visible, high-contrast CTA ── */
   .best-sellers__add-btn {
     display: inline-block;
     background-color: #D68A59;
-    color: #fff;
+    color: #FFFFFF;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    font-size: 0.85rem;
+    font-size: 1rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     border: none;
-    padding: 14px 32px;
+    padding: 15px 30px;
     cursor: pointer;
-    opacity: 0;
-    transform: translateY(12px);
+    border-radius: 4px;
     transition:
-      opacity 0.35s ease,
-      transform 0.35s ease,
-      background-color 0.25s ease;
-    pointer-events: none;
-    border-radius: 2px;
+      background-color 0.3s ease,
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
   }
 
   .best-sellers__add-btn:hover {
-    background-color: #332520;
+    background-color: #BF7A4E;
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(214, 138, 89, 0.35);
   }
 
   .best-sellers__add-btn--visible {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
     text-decoration: none;
     display: inline-block;
-    margin-top: 10px;
   }
 
   .best-sellers__add-form {
@@ -329,11 +322,9 @@
     }
 
     .best-sellers__add-btn {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
       font-size: 0.95rem;
-      padding: 14px 32px;
+      padding: 14px 28px;
+      width: 100%;
     }
 
   }

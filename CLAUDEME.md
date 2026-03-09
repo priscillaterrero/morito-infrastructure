@@ -183,10 +183,23 @@
 - **Title hover:** transitions to Warm Copper `#D68A59`
 - **Image quality:** `image-rendering: -webkit-optimize-contrast` — zero blur during animation
 
+#### 11. Best Sellers — Always-Visible 'ADD TO CART' CTA
+- **File:** `sections/best-sellers.liquid`
+- **Change:** Button now always visible (was hidden until hover); redesigned for high conversion
+- **Button specs:**
+  - Background: Warm Copper `#D68A59`, text: `#FFFFFF`
+  - Font: Montserrat 700, `1rem`, uppercase, `letter-spacing: 0.1em`
+  - Padding: `15px 30px`, `border-radius: 4px`, `border: none`
+  - Hover: `#BF7A4E` (10% darker Copper) + `scale(1.05)` + `box-shadow` glow
+  - 3D sync: `translateZ(30px)` on card hover — button floats on its own depth layer
+  - Mobile: full-width (`width: 100%`), slightly smaller padding
+  - Desktop (≥990px): `1.1rem`, `15px 40px`
+- **Removed:** `opacity: 0` / `pointer-events: none` — button is always clickable
+
 ---
 
 ### Sprint Summary — 2026-03-09
-All 9 optimization rounds completed:
+All 10 optimization rounds completed:
 1. Corporate Marquee — transparent-background logos
 2. Decadent Flavors — floating levitation effect with aura
 3. Mobile Carousel — reduced Ken Burns zoom
@@ -196,3 +209,4 @@ All 9 optimization rounds completed:
 7. Best Sellers — 4K quality reconstruction + intensified 3D + typography hierarchy
 8. Best Sellers — seamless transparent cards + scroll highlight + dark chocolate price
 9. Best Sellers — kinetic luxury triple-spin animation + dark mocha pricing
+10. Best Sellers — always-visible high-contrast 'ADD TO CART' CTA
