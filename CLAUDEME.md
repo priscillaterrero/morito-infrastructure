@@ -230,7 +230,21 @@
 - **Remaining slides:** Sticks (hero), Mini Cups (matcha/strawberry), Corporate Gifting
 - **Rationale:** 3 slides = tighter messaging, faster perceived rotation, less cognitive load
 
-#### 4. Luminous Gold Hero Text — Luxury Contrast Fix
+#### 4. Unified Glassmorphism Box — All Slides Identical
+- **File:** `sections/slideshow.liquid`
+- **Change:** Strict unification so slides 1, 2, and 3 share identical translucent box style
+- **Specs (desktop ≥750px):**
+  - `background: rgba(249, 245, 240, 0.55) !important` — slightly higher opacity for dark-photo contrast
+  - `backdrop-filter: blur(10px) !important` — unified blur (was 8px general / 12px glass-effect)
+  - `border: 1px solid rgba(255, 255, 255, 0.3) !important` — matching glass edge
+  - `.glass-effect` block updated to same values (was `0.45` opacity, `blur(12px)`)
+- **Text colors reverted:**
+  - Removed Luminous Gold `#C5A059` and `text-shadow` from previous commit
+  - All headings: Dark Mocha `#332520`; `.first` heading: Warm Copper `#D68A59`
+- **Subheading upgrade:** `font-size: 1.15rem`, `font-weight: 500`, `color: #332520`
+- **Rationale:** All 3 slides now look identical in text box treatment; gold was inconsistent with brand palette
+
+#### 5. (Reverted) Luminous Gold Hero Text
 - **File:** `sections/slideshow.liquid`
 - **Change:** Replaced Dark Mocha heading color with Luminous Gold `#C5A059` on desktop glassmorphism text box
 - **Specs:**

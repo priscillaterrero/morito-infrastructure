@@ -25,7 +25,7 @@ This repository contains the source code for Morito's E-commerce ecosystem. It s
 ### 🎨 Design Sprint — March 2026
 All 5 optimization pillars executed: corporate marquee logos, decadent flavors floating effect, mobile carousel zoom optimization, text overlay transparency refinements, and best sellers luxury polish.
 
-**Latest (2026-03-17):** Glassmorphism refinement on slideshow (lighter `rgba(249,245,240,0.4)` text overlay), viewport auto-fit on all devices, slideshow trimmed to 3 slides, Best Sellers hover simplified from kinetic spin to subtle zoom + shadow with mobile scroll highlight, and Luminous Gold `#C5A059` hero text with micro-shadow for luxury contrast on translucent glass overlay.
+**Latest (2026-03-17):** Unified glassmorphism across all 3 slideshow slides (`rgba(249,245,240,0.55)`, `blur(10px)`, matching border), viewport auto-fit on all devices, slideshow trimmed to 3 slides, Best Sellers hover simplified to subtle zoom + shadow with mobile scroll highlight, and subheading bumped to `1.15rem / 500 weight` for legibility.
 
 ---
 
