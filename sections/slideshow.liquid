@@ -260,14 +260,16 @@
     position: relative;
   }
 
-  /* ── Editorial text box — translucent overlay on desktop ── */
+  /* ── Editorial text box — glassmorphism overlay on desktop ── */
   @media screen and (min-width: 750px) {
     .slideshow__text.banner__box {
-      background: rgba(230, 220, 210, 0.65);
+      background: rgba(249, 245, 240, 0.4);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       padding: 3rem;
       border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 8px 32px rgba(51, 37, 32, 0.1);
     }
 
     .slideshow__text.banner__box h2.banner__heading {

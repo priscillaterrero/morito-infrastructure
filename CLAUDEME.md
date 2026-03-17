@@ -230,6 +230,36 @@
 - **Remaining slides:** Sticks (hero), Mini Cups (matcha/strawberry), Corporate Gifting
 - **Rationale:** 3 slides = tighter messaging, faster perceived rotation, less cognitive load
 
+#### 4. Glassmorphism Refinement — Lighter, Luxury Organic
+- **File:** `sections/slideshow.liquid`
+- **Change:** Reduced text box opacity to match Corporate Gifting slide aesthetic across all slides
+- **Specs:**
+  - `background: rgba(249, 245, 240, 0.4)` (was `rgba(230, 220, 210, 0.65)` — too opaque)
+  - Added `border: 1px solid rgba(255, 255, 255, 0.25)` for subtle glass edge
+  - Added `box-shadow: 0 8px 32px rgba(51, 37, 32, 0.1)` for depth
+  - `backdrop-filter: blur(8px)` and `padding: 3rem` preserved
+- **Rationale:** True glassmorphism — image textures visible through text overlay
+
+#### 5. Best Sellers — Simplified Hover (Removed Kinetic Spin)
+- **File:** `sections/best-sellers.liquid`
+- **Change:** Eliminated `kineticLuxury` triple-spin animation; replaced with subtle zoom + shadow
+- **Removed:**
+  - `@keyframes kineticLuxury` (1080° spin + elastic bounce)
+  - 3D perspective tilt JS (`mousemove` rotation tracking, `--rotate-x/--rotate-y` vars)
+  - `transform-style: preserve-3d` on card, image-wrapper, image-link, info
+  - `translateZ()` depth layers on hover
+  - Price `scale(1.2)` elastic bounce on hover
+  - Image wrapper `scale(1.1)` resting state
+- **New Desktop hover:**
+  - Card: `transform: scale(1.05)` + `box-shadow: 0 20px 40px rgba(0,0,0,0.1)`
+  - Image: `transform: scale(1.08)` within `overflow: hidden` container
+  - Title transitions to Warm Copper `#D68A59`
+- **New Mobile scroll highlight:**
+  - IntersectionObserver with `threshold: 0.6` detects center-most card
+  - `.is-active` class applies same zoom + shadow as desktop hover
+  - Cards gain/lose `.is-active` dynamically as user scrolls
+- **Rationale:** Kinetic spin was distracting; subtle zoom feels premium and organic
+
 ---
 
 ### Sprint Summary — 2026-03-09
