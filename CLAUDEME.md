@@ -198,6 +198,40 @@
 
 ---
 
+## Session: 2026-03-17
+
+### Changes Made
+
+#### 1. Editorial Text Box — Desktop Translucent Overlay
+- **File:** `sections/slideshow.liquid`
+- **Change:** Applied translucent editorial box to ALL slideshow text containers on desktop (≥750px)
+- **Specs:**
+  - `background: rgba(230, 220, 210, 0.65)` — warm translucent cream
+  - `backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px)`
+  - `padding: 3rem; border-radius: 8px`
+  - Heading colors: `.first` → Warm Copper `#D68A59`, `.second/.third` → Dark Mocha `#332520`
+  - Subtitle: `color: #332520`, no text-shadow (clean on translucent bg)
+
+#### 2. Viewport Auto-Fit — Desktop & Mobile
+- **File:** `sections/slideshow.liquid`
+- **Change:** Slide height now fills exactly one viewport minus header + announcement bar
+- **Desktop (≥750px):**
+  - `height: calc(100vh - var(--header-height, 80px) - var(--announcement-bar-height, 40px))`
+  - Image: `object-fit: cover` with absolute positioning — no zoom overflow
+- **Mobile (≤749px):**
+  - `height: calc(100dvh - var(--header-height, 60px) - var(--announcement-bar-height, 40px))`
+  - Uses CSS custom properties for dynamic header/bar heights
+- **Small phones (≤374px):**
+  - Fallback defaults: `--header-height: 55px`, `--announcement-bar-height: 35px`
+
+#### 3. Slide Cleanup — Limited to 3 Slides
+- **File:** `templates/index.json`
+- **Change:** Removed `slide-4-coconut` (Coconut Cherry) from slideshow block_order and block definitions
+- **Remaining slides:** Sticks (hero), Mini Cups (matcha/strawberry), Corporate Gifting
+- **Rationale:** 3 slides = tighter messaging, faster perceived rotation, less cognitive load
+
+---
+
 ### Sprint Summary — 2026-03-09
 All 10 optimization rounds completed:
 1. Corporate Marquee — transparent-background logos
