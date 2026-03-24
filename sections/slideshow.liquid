@@ -263,7 +263,7 @@
   /* ── Unified glassmorphism box — all slides on desktop ── */
   @media screen and (min-width: 750px) {
     .slideshow__text.banner__box {
-      background: rgba(249, 245, 240, 0.35) !important;
+      background: rgba(249, 245, 240, 0.30) !important;
       backdrop-filter: blur(10px) !important;
       -webkit-backdrop-filter: blur(10px) !important;
       padding: 3rem;
@@ -291,6 +291,12 @@
       text-shadow: none;
       font-size: 1.15rem;
       font-weight: 500;
+    }
+
+    /* Slides 2 & 3: 25% larger headline */
+    .slideshow__slide:nth-child(2) .slideshow__text.banner__box .banner__text span,
+    .slideshow__slide:nth-child(3) .slideshow__text.banner__box .banner__text span {
+      font-size: 1.44rem;
     }
   }
 
@@ -572,7 +578,7 @@
      For Corporate Gifting and special slides
      ═══════════════════════════════════════════════════ */
   .slideshow__text.glass-effect {
-    background: rgba(249, 245, 240, 0.35) !important;
+    background: rgba(249, 245, 240, 0.30) !important;
     backdrop-filter: blur(10px) !important;
     -webkit-backdrop-filter: blur(10px) !important;
     border: 1px solid rgba(255, 255, 255, 0.3) !important;

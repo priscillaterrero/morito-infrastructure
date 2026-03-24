@@ -19,13 +19,13 @@ This repository contains the source code for Morito's E-commerce ecosystem. It s
 1.  **Inventory Logic:** Custom rules for "On-Demand" production buffering.
 2.  **Bundles System:** Component logic to handle composite products without overselling.
 3.  **UX Enhancements:** Custom cursors, mobile-first animations, and cart upselling algorithms.
-4.  **Clean Ingredients:** Comparative two-column layout replacing the "Decadent Flavors" section — highlights Morito's 3-ingredient purity vs. 15+ conventional ingredients.
+4.  **Clean Ingredients:** Premium dual-card comparison (Organic Cream vs Warm Copper hero) replacing the "Decadent Flavors" section — highlights Morito's 3-ingredient purity vs. 15+ conventional ingredients.
 5.  **Best Sellers Polish:** Luxury product cards with edited transparent-background images, drop-shadow levitation, and refined desktop typography (price 1.4rem, button 1.1rem bold).
 
 ### 🎨 Design Sprint — March 2026
 All 5 optimization pillars executed: corporate marquee logos, clean ingredients comparison, mobile carousel zoom optimization, text overlay transparency refinements, and best sellers luxury polish.
 
-**Latest (2026-03-24):** Updated all 3 slideshow slides with client-approved copy (Cacao-Driven Confections / Mini Cups / Gifting Is a Statement), reduced glassmorphism opacity to `rgba(249,245,240,0.35)` for better background visibility, and replaced "Decadent Flavor" floating-image section with a clean two-column ingredient comparison layout.
+**Latest (2026-03-24):** Slideshow Slide 1 repositioned to top-right to reveal product photography, glassmorphism opacity reduced to `0.30`, Slides 2 & 3 headline +25%. Clean Ingredients section elevated to premium dual-card layout (Organic Cream left card + Warm Copper hero right card with cream text, enlarged Playfair Display `3.6rem` counts, Montserrat `1.2rem` lists). Icon strip disabled for cleaner flow.
 
 ---
 

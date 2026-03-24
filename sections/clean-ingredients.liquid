@@ -1,65 +1,89 @@
 <style>
   .clean-ingredients {
     background-color: #F9F5F0;
-    padding: 80px 20px;
+    padding: 90px 20px;
   }
 
   .clean-ingredients__container {
-    max-width: 960px;
+    max-width: 1060px;
     margin: 0 auto;
   }
 
   .clean-ingredients__title {
     font-family: 'Playfair Display', serif;
-    font-size: 2.8rem;
+    font-size: 3.2rem;
     font-weight: 700;
     color: #332520;
     text-align: center;
     margin-bottom: 60px;
     letter-spacing: -0.02em;
-    line-height: 1.2;
+    line-height: 1.15;
   }
 
   .clean-ingredients__columns {
     display: flex;
-    align-items: flex-start;
+    align-items: stretch;
     justify-content: center;
-    gap: 0;
+    gap: 32px;
   }
 
-  .clean-ingredients__col {
+  /* ── Card base ── */
+  .clean-ingredients__card {
     flex: 1;
-    max-width: 400px;
-    padding: 0 40px;
+    max-width: 480px;
+    border-radius: 8px;
+    padding: 48px 44px;
   }
 
-  .clean-ingredients__divider {
-    width: 1px;
-    background-color: #E0D8D0;
-    align-self: stretch;
-    flex-shrink: 0;
+  /* ── Left card: Organic Cream, subtle border ── */
+  .clean-ingredients__card--left {
+    background-color: #F9F5F0;
+    border: 1px solid #E0D8D0;
   }
 
+  /* ── Right card: Warm Copper hero ── */
+  .clean-ingredients__card--right {
+    background-color: #D68A59;
+  }
+
+  /* ── Subtitle (What you often find / Morito Hazelnut) ── */
   .clean-ingredients__subtitle {
     font-family: 'Montserrat', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: #332520;
+    font-size: 1.05rem;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
-    margin-bottom: 12px;
-    opacity: 0.7;
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
   }
 
+  .clean-ingredients__card--left .clean-ingredients__subtitle {
+    color: #332520;
+    opacity: 0.65;
+  }
+
+  .clean-ingredients__card--right .clean-ingredients__subtitle {
+    color: #F9F5F0;
+    opacity: 0.85;
+  }
+
+  /* ── Count (15+ ingredients / 3 ingredients) ── */
   .clean-ingredients__count {
     font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
+    font-size: 3.6rem;
     font-weight: 700;
-    color: #332520;
-    margin-bottom: 24px;
-    line-height: 1.2;
+    line-height: 1.1;
+    margin-bottom: 28px;
   }
 
+  .clean-ingredients__card--left .clean-ingredients__count {
+    color: #332520;
+  }
+
+  .clean-ingredients__card--right .clean-ingredients__count {
+    color: #F9F5F0;
+  }
+
+  /* ── List ── */
   .clean-ingredients__list {
     list-style: none;
     padding: 0;
@@ -68,77 +92,93 @@
 
   .clean-ingredients__list li {
     font-family: 'Montserrat', sans-serif;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 400;
-    color: #332520;
-    padding: 8px 0;
+    letter-spacing: 0.02em;
+    padding: 10px 0;
     position: relative;
-    padding-left: 20px;
+    padding-left: 24px;
   }
 
+  .clean-ingredients__card--left .clean-ingredients__list li {
+    color: #332520;
+  }
+
+  .clean-ingredients__card--right .clean-ingredients__list li {
+    color: #F9F5F0;
+  }
+
+  /* ── Bullet dots ── */
   .clean-ingredients__list li::before {
     content: '';
     position: absolute;
     left: 0;
     top: 50%;
     transform: translateY(-50%);
-    width: 6px;
-    height: 6px;
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
+  }
+
+  .clean-ingredients__card--left .clean-ingredients__list li::before {
     background-color: #D68A59;
   }
 
+  .clean-ingredients__card--right .clean-ingredients__list li::before {
+    background-color: #F9F5F0;
+  }
+
+  /* ── Footer ── */
   .clean-ingredients__footer {
     text-align: center;
-    margin-top: 60px;
+    margin-top: 56px;
     font-family: 'Playfair Display', serif;
-    font-size: 1.25rem;
+    font-size: 1.35rem;
     font-style: italic;
     color: #332520;
-    opacity: 0.8;
+    opacity: 0.75;
     letter-spacing: 0.01em;
   }
 
-  /* ── Mobile ── */
+  /* ═══════ Mobile ═══════ */
   @media screen and (max-width: 749px) {
     .clean-ingredients {
-      padding: 50px 20px;
+      padding: 56px 16px;
     }
 
     .clean-ingredients__title {
-      font-size: 2rem;
-      margin-bottom: 40px;
+      font-size: 2.2rem;
+      margin-bottom: 36px;
     }
 
     .clean-ingredients__columns {
       flex-direction: column;
       align-items: center;
-      gap: 40px;
+      gap: 24px;
     }
 
-    .clean-ingredients__divider {
-      width: 60%;
-      height: 1px;
-      align-self: center;
-    }
-
-    .clean-ingredients__col {
-      padding: 0;
-      text-align: center;
+    .clean-ingredients__card {
       max-width: 100%;
+      padding: 36px 28px;
     }
 
-    .clean-ingredients__list li {
-      justify-content: center;
+    .clean-ingredients__subtitle {
+      font-size: 0.9rem;
     }
 
     .clean-ingredients__count {
-      font-size: 1.8rem;
+      font-size: 2.6rem;
+      margin-bottom: 20px;
+    }
+
+    .clean-ingredients__list li {
+      font-size: 1.05rem;
+      padding: 8px 0 8px 22px;
     }
 
     .clean-ingredients__footer {
-      margin-top: 40px;
-      font-size: 1.1rem;
+      margin-top: 36px;
+      font-size: 1.15rem;
     }
   }
 </style>
@@ -148,8 +188,8 @@
     <h2 class="clean-ingredients__title">{{ section.settings.title | escape }}</h2>
 
     <div class="clean-ingredients__columns">
-      <!-- Left column: What you often find -->
-      <div class="clean-ingredients__col">
+      <!-- Left card: What you often find -->
+      <div class="clean-ingredients__card clean-ingredients__card--left">
         <p class="clean-ingredients__subtitle">{{ section.settings.left_subtitle | escape }}</p>
         <p class="clean-ingredients__count">{{ section.settings.left_count | escape }}</p>
         <ul class="clean-ingredients__list">
@@ -160,10 +200,8 @@
         </ul>
       </div>
 
-      <div class="clean-ingredients__divider" aria-hidden="true"></div>
-
-      <!-- Right column: Morito Hazelnut -->
-      <div class="clean-ingredients__col">
+      <!-- Right card: Morito Hazelnut (hero) -->
+      <div class="clean-ingredients__card clean-ingredients__card--right">
         <p class="clean-ingredients__subtitle">{{ section.settings.right_subtitle | escape }}</p>
         <p class="clean-ingredients__count">{{ section.settings.right_count | escape }}</p>
         <ul class="clean-ingredients__list">

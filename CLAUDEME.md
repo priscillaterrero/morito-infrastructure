@@ -331,6 +331,43 @@
   - Mobile: columns stack vertically with horizontal divider
 - **Rationale:** Client requested a clean ingredients comparison layout to highlight Morito's purity vs. conventional chocolate
 
+#### 4. Slideshow — Slide 1 Text Position (Desktop)
+- **File:** `templates/index.json`
+- **Change:** Moved Slide 1 (Sticks) text container from `middle-left` to `top-right`
+- **Rationale:** Text was obscuring the chocolate sticks product photography; top-right placement keeps products fully visible
+
+#### 5. Slideshow — Headline Size Increase (Slides 2 & 3)
+- **File:** `sections/slideshow.liquid`
+- **Change:** Added CSS rule to increase subheading font-size by 25% on slides 2 and 3
+- **Specs:** `.slideshow__slide:nth-child(2/3) .banner__text span` → `font-size: 1.44rem` (was `1.15rem`)
+
+#### 6. Slideshow — Further Transparency Reduction
+- **File:** `sections/slideshow.liquid`
+- **Change:** Reduced glassmorphism opacity from `0.35` to `0.30` on both unified box and `.glass-effect`
+- **Specs:** `background: rgba(249, 245, 240, 0.30) !important`
+- **Rationale:** Client still found box too opaque; 0.30 reveals more background texture
+
+#### 7. Clean Ingredients — Premium Card Layout
+- **File:** `sections/clean-ingredients.liquid`
+- **Change:** Complete redesign from flat two-column to premium card layout
+- **Design specs:**
+  - Two rounded cards (`border-radius: 8px`) side by side with `32px` gap
+  - Left card: Organic Cream `#F9F5F0` with subtle `1px solid #E0D8D0` border
+  - Right card (hero): Warm Copper `#D68A59` background, all text in Cream `#F9F5F0`
+  - Count numbers: Playfair Display `3.6rem` (was `2.2rem`)
+  - Subtitles: Montserrat `1.05rem` `600 weight` uppercase
+  - List items: Montserrat `1.2rem` (was `1rem`) with `letter-spacing: 0.02em`
+  - Bullets: Warm Copper dots on left card, Cream dots on right card
+  - Title: Playfair Display `3.2rem` (was `2.8rem`)
+  - Footer: `1.35rem` (was `1.25rem`)
+  - Mobile: cards stack vertically, responsive padding/sizing
+- **Removed:** Vertical divider line replaced by card separation + color contrast
+
+#### 8. Icon Strip Disabled
+- **File:** `templates/index.json`
+- **Change:** Disabled `custom-text-border` section (`Atributos_1.png` icon strip) that followed Clean Ingredients
+- **Rationale:** Client requested simplified layout; strip cluttered the ingredients section
+
 ---
 
 ### Sprint Summary — 2026-03-09

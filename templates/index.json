@@ -24,7 +24,7 @@
             "button_label": "Shop now",
             "link": "shopify://collections/all-products",
             "button_style_secondary": false,
-            "box_align": "middle-left",
+            "box_align": "top-right",
             "show_text_box": false,
             "glass_effect": false,
             "text_alignment": "left",
@@ -153,6 +153,7 @@
     },
     "166056180431e93012": {
       "type": "custom-text-border",
+      "disabled": true,
       "settings": {
         "add-border-text": "shopify://shop_images/Atributos_1.png"
       }
