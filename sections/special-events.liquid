@@ -1,6 +1,6 @@
 {%- comment -%}
-  Special Events & B2B Orders Section
-  Catalog-based ordering with interactive cart MVP
+  Special Events — Simplified MVP Contact Form
+  Sends standard Shopify contact notification to store owner (Priscila)
 {%- endcomment -%}
 
 <style>
@@ -12,14 +12,13 @@
   .se-hero__title { font-family: 'Playfair Display', serif; font-size: 3.2rem; font-weight: 700; color: #F9F5F0; margin: 0 0 16px; position: relative; }
   .se-hero__subtitle { font-size: 1.15rem; color: #E6DCCF; max-width: 650px; margin: 0 auto; line-height: 1.7; position: relative; }
 
-  /* Section */
+  /* Catalog Cards — kept for product reference */
   .se-section { padding: 70px 40px; max-width: 1200px; margin: 0 auto; }
   .se-section--alt { background-color: #E6DCCF; }
   .se-section-header { text-align: center; margin-bottom: 50px; }
   .se-section-title { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 700; color: #332520; margin: 0 0 10px; }
   .se-section-subtitle { font-size: 1.05rem; color: #332520; opacity: 0.7; margin: 0; }
 
-  /* Catalog Cards */
   .se-catalogs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
   .se-catalog-card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(51,37,32,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; }
   .se-catalog-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(51,37,32,0.15); }
@@ -38,64 +37,109 @@
   .se-catalog-card__pricing-row + .se-catalog-card__pricing-row { border-top: 1px solid rgba(51,37,32,0.08); }
   .se-catalog-card__pricing-price { font-weight: 700; color: #D68A59; }
 
-  /* Order Form */
-  .se-order-form { background: #fff; border-radius: 16px; padding: 50px; box-shadow: 0 8px 40px rgba(51,37,32,0.1); max-width: 900px; margin: 0 auto; }
-  .se-form__section { margin-bottom: 35px; }
-  .se-form__section:last-child { margin-bottom: 0; }
-  .se-form__section-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: #332520; margin: 0 0 20px; padding-bottom: 10px; border-bottom: 2px solid #D68A59; }
-  .se-form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
-  .se-form__field { display: flex; flex-direction: column; }
-  .se-form__field--full { grid-column: 1 / -1; }
-  .se-form__label { font-size: 0.85rem; font-weight: 600; color: #332520; margin-bottom: 6px; letter-spacing: 0.02em; }
-  .se-form__input, .se-form__select, .se-form__textarea { padding: 12px 16px; border: 1.5px solid rgba(51,37,32,0.15); border-radius: 8px; font-family: 'Montserrat', sans-serif; font-size: 0.92rem; color: #332520; background: #F9F5F0; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
-  .se-form__input:focus, .se-form__select:focus, .se-form__textarea:focus { outline: none; border-color: #D68A59; box-shadow: 0 0 0 3px rgba(214,138,89,0.15); }
-  .se-form__textarea { resize: vertical; min-height: 80px; }
+  /* ── Contact Form ── */
+  .se-contact-form {
+    background: #fff;
+    border-radius: 16px;
+    padding: 50px;
+    box-shadow: 0 8px 40px rgba(51,37,32,0.1);
+    max-width: 700px;
+    margin: 0 auto;
+  }
 
-  /* Product selector */
-  .se-form__product-selector { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  .se-form__product-option { display: flex; align-items: center; padding: 14px 16px; background: #F9F5F0; border: 2px solid transparent; border-radius: 8px; cursor: pointer; transition: all 0.2s ease; }
-  .se-form__product-option:hover { border-color: rgba(214,138,89,0.4); }
-  .se-form__product-option.selected { border-color: #D68A59; background: rgba(214,138,89,0.08); }
-  .se-form__product-option input[type="checkbox"] { display: none; }
-  .se-form__product-check { width: 20px; height: 20px; border: 2px solid rgba(51,37,32,0.2); border-radius: 4px; margin-right: 12px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; }
-  .se-form__product-option.selected .se-form__product-check { background: #D68A59; border-color: #D68A59; }
-  .se-form__product-option.selected .se-form__product-check::after { content: '\2713'; color: #fff; font-size: 0.75rem; font-weight: 700; }
-  .se-form__product-name { font-size: 0.9rem; font-weight: 500; color: #332520; }
-  .se-form__product-type { font-size: 0.75rem; color: #332520; opacity: 0.6; margin-left: auto; padding-left: 8px; }
-  .se-form__config-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .se-contact-form .se-form__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
 
-  /* Cart */
-  .se-cart { background: #F9F5F0; border-radius: 12px; padding: 24px; margin-top: 24px; border: 2px solid rgba(214,138,89,0.2); }
-  .se-cart__title { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: #332520; margin: 0 0 16px; display: flex; align-items: center; gap: 8px; }
-  .se-cart__badge { background: #D68A59; color: #fff; font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 12px; }
-  .se-cart__empty { text-align: center; padding: 20px; color: #332520; opacity: 0.5; font-size: 0.9rem; }
-  .se-cart__items { list-style: none; padding: 0; margin: 0; }
-  .se-cart__item { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(51,37,32,0.08); }
-  .se-cart__item:last-child { border-bottom: none; }
-  .se-cart__item-info { flex: 1; }
-  .se-cart__item-name { font-weight: 600; font-size: 0.9rem; color: #332520; }
-  .se-cart__item-details { font-size: 0.8rem; color: #332520; opacity: 0.6; margin-top: 2px; }
-  .se-cart__item-remove { background: none; border: none; color: #c0392b; cursor: pointer; font-size: 0.8rem; padding: 4px 8px; border-radius: 4px; transition: background 0.2s ease; }
-  .se-cart__item-remove:hover { background: rgba(192,57,43,0.1); }
-  .se-cart__add-btn { display: block; width: 100%; padding: 14px; background: #D68A59; color: #fff; border: none; border-radius: 8px; font-family: 'Montserrat', sans-serif; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.04em; cursor: pointer; transition: all 0.3s ease; margin-top: 16px; }
-  .se-cart__add-btn:hover { background: #c07a4e; transform: translateY(-1px); }
-  .se-form__submit { display: block; width: 100%; padding: 18px; background: #332520; color: #F9F5F0; border: none; border-radius: 8px; font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; transition: all 0.3s ease; margin-top: 24px; }
-  .se-form__submit:hover { background: #D68A59; transform: translateY(-2px); }
+  .se-contact-form .se-form__field {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .se-contact-form .se-form__field--full {
+    grid-column: 1 / -1;
+  }
+
+  .se-contact-form .se-form__label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #332520;
+    margin-bottom: 6px;
+    letter-spacing: 0.02em;
+  }
+
+  .se-contact-form .se-form__input,
+  .se-contact-form .se-form__textarea {
+    padding: 12px 16px;
+    border: 1.5px solid rgba(51,37,32,0.15);
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    color: #332520;
+    background: #F9F5F0;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .se-contact-form .se-form__input:focus,
+  .se-contact-form .se-form__textarea:focus {
+    outline: none;
+    border-color: #D68A59;
+    box-shadow: 0 0 0 3px rgba(214,138,89,0.15);
+  }
+
+  .se-contact-form .se-form__textarea {
+    resize: vertical;
+    min-height: 140px;
+  }
+
+  .se-contact-form .se-form__submit {
+    display: block;
+    width: 100%;
+    padding: 18px;
+    background: #D68A59;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 24px;
+  }
+
+  .se-contact-form .se-form__submit:hover {
+    background: #c07a4e;
+    transform: translateY(-2px);
+  }
+
+  /* Success / Error messages */
+  .se-contact-form .form__message {
+    text-align: center;
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
 
   /* Responsive */
   @media screen and (max-width: 989px) {
     .se-catalogs { grid-template-columns: 1fr; gap: 24px; max-width: 500px; margin: 0 auto; }
-    .se-form__product-selector { grid-template-columns: 1fr; }
-    .se-form__config-row { grid-template-columns: 1fr; }
-    .se-order-form { padding: 30px 24px; }
+    .se-contact-form { padding: 30px 24px; }
   }
   @media screen and (max-width: 749px) {
     .se-hero { padding: 60px 20px; }
     .se-hero__title { font-size: 2.2rem; }
     .se-section { padding: 50px 20px; }
     .se-section-title { font-size: 1.8rem; }
-    .se-form__row { grid-template-columns: 1fr; }
-    .se-order-form { padding: 24px 16px; }
+    .se-contact-form .se-form__row { grid-template-columns: 1fr; }
+    .se-contact-form { padding: 24px 16px; }
   }
 </style>
 
@@ -181,250 +225,63 @@
     </div>
   </div>
 
-  <!-- Order Form -->
+  <!-- Contact Form — Standard Shopify -->
   <div class="se-section--alt">
     <div class="se-section" style="padding-top: 70px; padding-bottom: 70px;">
       <div class="se-section-header">
-        <h2 class="se-section-title">Place Your Order</h2>
-        <p class="se-section-subtitle">Configure your custom chocolate order</p>
+        <h2 class="se-section-title">Tell Us About Your Event</h2>
+        <p class="se-section-subtitle">We'll get back to you within 24 hours to craft the perfect chocolate experience.</p>
       </div>
-      <div class="se-order-form" id="se-order-form">
-        <!-- Client Info -->
-        <div class="se-form__section">
-          <h3 class="se-form__section-title">Your Information</h3>
-          <div class="se-form__row">
-            <div class="se-form__field">
-              <label class="se-form__label" for="se-name">Full Name</label>
-              <input class="se-form__input" type="text" id="se-name" placeholder="Your name">
-            </div>
-            <div class="se-form__field">
-              <label class="se-form__label" for="se-email">Email</label>
-              <input class="se-form__input" type="email" id="se-email" placeholder="your@email.com">
-            </div>
-          </div>
-          <div class="se-form__row">
-            <div class="se-form__field">
-              <label class="se-form__label" for="se-phone">Phone</label>
-              <input class="se-form__input" type="tel" id="se-phone" placeholder="+1 (555) 000-0000">
-            </div>
-            <div class="se-form__field">
-              <label class="se-form__label" for="se-company">Company / Event</label>
-              <input class="se-form__input" type="text" id="se-company" placeholder="Company or event name">
-            </div>
-          </div>
-        </div>
 
-        <!-- Delivery Address -->
-        <div class="se-form__section">
-          <h3 class="se-form__section-title">Delivery Address</h3>
+      <div class="se-contact-form">
+        {% form 'contact' %}
+          {%- if form.posted_successfully? -%}
+            <div class="form__message" style="background: rgba(214,138,89,0.1); color: #332520;">
+              Thank you! We've received your request and will be in touch soon.
+            </div>
+          {%- endif -%}
+
+          {%- if form.errors -%}
+            <div class="form__message" style="background: rgba(192,57,43,0.1); color: #c0392b;">
+              {{ form.errors | default_errors }}
+            </div>
+          {%- endif -%}
+
+          <div class="se-form__row">
+            <div class="se-form__field">
+              <label class="se-form__label" for="contact-name">Name *</label>
+              <input class="se-form__input" type="text" id="contact-name" name="contact[name]" placeholder="Your name" required>
+            </div>
+            <div class="se-form__field">
+              <label class="se-form__label" for="contact-email">Email *</label>
+              <input class="se-form__input" type="email" id="contact-email" name="contact[email]" placeholder="your@email.com" required>
+            </div>
+          </div>
+
           <div class="se-form__row">
             <div class="se-form__field se-form__field--full">
-              <label class="se-form__label" for="se-address">Street Address</label>
-              <input class="se-form__input" type="text" id="se-address" placeholder="123 Main St, Suite 100">
+              <label class="se-form__label" for="contact-phone">Phone</label>
+              <input class="se-form__input" type="tel" id="contact-phone" name="contact[phone]" placeholder="+1 (555) 000-0000">
             </div>
           </div>
+
           <div class="se-form__row">
-            <div class="se-form__field">
-              <label class="se-form__label" for="se-city">City</label>
-              <input class="se-form__input" type="text" id="se-city" placeholder="Brooklyn">
+            <div class="se-form__field se-form__field--full">
+              <label class="se-form__label" for="contact-body">Tell us about your event *</label>
+              <textarea class="se-form__textarea" id="contact-body" name="contact[body]" placeholder="Event type, date, number of guests, preferred products, special requests..." required></textarea>
             </div>
-            <div class="se-form__field">
-              <label class="se-form__label" for="se-state">State</label>
-              <input class="se-form__input" type="text" id="se-state" placeholder="NY">
-            </div>
-          </div>
-          <div class="se-form__row">
-            <div class="se-form__field">
-              <label class="se-form__label" for="se-zip">ZIP Code</label>
-              <input class="se-form__input" type="text" id="se-zip" placeholder="11201">
-            </div>
-            <div class="se-form__field">
-              <label class="se-form__label" for="se-date">Delivery Date</label>
-              <input class="se-form__input" type="date" id="se-date">
-            </div>
-          </div>
-        </div>
-
-        <!-- Product Configuration -->
-        <div class="se-form__section">
-          <h3 class="se-form__section-title">Add Products to Your Order</h3>
-          <label class="se-form__label">Select Flavors</label>
-          <div class="se-form__product-selector" id="se-flavor-selector">
-            <label class="se-form__product-option" data-flavor="Hazelnut Dark Chocolate">
-              <input type="checkbox" name="flavor" value="Hazelnut Dark Chocolate">
-              <span class="se-form__product-check"></span>
-              <span class="se-form__product-name">Hazelnut</span>
-              <span class="se-form__product-type">Dark</span>
-            </label>
-            <label class="se-form__product-option" data-flavor="Hazelnut Cinnamon Dark">
-              <input type="checkbox" name="flavor" value="Hazelnut Cinnamon Dark">
-              <span class="se-form__product-check"></span>
-              <span class="se-form__product-name">Hazelnut Cinnamon</span>
-              <span class="se-form__product-type">Dark</span>
-            </label>
-            <label class="se-form__product-option" data-flavor="Salted Peanut Dark">
-              <input type="checkbox" name="flavor" value="Salted Peanut Dark">
-              <span class="se-form__product-check"></span>
-              <span class="se-form__product-name">Salted Peanut</span>
-              <span class="se-form__product-type">Dark</span>
-            </label>
-            <label class="se-form__product-option" data-flavor="Coconut Vegan White">
-              <input type="checkbox" name="flavor" value="Coconut Vegan White">
-              <span class="se-form__product-check"></span>
-              <span class="se-form__product-name">Coconut</span>
-              <span class="se-form__product-type">Vegan White</span>
-            </label>
-            <label class="se-form__product-option" data-flavor="Matcha Latte Vegan White">
-              <input type="checkbox" name="flavor" value="Matcha Latte Vegan White">
-              <span class="se-form__product-check"></span>
-              <span class="se-form__product-name">Matcha Latte</span>
-              <span class="se-form__product-type">Vegan White</span>
-            </label>
-            <label class="se-form__product-option" data-flavor="Matcha Strawberry Cup">
-              <input type="checkbox" name="flavor" value="Matcha Strawberry Cup">
-              <span class="se-form__product-check"></span>
-              <span class="se-form__product-name">Matcha Strawberry</span>
-              <span class="se-form__product-type">Mini Cup</span>
-            </label>
-            <label class="se-form__product-option" data-flavor="Coconut Cherry Cup">
-              <input type="checkbox" name="flavor" value="Coconut Cherry Cup">
-              <span class="se-form__product-check"></span>
-              <span class="se-form__product-name">Coconut Cherry</span>
-              <span class="se-form__product-type">Mini Cup</span>
-            </label>
           </div>
 
-          <div class="se-form__config-row" style="margin-top: 20px;">
-            <div class="se-form__field">
-              <label class="se-form__label" for="se-quantity">Quantity</label>
-              <select class="se-form__select" id="se-quantity">
-                <option value="">Select quantity</option>
-                <optgroup label="Sticks">
-                  <option value="2 sticks - $8">2 sticks - $8</option>
-                  <option value="4 sticks - $15">4 sticks - $15</option>
-                  <option value="6 sticks - $20">6 sticks - $20</option>
-                  <option value="10 sticks - $30">10 sticks - $30</option>
-                  <option value="50+ sticks - Quote">50+ sticks - Contact us</option>
-                </optgroup>
-                <optgroup label="Mini Cups">
-                  <option value="3 pack cups - $12">3 pack - $12</option>
-                  <option value="6 pack cups - $22">6 pack - $22</option>
-                  <option value="12 pack cups - $42">12 pack - $42</option>
-                  <option value="50+ cups - Quote">50+ pcs - Contact us</option>
-                </optgroup>
-              </select>
-            </div>
-            <div class="se-form__field">
-              <label class="se-form__label" for="se-presentation">Presentation</label>
-              <select class="se-form__select" id="se-presentation">
-                <option value="">Select packaging</option>
-                <option value="Standard">Standard packaging</option>
-                <option value="Gift Bag Small ($16)">Gift Bag Small - 4 sticks ($16)</option>
-                <option value="Gift Bag Medium ($30)">Gift Bag Medium - 6+3 ($30)</option>
-                <option value="Gift Bag Large ($52)">Gift Bag Large - 10+6 ($52)</option>
-                <option value="Custom Branded">Custom branded (50+ units)</option>
-              </select>
-            </div>
-            <div class="se-form__field">
-              <label class="se-form__label">&nbsp;</label>
-              <button type="button" class="se-cart__add-btn" id="se-add-to-cart">Add to Order</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Cart -->
-        <div class="se-cart" id="se-cart">
-          <h3 class="se-cart__title">Your Order <span class="se-cart__badge" id="se-cart-count">0</span></h3>
-          <div id="se-cart-body">
-            <p class="se-cart__empty" id="se-cart-empty">No items added yet. Select flavors, quantity, and click "Add to Order".</p>
-            <ul class="se-cart__items" id="se-cart-items" style="display: none;"></ul>
-          </div>
-        </div>
-
-        <!-- Notes -->
-        <div class="se-form__section" style="margin-top: 24px;">
-          <div class="se-form__field">
-            <label class="se-form__label" for="se-notes">Additional Notes</label>
-            <textarea class="se-form__textarea" id="se-notes" placeholder="Special requests, dietary needs, branding instructions..."></textarea>
-          </div>
-        </div>
-
-        <button type="button" class="se-form__submit" id="se-submit-order">Submit Order Request</button>
+          <button type="submit" class="se-form__submit">Send Request</button>
+        {% endform %}
       </div>
     </div>
   </div>
 </section>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  var cart = [];
-
-  document.querySelectorAll('.se-form__product-option').forEach(function(option) {
-    option.addEventListener('click', function(e) {
-      e.preventDefault();
-      var cb = this.querySelector('input[type="checkbox"]');
-      cb.checked = !cb.checked;
-      this.classList.toggle('selected', cb.checked);
-    });
-  });
-
-  var addBtn = document.getElementById('se-add-to-cart');
-  if (addBtn) {
-    addBtn.addEventListener('click', function() {
-      var flavors = [];
-      document.querySelectorAll('.se-form__product-option.selected').forEach(function(o) {
-        flavors.push(o.getAttribute('data-flavor'));
-      });
-      var qty = document.getElementById('se-quantity').value;
-      var pres = document.getElementById('se-presentation').value;
-      if (!flavors.length) { alert('Please select at least one flavor.'); return; }
-      if (!qty) { alert('Please select a quantity.'); return; }
-      cart.push({ flavors: flavors, quantity: qty, presentation: pres || 'Standard' });
-      renderCart();
-      document.querySelectorAll('.se-form__product-option.selected').forEach(function(o) {
-        o.classList.remove('selected'); o.querySelector('input').checked = false;
-      });
-      document.getElementById('se-quantity').value = '';
-      document.getElementById('se-presentation').value = '';
-    });
-  }
-
-  function renderCart() {
-    var items = document.getElementById('se-cart-items');
-    var empty = document.getElementById('se-cart-empty');
-    var count = document.getElementById('se-cart-count');
-    count.textContent = cart.length;
-    if (!cart.length) { empty.style.display = 'block'; items.style.display = 'none'; return; }
-    empty.style.display = 'none'; items.style.display = 'block'; items.innerHTML = '';
-    cart.forEach(function(item, i) {
-      var li = document.createElement('li'); li.className = 'se-cart__item';
-      li.innerHTML = '<div class="se-cart__item-info"><div class="se-cart__item-name">' + item.flavors.join(', ') + '</div><div class="se-cart__item-details">' + item.quantity + ' &middot; ' + item.presentation + '</div></div><button class="se-cart__item-remove" data-index="' + i + '">Remove</button>';
-      items.appendChild(li);
-    });
-    document.querySelectorAll('.se-cart__item-remove').forEach(function(btn) {
-      btn.addEventListener('click', function() { cart.splice(parseInt(this.getAttribute('data-index')), 1); renderCart(); });
-    });
-  }
-
-  var submitBtn = document.getElementById('se-submit-order');
-  if (submitBtn) {
-    submitBtn.addEventListener('click', function() {
-      var name = document.getElementById('se-name').value;
-      var email = document.getElementById('se-email').value;
-      if (!name || !email) { alert('Please fill in your name and email.'); return; }
-      if (!cart.length) { alert('Please add at least one item to your order.'); return; }
-      var body = 'Order Request from: ' + name + '\nEmail: ' + email + '\nPhone: ' + (document.getElementById('se-phone').value || 'N/A') + '\nCompany/Event: ' + (document.getElementById('se-company').value || 'N/A') + '\n\nDelivery Address:\n' + (document.getElementById('se-address').value || '') + '\n' + (document.getElementById('se-city').value || '') + ', ' + (document.getElementById('se-state').value || '') + ' ' + (document.getElementById('se-zip').value || '') + '\nDelivery Date: ' + (document.getElementById('se-date').value || 'TBD') + '\n\nOrder Items:\n';
-      cart.forEach(function(item, i) { body += (i+1) + '. ' + item.flavors.join(', ') + ' - ' + item.quantity + ' (' + item.presentation + ')\n'; });
-      body += '\nNotes: ' + (document.getElementById('se-notes').value || 'None');
-      window.location.href = 'mailto:info@moritochocolates.com?subject=' + encodeURIComponent('Special Events Order - ' + name) + '&body=' + encodeURIComponent(body);
-    });
-  }
-});
-</script>
-
 {% schema %}
 {
-  "name": "Special Events B2B",
+  "name": "Special Events",
   "settings": [
     {
       "type": "text",
@@ -436,12 +293,12 @@ document.addEventListener('DOMContentLoaded', function() {
       "type": "textarea",
       "id": "hero_subtitle",
       "label": "Hero Subtitle",
-      "default": "Artisanal vegan chocolates for weddings, corporate events, and celebrations. Configure your order below."
+      "default": "Artisanal vegan chocolates for weddings, corporate events, and celebrations. Browse our collections and tell us about your event."
     }
   ],
   "presets": [
     {
-      "name": "Special Events B2B"
+      "name": "Special Events"
     }
   ]
 }

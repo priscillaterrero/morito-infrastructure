@@ -32,7 +32,7 @@
     flex: 1;
     max-width: 500px;
     border-radius: 12px;
-    padding: 56px 48px;
+    padding: 64px 54px;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
   }
 
@@ -40,25 +40,27 @@
     transform: translateY(-4px);
   }
 
-  /* ── Left card: Organic Cream with depth ── */
+  /* ── Left card: clean white with subtle depth ── */
   .clean-ingredients__card--left {
-    background-color: #F9F5F0;
-    border: 1px solid #E0D8D0;
-    box-shadow: 0 4px 20px rgba(51, 37, 32, 0.06);
+    background-color: #FCFAEF;
+    border: 1px solid #E8E0D6;
+    box-shadow: 0 4px 20px rgba(51, 37, 32, 0.05);
   }
 
   .clean-ingredients__card--left:hover {
     box-shadow: 0 12px 40px rgba(51, 37, 32, 0.1);
   }
 
-  /* ── Right card: Warm Copper hero with glow ── */
+  /* ── Right card: Warm Copper hero — physically larger, dominant ── */
   .clean-ingredients__card--right {
     background: linear-gradient(145deg, #D68A59 0%, #C47A4A 100%);
-    box-shadow: 0 8px 30px rgba(214, 138, 89, 0.25);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    transform: scale(1.03);
   }
 
   .clean-ingredients__card--right:hover {
-    box-shadow: 0 16px 50px rgba(214, 138, 89, 0.35);
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.16);
+    transform: scale(1.03) translateY(-4px);
   }
 
   /* ── Subtitle ── */
@@ -118,7 +120,7 @@
 
   .clean-ingredients__card--left .clean-ingredients__list li {
     color: #332520;
-    border-bottom-color: rgba(224, 216, 208, 0.5);
+    border-bottom: 1px solid rgba(224, 216, 208, 0.6);
   }
 
   .clean-ingredients__card--left .clean-ingredients__list li:last-child {
@@ -127,7 +129,7 @@
 
   .clean-ingredients__card--right .clean-ingredients__list li {
     color: #F9F5F0;
-    border-bottom-color: rgba(249, 245, 240, 0.15);
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
   }
 
   .clean-ingredients__card--right .clean-ingredients__list li:last-child {
@@ -185,10 +187,18 @@
 
     .clean-ingredients__card {
       max-width: 100%;
-      padding: 36px 28px;
+      padding: 40px 32px;
     }
 
     .clean-ingredients__card:hover {
+      transform: none;
+    }
+
+    .clean-ingredients__card--right {
+      transform: none;
+    }
+
+    .clean-ingredients__card--right:hover {
       transform: none;
     }
 

@@ -370,7 +370,52 @@
 
 ---
 
-### Sprint Summary — 2026-03-09
+---
+
+## Session: 2026-03-25
+
+### Changes Made
+
+#### 1. Slideshow — Fluid Responsive Typography (clamp)
+- **File:** `sections/slideshow.liquid`
+- **Change:** Replaced fixed font-sizes with CSS `clamp()` for proportional scaling across all monitor sizes
+- **Specs:**
+  - Headings: `font-size: clamp(2rem, 4vw, 3.5rem)` — scales fluidly from 2rem (small) to 3.5rem (large)
+  - Slide 1 heading (reduced): `clamp(1.8rem, 3.2vw, 2.6rem)` — keeps product sticks visible
+  - Subheading text: `clamp(1.15rem, 1.5vw, 1.4rem)` — never diminutive on large screens
+  - Glass effect text: `clamp(1.05rem, 1.4vw, 1.3rem)` with `line-height: 1.5`
+  - Glassmorphism box: `max-width: min(90%, 650px)` — prevents deformation on wide monitors
+  - Box padding: `clamp(2rem, 4vw, 3.5rem)` — fluid internal spacing
+- **Rationale:** Client reported text/box disproportion on large and small desktop monitors
+
+#### 2. Clean Ingredients — Editorial Luxury Redesign
+- **File:** `sections/clean-ingredients.liquid`
+- **Change:** Elevated flat card layout to editorial luxury with physical hierarchy
+- **Specs:**
+  - Right card (Morito): `transform: scale(1.03)` resting state — physically larger than left
+  - Right card shadow: `0 20px 40px rgba(0,0,0,0.12)` — dramatic depth
+  - Right card borders: `1px dashed rgba(255,255,255,0.3)` — elegant dotted separators
+  - Left card: background changed to `#FCFAEF` (warmer white) for contrast with `rgba(249,245,240,0.5)` section bg
+  - Left card border softened to `#E8E0D6`
+  - Both cards: increased padding to `64px 54px` (was `56px 48px`)
+  - Mobile: right card scale reset to `none`
+- **Rationale:** Table felt too flat/corporate; editorial design with physical hierarchy conveys luxury
+
+#### 3. Special Events — MVP Simplification (Contact Form)
+- **File:** `sections/special-events.liquid`
+- **Change:** Replaced complex JS cart/order system with native Shopify `{% form 'contact' %}`
+- **Removed:**
+  - Interactive product selector with checkboxes
+  - JavaScript cart system (add/remove items, render cart, submit via mailto)
+  - Delivery address fields, quantity/presentation selects
+  - All `<script>` block (~65 lines of JS)
+- **New form fields:** Name (required), Email (required), Phone, Event description textarea (required)
+- **Kept:** Hero section, product catalog cards with pricing (reference only)
+- **Button style:** Warm Copper `#D68A59`, hover `#c07a4e`
+- **Success/error:** Native Shopify form messages with branded styling
+- **Rationale:** MVP simplification — Priscila handles events manually via Shopify notification email; complex cart was over-engineered for current volume
+
+### Sprint Summary — 2026-03-25
 All 10 optimization rounds completed:
 1. Corporate Marquee — transparent-background logos
 2. Decadent Flavors — floating levitation effect with aura

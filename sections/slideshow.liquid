@@ -266,17 +266,21 @@
       background: rgba(249, 245, 240, 0.30) !important;
       backdrop-filter: blur(10px) !important;
       -webkit-backdrop-filter: blur(10px) !important;
-      padding: 3rem;
+      padding: clamp(2rem, 4vw, 3.5rem);
       border-radius: 8px;
       border: 1px solid rgba(255, 255, 255, 0.3) !important;
       box-shadow: 0 8px 32px rgba(51, 37, 32, 0.12);
+      max-width: min(90%, 650px);
     }
 
-    /* Headings: Dark Mocha base, Warm Copper for .first */
+    /* Headings: fluid typography with clamp */
     .slideshow__text.banner__box h2.banner__heading {
       color: #332520;
       background: none;
       text-shadow: none;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      line-height: 1.15;
+      margin-bottom: 4px;
     }
 
     .slideshow__text.banner__box h2.banner__heading.first {
@@ -286,18 +290,19 @@
 
     /* Slide 1 only: reduced heading to not cover product sticks */
     .slideshow__slide:first-child .slideshow__text.banner__box h2.banner__heading {
-      font-size: 2.6rem;
+      font-size: clamp(1.8rem, 3.2vw, 2.6rem);
       line-height: 1.15;
       margin-bottom: 2px;
     }
 
-    /* Subheading: prominent across all slides */
+    /* Subheading: fluid, never diminutive on large screens */
     .slideshow__text.banner__box .banner__text span {
       background: none;
       color: #332520;
       text-shadow: none;
-      font-size: 1.35rem;
+      font-size: clamp(1.15rem, 1.5vw, 1.4rem);
       font-weight: 500;
+      line-height: 1.5;
     }
   }
 
@@ -584,9 +589,9 @@
     -webkit-backdrop-filter: blur(10px) !important;
     border: 1px solid rgba(255, 255, 255, 0.3) !important;
     border-radius: 8px;
-    padding: 40px 55px !important;
+    padding: clamp(2rem, 4vw, 3.5rem) !important;
     box-shadow: 0 8px 32px rgba(51, 37, 32, 0.12);
-    max-width: 650px;
+    max-width: min(90%, 650px);
     width: fit-content;
   }
 
@@ -608,8 +613,9 @@
     color: #332520;
     text-shadow: none;
     padding: 0;
-    font-size: 1.1rem;
+    font-size: clamp(1.05rem, 1.4vw, 1.3rem);
     opacity: 0.85;
+    line-height: 1.5;
   }
 
   /* Glass effect text alignment variants */
