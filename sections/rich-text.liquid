@@ -20,8 +20,56 @@
 
 <style>
   /* ═══════════════════════════════════════════════════
-     VIDEO GRID - 3-column layout for Our Mission
-     Mobile: horizontal carousel
+     RESPONSIVE VIDEO - Single video, device-aware
+     Desktop: 16:9 | Mobile: 9:16
+     ═══════════════════════════════════════════════════ */
+  .mission-video-responsive {
+    width: 100%;
+    max-width: 900px;
+    margin: 30px auto 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(51, 37, 32, 0.15);
+    background: #f5f0eb;
+  }
+
+  .mission-video-responsive video {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+
+  /* Desktop: 16:9 aspect ratio */
+  .mission-video-responsive .mission-video--desktop {
+    display: block;
+    aspect-ratio: 16/9;
+  }
+
+  .mission-video-responsive .mission-video--mobile {
+    display: none;
+  }
+
+  /* Mobile: 9:16 aspect ratio */
+  @media screen and (max-width: 749px) {
+    .mission-video-responsive {
+      max-width: 100%;
+      margin: 20px 0 0;
+      border-radius: 10px;
+    }
+
+    .mission-video-responsive .mission-video--desktop {
+      display: none;
+    }
+
+    .mission-video-responsive .mission-video--mobile {
+      display: block;
+      aspect-ratio: 9/16;
+    }
+  }
+
+  /* ═══════════════════════════════════════════════════
+     LEGACY - Video grid (kept for backwards compat)
      ═══════════════════════════════════════════════════ */
   .mission-video-grid {
     display: grid;
@@ -48,83 +96,6 @@
     border-radius: 12px;
     aspect-ratio: 9/16;
     object-fit: cover;
-  }
-
-  /* ═══════════════════════════════════════════════════
-     TABLET - 3 columns but tighter
-     ═══════════════════════════════════════════════════ */
-  @media screen and (min-width: 750px) and (max-width: 989px) {
-    .mission-video-grid {
-      gap: 16px;
-      max-width: 750px;
-      padding: 0 16px;
-    }
-  }
-
-  /* ═══════════════════════════════════════════════════
-     MOBILE - Horizontal scroll carousel with snap
-     ═══════════════════════════════════════════════════ */
-  @media screen and (max-width: 749px) {
-    .mission-video-grid {
-      display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      gap: 12px;
-      padding: 0 20px 16px;
-      margin: 20px 0 0;
-      max-width: 100%;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-    }
-
-    .mission-video-grid::-webkit-scrollbar {
-      display: none;
-    }
-
-    .mission-video-wrapper {
-      flex: 0 0 70%;
-      min-width: 70%;
-      scroll-snap-align: center;
-      border-radius: 10px;
-    }
-
-    .mission-video {
-      border-radius: 10px;
-      aspect-ratio: 9/16;
-    }
-
-    /* Scroll indicator dots */
-    .mission-video-grid-container {
-      position: relative;
-    }
-
-    .mission-scroll-indicator {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 12px;
-    }
-
-    .mission-scroll-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: rgba(51, 37, 32, 0.3);
-      transition: background 0.3s ease;
-    }
-
-    .mission-scroll-dot.active {
-      background: #D68A59;
-    }
-  }
-
-  /* Small phones */
-  @media screen and (max-width: 374px) {
-    .mission-video-wrapper {
-      flex: 0 0 80%;
-      min-width: 80%;
-    }
   }
 
   /* Legacy single video styling */
@@ -188,6 +159,19 @@
                 Your browser does not support the video tag.
               </video>
             </div>
+              {%- when 'video_responsive' -%}
+            <div class="mission-video-responsive" {{ block.shopify_attributes }}>
+              {%- if block.settings.video_desktop != blank -%}
+                <video class="mission-video--desktop" autoplay muted loop playsinline>
+                  <source src="{{ block.settings.video_desktop | asset_url }}" type="video/mp4">
+                </video>
+              {%- endif -%}
+              {%- if block.settings.video_mobile != blank -%}
+                <video class="mission-video--mobile" autoplay muted loop playsinline>
+                  <source src="{{ block.settings.video_mobile | asset_url }}" type="video/mp4">
+                </video>
+              {%- endif -%}
+            </div>
               {%- when 'video_grid' -%}
             <div class="mission-video-grid-container" {{ block.shopify_attributes }}>
               <div class="mission-video-grid">
@@ -226,34 +210,6 @@
   </div>
 </div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Slow down the right video (0.5x speed)
-    const slowVideos = document.querySelectorAll('.mission-video--slow');
-    slowVideos.forEach(function(video) {
-      video.playbackRate = 0.5;
-      video.addEventListener('play', function() {
-        this.playbackRate = 0.5;
-      });
-    });
-
-    // Mobile video carousel scroll indicator
-    const videoGrid = document.querySelector('.mission-video-grid');
-    const dots = document.querySelectorAll('.mission-scroll-dot');
-
-    if (videoGrid && dots.length > 0) {
-      videoGrid.addEventListener('scroll', function() {
-        const scrollLeft = videoGrid.scrollLeft;
-        const itemWidth = videoGrid.querySelector('.mission-video-wrapper').offsetWidth + 16;
-        const activeIndex = Math.round(scrollLeft / itemWidth);
-
-        dots.forEach(function(dot, index) {
-          dot.classList.toggle('active', index === activeIndex);
-        });
-      });
-    }
-  });
-</script>
 
 {% schema %}
 {
@@ -539,6 +495,25 @@
           "id": "video_poster",
           "label": "Video Poster Image",
           "info": "Thumbnail shown before video loads"
+        }
+      ]
+    },
+    {
+      "type": "video_responsive",
+      "name": "Video Responsive (Desktop + Mobile)",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "video_desktop",
+          "label": "Desktop Video (16:9) — assets/ filename",
+          "info": "Enter the filename from assets/ folder (e.g., morito-hero-desktop.mp4)"
+        },
+        {
+          "type": "text",
+          "id": "video_mobile",
+          "label": "Mobile Video (9:16) — assets/ filename",
+          "info": "Enter the filename from assets/ folder (e.g., morito-hero-mobile.mp4)"
         }
       ]
     },

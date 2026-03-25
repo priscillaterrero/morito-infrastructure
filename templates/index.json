@@ -260,12 +260,11 @@
             "button_style_secondary_2": true
           }
         },
-        "mission-video-grid": {
-          "type": "video_grid",
+        "mission-video-responsive": {
+          "type": "video_responsive",
           "settings": {
-            "video_file_1": "mission-video-1.mp4",
-            "video_file_2": "mission-video-2.mp4",
-            "video_file_3": "mission-video-3.mp4"
+            "video_desktop": "morito-hero-desktop-4k.mp4",
+            "video_mobile": "morito-hero-mobile-4k.mp4"
           }
         }
       },
@@ -273,7 +272,7 @@
         "1660625540951e2c3f-0",
         "1660625540951e2c3f-1",
         "1660625540951e2c3f-2",
-        "mission-video-grid"
+        "mission-video-responsive"
       ],
       "settings": {
         "desktop_content_position": "center",
