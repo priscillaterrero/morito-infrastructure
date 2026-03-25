@@ -264,7 +264,7 @@
           "type": "video_responsive",
           "settings": {
             "video_desktop": "morito-hero-desktop-4k.mp4",
-            "video_mobile": "morito-hero-mobile-4k.mp4"
+            "video_mobile":  "morito-hero-mobile-4k.mp4"
           }
         }
       },
