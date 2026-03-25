@@ -24,6 +24,7 @@
      Desktop: 16:9 | Mobile: 9:16
      ═══════════════════════════════════════════════════ */
   .mission-video-responsive {
+    position: relative;
     width: 100%;
     max-width: 900px;
     margin: 30px auto 0;
@@ -50,6 +51,49 @@
     display: none;
   }
 
+  /* ── Unmute button ── */
+  .mission-video__sound-btn {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    z-index: 5;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(51, 37, 32, 0.7);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+
+  .mission-video__sound-btn:hover {
+    background: #D68A59;
+    transform: scale(1.1);
+  }
+
+  .mission-video__sound-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: #F9F5F0;
+  }
+
+  .mission-video__sound-btn .icon-unmute {
+    display: none;
+  }
+
+  .mission-video__sound-btn.is-unmuted .icon-mute {
+    display: none;
+  }
+
+  .mission-video__sound-btn.is-unmuted .icon-unmute {
+    display: block;
+  }
+
   /* Mobile: 9:16 aspect ratio */
   @media screen and (max-width: 749px) {
     .mission-video-responsive {
@@ -65,6 +109,18 @@
     .mission-video-responsive .mission-video--mobile {
       display: block;
       aspect-ratio: 9/16;
+    }
+
+    .mission-video__sound-btn {
+      bottom: 12px;
+      right: 12px;
+      width: 40px;
+      height: 40px;
+    }
+
+    .mission-video__sound-btn svg {
+      width: 18px;
+      height: 18px;
     }
   }
 
@@ -171,6 +227,17 @@
                   <source src="{{ block.settings.video_mobile | asset_url }}" type="video/mp4">
                 </video>
               {%- endif -%}
+              <button class="mission-video__sound-btn" aria-label="Toggle sound" type="button">
+                <svg class="icon-mute" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+                  <line x1="23" y1="9" x2="17" y2="15" stroke="#F9F5F0" stroke-width="2" stroke-linecap="round"/>
+                  <line x1="17" y1="9" x2="23" y2="15" stroke="#F9F5F0" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <svg class="icon-unmute" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+                  <path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07" stroke="#F9F5F0" stroke-width="2" stroke-linecap="round" fill="none"/>
+                </svg>
+              </button>
             </div>
               {%- when 'video_grid' -%}
             <div class="mission-video-grid-container" {{ block.shopify_attributes }}>
@@ -210,6 +277,20 @@
   </div>
 </div>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var btn = document.querySelector('.mission-video__sound-btn');
+    if (!btn) return;
+    var container = btn.closest('.mission-video-responsive');
+    btn.addEventListener('click', function() {
+      var videos = container.querySelectorAll('video');
+      var isMuted = videos[0].muted;
+      videos.forEach(function(v) { v.muted = !isMuted; });
+      btn.classList.toggle('is-unmuted', isMuted);
+      btn.setAttribute('aria-label', isMuted ? 'Mute sound' : 'Unmute sound');
+    });
+  });
+</script>
 
 {% schema %}
 {
