@@ -427,3 +427,27 @@ All 10 optimization rounds completed:
 8. Best Sellers — seamless transparent cards + scroll highlight + dark chocolate price
 9. Best Sellers — kinetic luxury triple-spin animation + dark mocha pricing
 10. Best Sellers — always-visible high-contrast 'ADD TO CART' CTA
+
+---
+
+## Session: 2026-04-03
+
+### Changes Made
+
+#### 1. llms.txt — AI Discoverability File
+- **File:** `llms.txt` (new, project root)
+- **Change:** Created comprehensive `llms.txt` file following the llms.txt standard for AI platform discoverability
+- **Content includes:**
+  - Brand description, mission, and founding story (female-owned, Brooklyn, Priscilla)
+  - Full product catalog: Chocolate Sticks (6 flavors), Mini Cups, Butter Cups, Gift Sets, Corporate Gifting, Special Events
+  - 3-ingredient purity USP with specific ingredients listed
+  - Certifications: Vegan, Organic, Gluten-free, Fair Trade, No Preservatives
+  - Allergen information and storage instructions
+  - Ethical sourcing story: Oko-Caribe co-op, Dominican Republic
+  - Shipping policy: 3-4 days, free over $65, same-day processing details
+  - Wholesale program: Faire partnership, $120 minimum, Net 60 terms
+  - Press mentions: Cool Hunting, NY Mag, Timeout NY, VegOut
+  - 12 retail partners listed
+  - Contact info and social media links
+  - 9 FAQ entries covering common customer questions
+- **Rationale:** Enable AI assistants and LLM-powered platforms to accurately discover and describe Morito Chocolates
