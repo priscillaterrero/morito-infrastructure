@@ -451,3 +451,11 @@ All 10 optimization rounds completed:
   - Contact info and social media links
   - 9 FAQ entries covering common customer questions
 - **Rationale:** Enable AI assistants and LLM-powered platforms to accurately discover and describe Morito Chocolates
+
+#### 2. llms.txt Liquid Page Template
+- **File:** `templates/page.llms-txt.liquid` (new)
+- **Change:** Created a `{% layout none %}` Liquid template to serve the llms.txt content as a raw page without theme chrome (no header, footer, or styles)
+- **Deployment steps (pending — requires theme to be published):**
+  1. Create page in Shopify Admin with handle `llms-txt`, assign template `page.llms-txt`
+  2. Create URL redirect: `/llms.txt` → `/pages/llms-txt`
+- **Rationale:** Shopify doesn't allow serving files at root-level URLs; this template + redirect approach serves the content at `moritochocolates.com/llms.txt`

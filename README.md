@@ -22,6 +22,7 @@ This repository contains the source code for Morito's E-commerce ecosystem. It s
 4.  **Clean Ingredients:** Premium dual-card comparison (Organic Cream vs Warm Copper hero) replacing the "Decadent Flavors" section — highlights Morito's 3-ingredient purity vs. 15+ conventional ingredients.
 5.  **Best Sellers Polish:** Luxury product cards with edited transparent-background images, drop-shadow levitation, and refined desktop typography (price 1.4rem, button 1.1rem bold).
 6.  **Special Events (MVP):** Simplified contact form using native Shopify `{% form 'contact' %}` — product catalog cards for reference + single inquiry form. Replaces complex JS cart/order system for manual event handling.
+7.  **AI Discoverability (llms.txt):** Comprehensive `llms.txt` file served via `page.llms-txt` Liquid template (`{% layout none %}`) + URL redirect. Enables ChatGPT, Gemini, Claude, and other AI platforms to accurately discover and describe Morito Chocolates — includes full product catalog, certifications, sourcing story, shipping, wholesale, press, and FAQs.
 
 ### 🎨 Design Sprint — March 2026
 All 5 optimization pillars executed: corporate marquee logos, clean ingredients comparison, mobile carousel zoom optimization, text overlay transparency refinements, and best sellers luxury polish.
