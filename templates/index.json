@@ -15,6 +15,7 @@
         "slide-1-sticks": {
           "type": "slide",
           "settings": {
+            "hero_image_cdn_url": "https://cdn.shopify.com/s/files/1/0084/6394/1687/files/Heroimage.jpg?v=1775668186",
             "hero_image_file": "Heroimage.jpg",
             "heading": "Cacao-Driven Confections.",
             "heading2": "Built on purity.",
@@ -36,6 +37,7 @@
         "slide-2-minicups": {
           "type": "slide",
           "settings": {
+            "hero_image_cdn_url": "https://cdn.shopify.com/s/files/1/0084/6394/1687/files/MatchaStrawberryclear_a101078a-dc4f-40d7-9a0c-ae46d0d4ac7c.png?v=1775663855",
             "hero_image_file": "MatchaStrawberryclear.png",
             "heading": "Morito",
             "heading2": "Mini",
@@ -263,6 +265,8 @@
         "mission-video-responsive": {
           "type": "video_responsive",
           "settings": {
+            "video_desktop_url": "https://cdn.shopify.com/videos/c/o/v/40408845101e432987f9a5ba03c60f94.mp4",
+            "video_mobile_url": "https://cdn.shopify.com/videos/c/o/v/7e4c7289d7324d44bb5aa7fdc60f3281.mp4",
             "video_desktop": "morito-hero-desktop-4k.mp4",
             "video_mobile":  "morito-hero-mobile-4k.mp4"
           }
