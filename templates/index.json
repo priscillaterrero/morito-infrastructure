@@ -265,8 +265,8 @@
         "mission-video-responsive": {
           "type": "video_responsive",
           "settings": {
-            "video_desktop_url": "https://cdn.shopify.com/videos/c/o/v/40408845101e432987f9a5ba03c60f94.mp4",
-            "video_mobile_url": "https://cdn.shopify.com/videos/c/o/v/7e4c7289d7324d44bb5aa7fdc60f3281.mp4",
+            "video_desktop_url": "https://cdn.shopify.com/videos/c/o/v/7e4c7289d7324d44bb5aa7fdc60f3281.mp4",
+            "video_mobile_url": "https://cdn.shopify.com/videos/c/o/v/40408845101e432987f9a5ba03c60f94.mp4",
             "video_desktop": "morito-hero-desktop-4k.mp4",
             "video_mobile":  "morito-hero-mobile-4k.mp4"
           }
