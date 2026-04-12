@@ -38,7 +38,7 @@
         "button_fDFeBU": {
           "type": "button",
           "settings": {
-            "button_label": "Button label",
+            "button_label": "Inquire about an event",
             "button_link": ""
           }
         }
@@ -50,6 +50,7 @@
       ],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
+        "image": "shopify://shop_images/Final_Corporate_Gifting.png",
         "animated_border": false,
         "floating_image": false,
         "height": "adapt",
