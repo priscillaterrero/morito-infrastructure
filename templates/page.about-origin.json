@@ -25,14 +25,14 @@
           "type": "image-text",
           "settings": {
             "image": "shopify://shop_images/pf-f01b72ca-765c-43ce-8625-4468b.png",
-            "content": "<p>Our cacao is purchased through a third party vendor that practices a values-driven sourcing model by buying cacao directly from cooperatives and grower organizations. By cutting out the middleman in the conventional supply chain, we can ensure more revenue goes to the growers.</p>"
+            "content": "<p>At Morito Chocolates, we don't start with flavors — we start with cacao. Cacao forms the base of everything we create, shaping texture, structure, and depth from the very beginning. From there, we layer complementary ingredients — selected to highlight and contrast the cacao, not overpower it. We work with a minimal number of ingredients, keeping each component precise and intentional. By limiting what goes in, we allow cacao to come through more clearly, while creating a balanced expression. Our ingredients and cacao components come through a combination of direct relationships and trusted third-party partners — all selected with the same care and intention.</p>"
           }
         },
         "175f4b04-adb7-438e-9ba0-e5dd3ad6f0f5": {
           "type": "image-text",
           "settings": {
             "image": "shopify://shop_images/pf-229b5946-a1f7-47a8-8622-55ec9908441c--Ourstory1.webp",
-            "content": "<p>We use cacao from Oko-Caribe, a co-op located in the village of Pimentel in San Francisco de Macoris in the Dominican Republic. The Dominican Republic is known for their delicious cacao. In fact, it supplies the majority of organically cultivated cacao to the world. At Oko-Caribe, both quality and community are of the utmost importance. The fermentary is committed to supplying a consistently superior quality of cacao, all while supporting the farmers and their families that make the product possible.<br/><br/><strong>Here at Morito Chocolates, we are dedicated to taking the word handcrafted seriously, and we honor it in a way that is environmentally and socially responsible.</strong></p>"
+            "content": "<p>The Dominican Republic — our home base of inspiration and a land with deep cacao roots — is where our story begins. We currently source cacao paste from the Caribbean, working with Hacienda Jeanmarie — the island's first registered cacao hacienda, founded by Juan Echevarría in Aguada, Puerto Rico. Cacao had nearly disappeared from Puerto Rico by the 20th century as the island's economy shifted toward industrialization. Hacienda Jeanmarie is changing that — working with hundreds of small farmers, reviving abandoned land, and creating year-round opportunity for a new generation of Puerto Rican growers.</p><p>At Morito Chocolates, handcrafted isn't just a word — it's a commitment we honor with every batch, with care for both people and planet.</p>"
           }
         }
       },
@@ -47,7 +47,7 @@
     "page-findus-newsletter": {
       "type": "page-findus-newsletter",
       "settings": {
-        "title": "Beans to your inbox!",
+        "title": "///Sticks and Cups to your inbox///",
         "subtitle": "",
         "text": "Stay up with Morito newsletter<br>\nto receive seasonal offers,<br>\nnews & nice stories.",
         "name": "Your name here",
