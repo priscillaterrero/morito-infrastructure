@@ -144,14 +144,14 @@
     "clean-ingredients-1": {
       "type": "clean-ingredients",
       "settings": {
-        "title": "Less ingredients. More intention.",
+        "title": "Less ingredients. More Flavor.",
         "left_subtitle": "What you often find",
         "left_count": "8+ ingredients",
         "left_items": "Palm oil, Dairy, Emulsifiers, Stabilizers, High fructose corn syrup, Invert sugar, Soy lecithin, Artificial Flavors, Artificial colors",
         "right_subtitle": "Morito Hazelnut",
-        "right_count": "3 ingredients",
-        "right_items": "Cacao, Organic hazelnuts, Organic cane sugar",
-        "footer_text": "Nothing more. Nothing needed."
+        "right_count": "4 ingredients",
+        "right_items": "Organic cacao, Organic cacao butter,Organic hazelnuts, Organic cane sugar",
+        "footer_text": ""
       }
     },
     "166056180431e93012": {
