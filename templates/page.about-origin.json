@@ -55,9 +55,9 @@
     "page-findus-newsletter": {
       "type": "page-findus-newsletter",
       "settings": {
-        "title": "///Sticks and Cups to your inbox///",
+        "title": "A note from Morito",
         "subtitle": "",
-        "text": "Stay up with Morito newsletter<br>\nto receive seasonal offers,<br>\nnews & nice stories.",
+        "text": "Seasonal releases, new flavors, and stories from our process.",
         "name": "Your name here",
         "mail": "Type your email here",
         "button": "Subscribe"
