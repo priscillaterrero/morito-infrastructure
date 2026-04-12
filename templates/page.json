@@ -1,1 +1,72 @@
-{"sections":{"main":{"type":"main-page","settings":{"padding_top":28,"padding_bottom":28}}},"order":["main"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_with_text_kTwRRk": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_7jDHTt": {
+          "type": "heading",
+          "settings": {
+            "heading": "Thoughtfully crafted chocolate experiences for gatherings, collaborations, and corporate gifting.",
+            "head1": "",
+            "head2": "",
+            "heading_size": "h1"
+          }
+        },
+        "text_mA6AUz": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We work with a select number of partners and clients to create custom chocolate offerings for events, brand collaborations, and gifting. Each project is approached with the same focus on balance, clarity, and intention that defines our work.</p><h3><strong>Private Events</strong></h3><p>Custom assortments and curated selections for intimate gatherings, celebrations, and special occasions.</p><h3><strong>Corporate Gifting</strong></h3><p>Thoughtful, design-forward chocolate offerings for teams, clients, and seasonal gifting.</p><h3><strong>Brand Collaborations</strong></h3><p>Limited, co-created products developed in partnership with aligned brands and spaces.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_fDFeBU": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button label",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_7jDHTt",
+        "text_mA6AUz",
+        "button_fDFeBU"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "animated_border": false,
+        "floating_image": false,
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "color_scheme": "background-1",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_kTwRRk"
+  ]
+}
