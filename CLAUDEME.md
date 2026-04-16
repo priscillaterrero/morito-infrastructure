@@ -459,3 +459,37 @@ All 10 optimization rounds completed:
   1. Create page in Shopify Admin with handle `llms-txt`, assign template `page.llms-txt`
   2. Create URL redirect: `/llms.txt` → `/pages/llms-txt`
 - **Rationale:** Shopify doesn't allow serving files at root-level URLs; this template + redirect approach serves the content at `moritochocolates.com/llms.txt`
+
+---
+
+## Session: 2026-04-16
+
+### Changes Made
+
+#### 1. Responsive Typography — Homepage Styles
+- **File:** `assets/custom.css`
+- **Change:** Added new classes (`.image-text`, `.content-body`, `.home-about-copy`) for consistent text sizing across homepage sections. `.text-first` now uses fluid sizing that adapts to screen width instead of fixed pixel values.
+
+#### 2. Best Sellers — Typography & Performance Polish
+- **File:** `sections/best-sellers.liquid`
+- **Change:** Increased section title and subtitle sizes for stronger visual hierarchy. Product image wrapper uses solid background `#FAF8F5`. Added `will-change: transform` performance hint. Removed mobile scroll zoom effect. Added accessibility support for users who prefer reduced motion.
+
+#### 3. Clean Ingredients — Full Section Redesign
+- **File:** `sections/clean-ingredients.liquid`
+- **Change:** Replaced dual-card ingredient comparison layout with a streamlined design: italic/bold headline on the left, product image on the right, and a horizontal row of brand attributes below (vegan, zero preservatives, gluten free, soy free, non-GMO, palm oil free). New schema settings for headline text, image, and 6 configurable attributes.
+
+#### 4. Origin/About — Body Text Wrapper
+- **File:** `sections/origin-login-about.liquid`
+- **Change:** Wrapped secondary content in a `.content-body` container for consistent font sizing and line spacing with the rest of the homepage.
+
+#### 5. PageFly Home — About Copy Styling
+- **File:** `sections/pagefly-home.liquid`
+- **Change:** Applied `.home-about-copy` class to the homepage description paragraph for larger, more readable brand storytelling text.
+
+#### 6. Slideshow — Ken Burns Animation Sync
+- **File:** `sections/slideshow.liquid`
+- **Change:** Animation duration now follows the configurable slide speed setting (was hardcoded). Reduced zoom intensity across all Ken Burns keyframes for a subtler, more elegant parallax. Animations run once per slide instead of looping infinitely. Default speed set to 4 seconds with 1-second step increments.
+
+#### 7. Clean Ingredients — Data Update
+- **File:** `templates/index.json`
+- **Change:** Updated section settings to match the new clean-ingredients design: headline text, image alt text, and 6 brand attribute values.
