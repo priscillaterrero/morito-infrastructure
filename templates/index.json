@@ -146,6 +146,8 @@
       "settings": {
         "headline_top": "Decadent flavors;",
         "headline_bottom": "Simple ingredients",
+        "image": "shopify://shop_images/MORITOsticks_noback_1.png",
+        "image_url": "",
         "image_alt": "Morito chocolate stack",
         "attr_1": "vegan",
         "attr_2": "ZERO PRESERVATIVES",
