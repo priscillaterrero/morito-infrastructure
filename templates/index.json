@@ -94,6 +94,13 @@
         "accessibility_info": "Slideshow about Morito Chocolates"
       }
     },
+    "positioning-1": {
+      "type": "positioning-statement",
+      "settings": {
+        "headline": "Cacao-Driven Confections",
+        "subline": "Handcrafted in Brooklyn"
+      }
+    },
     "best-sellers-1": {
       "type": "best-sellers",
       "blocks": {
@@ -397,6 +404,7 @@
   },
   "order": [
     "166081301232163903",
+    "positioning-1",
     "best-sellers-1",
     "16603016468409c491",
     "clean-ingredients-1",

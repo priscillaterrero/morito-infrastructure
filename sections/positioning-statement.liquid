@@ -1,0 +1,76 @@
+<style>
+  .positioning-statement {
+    background-color: #FAF8F5;
+    text-align: center;
+    padding: 60px 20px 40px;
+  }
+
+  .positioning-statement__headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.4rem;
+    font-weight: 900;
+    color: #332520;
+    margin: 0;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  .positioning-statement__subline {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: #332520;
+    opacity: 0.6;
+    margin: 12px 0 0;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  @media screen and (max-width: 749px) {
+    .positioning-statement {
+      padding: 44px 18px 30px;
+    }
+
+    .positioning-statement__headline {
+      font-size: 2.6rem;
+    }
+
+    .positioning-statement__subline {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<section class="positioning-statement">
+  <h2 class="positioning-statement__headline">{{ section.settings.headline | escape }}</h2>
+  {%- if section.settings.subline != blank -%}
+    <p class="positioning-statement__subline">{{ section.settings.subline | escape }}</p>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Positioning Statement",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Cacao-Driven Confections"
+    },
+    {
+      "type": "text",
+      "id": "subline",
+      "label": "Subline",
+      "default": "Handcrafted in Brooklyn"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Positioning Statement"
+    }
+  ]
+}
+{% endschema %}
