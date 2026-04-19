@@ -204,7 +204,7 @@
         "16606328764e668d23-2"
       ],
       "settings": {
-        "title": "Customers reviews",
+        "title": "Customer Reviews",
         "heading_size": "h1",
         "image_width": "full",
         "image_ratio": "square",
@@ -245,14 +245,14 @@
         "1660625540951e2c3f-0": {
           "type": "heading",
           "settings": {
-            "heading": "<p>Our Mision</p>",
+            "heading": "<p>Our Mission</p>",
             "heading_size": "h0"
           }
         },
         "1660625540951e2c3f-1": {
           "type": "text",
           "settings": {
-            "text": "<p>We take the word handcrafted thoughtfully and honored it                in an </p><p><em><strong>environmentally and socially</strong></em> responsible way.</p>"
+            "text": "<p>We take the word handcrafted thoughtfully and honor it in an </p><p><em><strong>environmentally and socially</strong></em> responsible way.</p>"
           }
         },
         "1660625540951e2c3f-2": {
@@ -307,14 +307,14 @@
           "settings": {
             "image-top": "shopify://shop_images/Carbon_free_3x_1.png",
             "text1": "Carbon free shipping",
-            "text2": "<p>Depending on the shipping location; we use UPS Carbon neutral-offset the enviornment impract of the shipment.</p>"
+            "text2": "<p>Depending on the shipping location, we use UPS Carbon Neutral to offset the environmental impact of the shipment.</p>"
           }
         },
         "23ab52d3-d359-4fd5-bcf1-8e62358b3136": {
           "type": "image",
           "settings": {
             "image-top": "shopify://shop_images/Ethically_and_sustainable_3x_4bd2632f-a805-40d9-a599-b526b4a6f721.png",
-            "text1": "Ethically and sustainable  sourced ingredients",
+            "text1": "Ethically and sustainably sourced ingredients",
             "text2": "<p>We sourced our ingredients from third-party companies and partner with the best chocolate producers.</p>"
           }
         },
@@ -323,7 +323,7 @@
           "settings": {
             "image-top": "shopify://shop_images/Environmentally_friendly_3x_5ab18301-1328-417a-b412-c19ed445128a.png",
             "text1": "Environmentally friendly",
-            "text2": "<p>We are improving our packaging to use  recyclable materials to contribute to the well-being of our planet.</p>"
+            "text2": "<p>We are improving our packaging to use recyclable materials to contribute to the well-being of our planet.</p>"
           }
         }
       },
