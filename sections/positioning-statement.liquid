@@ -1,48 +1,58 @@
 <style>
   .positioning-statement {
-    background-color: #E6DCCF;
+    background-color: #FAF8F5;
     text-align: center;
-    padding: 60px 20px 40px;
+    padding: 80px 20px 70px;
   }
 
   .positioning-statement__headline {
     font-family: 'Playfair Display', serif;
     font-size: 4.2rem;
-    font-weight: 900;
+    font-weight: 700;
+    font-style: italic;
     color: #332520;
     margin: 0;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+  }
+
+  .positioning-statement__divider {
+    width: 50px;
+    height: 1px;
+    background-color: #D68A59;
+    border: none;
+    margin: 20px auto;
   }
 
   .positioning-statement__subline {
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.15rem;
+    font-size: 1rem;
     font-weight: 400;
     color: #332520;
-    opacity: 0.6;
-    margin: 12px 0 0;
-    letter-spacing: 0.15em;
+    opacity: 0.5;
+    margin: 0;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
   }
 
   @media screen and (max-width: 749px) {
     .positioning-statement {
-      padding: 44px 18px 30px;
+      padding: 60px 18px 50px;
     }
 
     .positioning-statement__headline {
-      font-size: 2.6rem;
+      font-size: 2.8rem;
     }
 
     .positioning-statement__subline {
-      font-size: 1rem;
+      font-size: 0.85rem;
     }
   }
 </style>
 
 <section class="positioning-statement">
   <h2 class="positioning-statement__headline">{{ section.settings.headline | escape }}</h2>
+  <hr class="positioning-statement__divider">
   {%- if section.settings.subline != blank -%}
     <p class="positioning-statement__subline">{{ section.settings.subline | escape }}</p>
   {%- endif -%}
