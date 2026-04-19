@@ -125,8 +125,8 @@
         }
       },
       "block_order": [
-        "bs-card-matcha",
         "bs-card-hazelnut",
+        "bs-card-matcha",
         "bs-card-peanut"
       ],
       "settings": {
