@@ -97,12 +97,12 @@
     "best-sellers-1": {
       "type": "best-sellers",
       "blocks": {
-        "bs-card-coconut": {
+        "bs-card-matcha": {
           "type": "product_card",
           "settings": {
-            "product": "coconut",
-            "image_file": "Coconut Vegan White Chocolate.jpeg",
-            "image_url": "https://cdn.shopify.com/s/files/1/0084/6394/1687/files/Coconut_Best_sellers.png?v=1773063474"
+            "product": "matcha-latte",
+            "image_file": "Matcha Latte.png",
+            "image_url": "https://cdn.shopify.com/s/files/1/0084/6394/1687/products/5_2729a4a6-4708-4f26-8ad7-b7d28c07a14e.png?v=1661786258"
           }
         },
         "bs-card-hazelnut": {
@@ -123,7 +123,7 @@
         }
       },
       "block_order": [
-        "bs-card-coconut",
+        "bs-card-matcha",
         "bs-card-hazelnut",
         "bs-card-peanut"
       ],
