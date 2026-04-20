@@ -11,31 +11,7 @@
   "sections": {
     "main": {
       "type": "wholesale-form",
-      "settings": {
-        "title": "Order wholesale from us today",
-        "subtitle": "",
-        "svg_code1": "",
-        "svg_code2": "",
-        "free-return": "Free returns",
-        "net-return": "Net 60 terms",
-        "risk-free": "for risk–free buying",
-        "stress-free": "for stress–free payments",
-        "style_desc": "You'll get $100 off your first order, plus free shipping with us for an entire year",
-        "new-fair-title": "New to Faire?",
-        "btn_text": "Shop Wholesale",
-        "btn_url": "https://moritochocolates.faire.com/welcome/r/personal?signUp=widget&widgetToken=bw_6p73utmsap",
-        "icon_svg1": "<svg width=\"40\" height=\"40\" viewbox=\"0 0 40 40\" fill=\"none\" xmlns=\"https://www.w3.org/2000/svg\"><circle opacity=\"0.6\" cx=\"20\" cy=\"20\" r=\"20\" fill=\"white\"></circle><path d=\"M19.9185 26.0776V25.2522C21.5485 25.1401 22 24.1413 22 23.3464C22 22.3171 21.2291 21.9197 19.9185 21.5222V19.3209C20.4471 19.3617 20.8106 19.5248 20.9868 19.698C20.8326 19.7897 20.6894 19.9936 20.6894 20.1974C20.6894 20.5337 20.9317 20.7885 21.3833 20.7885C21.7577 20.7885 21.978 20.5235 21.978 20.0955C21.978 19.5146 21.207 18.842 19.9185 18.791V18.0776H19.2797V18.8114C17.9471 18.9541 17.2313 19.7388 17.2313 20.6662C17.2313 21.7057 18.1454 22.0624 19.2797 22.4088V24.7324C18.652 24.6713 18.1784 24.4776 18.0463 24.3146C18.2445 24.2025 18.3987 24.0088 18.3987 23.7643C18.3987 23.4483 18.1233 23.1324 17.7159 23.1324C17.2974 23.1324 17 23.4891 17 23.8458C17 24.5388 17.9251 25.1706 19.2797 25.2522V26.0776H19.9185ZM21.1189 23.7235C21.1189 24.2432 20.7115 24.6611 19.9185 24.7324V22.6025C20.8106 22.9082 21.1189 23.2038 21.1189 23.7235ZM18.2004 20.3197C18.2004 19.9018 18.5418 19.4534 19.2797 19.3413V21.3388C18.4207 21.0534 18.2004 20.819 18.2004 20.3197Z\" fill=\"#333333\"></path><rect x=\"7.5\" y=\"15.5776\" width=\"25\" height=\"13\" stroke=\"#333333\"></rect><path d=\"M13.5 15.5776L26.5168 8.0776L31 15.5776\" stroke=\"#333333\"></path><circle cx=\"28\" cy=\"22.0776\" r=\"0.5\" stroke=\"#333333\"></circle><circle cx=\"12\" cy=\"22.0776\" r=\"0.5\" stroke=\"#333333\"></circle></svg>",
-        "icon_text1": "Minimum",
-        "number1": "$120",
-        "icon_svg2": "<svg width=\"40\" height=\"40\" viewbox=\"0 0 40 40\" fill=\"none\" xmlns=\"https://www.w3.org/2000/svg\"><circle opacity=\"0.6\" cx=\"20\" cy=\"20\" r=\"20\" fill=\"white\"></circle><path d=\"M13.5 14.9796C13.5 11.4024 16.4088 8.5 20 8.5C23.5912 8.5 26.5 11.4024 26.5 14.9796C26.5 17.1857 25.1417 19.5125 23.5504 21.4999C22.376 22.9666 21.1457 24.1684 20.328 24.9672C20.206 25.0863 20.0932 25.1965 19.9911 25.2972C19.962 25.2695 19.9321 25.241 19.9013 25.2117C19.0804 24.4301 17.6952 23.1114 16.4105 21.4951C14.8342 19.5119 13.5 17.1882 13.5 14.9796Z\" stroke=\"black\"></path><circle cx=\"20\" cy=\"15\" r=\"2.5\" stroke=\"#333333\"></circle><path d=\"M12.1429 23L10 30H30L27.8571 23\" stroke=\"black\" stroke-linecap=\"round\"></path></svg>",
-        "icon_text2": "Shipping From",
-        "number2": "Brooklyn, NY",
-        "icon_svg3": "<svg width=\"40\" height=\"40\" viewbox=\"0 0 40 40\" fill=\"none\" xmlns=\"https://www.w3.org/2000/svg\"><circle opacity=\"0.6\" cx=\"20\" cy=\"20\" r=\"20\" fill=\"white\"></circle><rect x=\"10.5\" y=\"12.5786\" width=\"19\" height=\"14.9213\" stroke=\"#333333\"></rect><rect x=\"13.5\" y=\"20.5\" width=\"4\" height=\"4\" stroke=\"#333333\"></rect><line x1=\"13.1362\" y1=\"13.6533\" x2=\"13.1362\" y2=\"10.4999\" stroke=\"#333333\" stroke-linecap=\"round\"></line><line x1=\"26.4697\" y1=\"13.6533\" x2=\"26.4697\" y2=\"10.4999\" stroke=\"#333333\" stroke-linecap=\"round\"></line><line x1=\"10.606\" y1=\"16.4224\" x2=\"29.9999\" y2=\"16.4224\" stroke=\"#333333\"></line></svg>",
-        "icon_text3": "Lead Time",
-        "number3": "8 - 10 days",
-        "morito1": "<iframe src=\"https://www.faire.com/embed/bw_dn7stucw8a\" width=\"900\" height=\"600\" scrolling=\"no\" style=\"margin: 0 auto; border: none; display: block; max-width: 100%; width: 900px; height: 600px;\"></iframe>",
-        "morito_link": ""
-      }
+      "settings": {}
     }
   },
   "order": [
