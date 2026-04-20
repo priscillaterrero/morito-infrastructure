@@ -1239,7 +1239,7 @@ img.image-ccao {
 
 .wholesale-intro p {
   font-family: brandon-grotesque, sans-serif;
-  font-size: clamp(15px, 2vw, 17px);
+  font-size: clamp(17px, 2.5vw, 20px);
   line-height: 1.8;
   color: #333;
   letter-spacing: 0.5px;
