@@ -2,7 +2,7 @@
 <!--   first section image -->
 {% if section.settings.image_1 != blank %}
   <div class="origin-image">
-  <img src={{section.settings.image_1 | img_url:'master'}}  width="367" height="93"> 
+  <img src={{section.settings.image_1 | img_url:'master'}} alt="Morito Chocolates" loading="lazy">
   </div>
   {% endif %}
 
@@ -11,7 +11,7 @@
     <div class="image-left">
       {% if section.settings.image_2 != blank %}
       <div class="pf-image-left">
-      <img src={{section.settings.image_2 | img_url:'master'}} width="300" height="450">
+      <img src={{section.settings.image_2 | img_url:'master'}} alt="Morito founder" loading="lazy">
       </div>
       {% endif %}
       <div class="image-text-main">

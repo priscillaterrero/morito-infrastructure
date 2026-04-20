@@ -70,6 +70,8 @@ h1, h2, h3, h4, h5, h6,
 .container {
   max-width: 1170px;
   margin: auto;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .text-center {
@@ -1205,9 +1207,11 @@ span.content-main {
 }
 
 img.image-ccao {
-  width: 931px;
+  width: 100%;
   height: auto;
-  max-width: 100%;
+  max-width: 650px;
+  display: block;
+  margin: 0 auto;
   border: 0;
   vertical-align: middle;
 }
@@ -1219,6 +1223,7 @@ img.image-ccao {
 .our-caco {
   margin: 0 auto;
   padding: 20px;
+  max-width: 700px;
 }
 
 /* ==========================================================================
@@ -1554,6 +1559,27 @@ p.text-comp__icon {
   .image-text-main {
     width: 100%;
     text-align: center;
+    padding: 10px;
+  }
+
+  .pf-image-left img {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+  }
+
+  .content-body {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    max-width: 100%;
+  }
+
+  .only-text-main {
+    margin: 35px 0;
+  }
+
+  .our-caco {
+    padding: 10px;
   }
 
   ul.single-usp {
