@@ -138,7 +138,9 @@
             {%- if block.settings.heading != blank -%}
               <h2 class="banner__heading first {{ block.settings.heading_size }}">{{ block.settings.heading | escape }}</h2>
              <h2 class="banner__heading second {{ block.settings.heading_size }}">{{ block.settings.heading2 | escape }}</h2>
+            {%- if block.settings.heading3 != blank -%}
             <h2 class="banner__heading third {{ block.settings.heading_size }}">{{ block.settings.heading3 | escape }}</h2>
+            {%- endif -%}
             {%- endif -%}
             {%- if block.settings.subheading != blank -%}
               <div class="banner__text" {{ block.shopify_attributes }}>
@@ -298,6 +300,16 @@
     .slideshow__text.banner__box h2.banner__heading.first {
       color: #D68A59;
       background: none;
+    }
+
+    /* Slide 2 (Mini Cups): larger "Morito" heading */
+    .slideshow__slide:nth-child(2) .slideshow__text.banner__box h2.banner__heading.first {
+      font-size: clamp(3rem, 5.5vw, 5rem);
+    }
+
+    /* Slide 2 (Mini Cups): larger subheadline */
+    .slideshow__slide:nth-child(2) .slideshow__text.banner__box .banner__text span {
+      font-size: clamp(1.3rem, 1.8vw, 1.7rem);
     }
 
     /* Slide 1 only: reduced heading to not cover product sticks */
@@ -513,6 +525,17 @@
 
     .slideshow__slide h2.banner__heading.third {
       color: #F9F5F0;
+    }
+
+    /* Slide 2 (Mini Cups): larger "Morito" on mobile */
+    .slideshow__slide:nth-child(2) h2.banner__heading.first {
+      font-size: 34px;
+      line-height: 38px;
+    }
+
+    /* Slide 2 (Mini Cups): larger subheadline on mobile */
+    .slideshow__slide:nth-child(2) .slideshow__text .banner__text span {
+      font-size: 0.95rem;
     }
 
     /* ── Subtitle: clean, with spacing to avoid button overlap ── */
