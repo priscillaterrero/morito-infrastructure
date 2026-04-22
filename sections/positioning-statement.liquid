@@ -1,15 +1,13 @@
 <style>
   .positioning-statement {
-    background: rgba(249, 245, 240, 0.55);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-top: 1px solid rgba(214, 138, 89, 0.15);
-    border-bottom: 1px solid rgba(214, 138, 89, 0.15);
+    background: rgba(193, 119, 82, 0.10);
+    border-top: 1px solid rgba(193, 119, 82, 0.18);
+    border-bottom: 1px solid rgba(193, 119, 82, 0.18);
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.4),
-      0 4px 20px rgba(51, 37, 32, 0.06);
+      inset 0 1px 0 rgba(255, 255, 255, 0.25),
+      0 4px 20px rgba(51, 37, 32, 0.04);
     text-align: center;
-    padding: 85px 20px 75px;
+    padding: 90px 20px 80px;
   }
 
   .positioning-statement__ornament {
@@ -24,10 +22,10 @@
 
   .positioning-statement__headline {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-size: clamp(2rem, 4vw, 3.2rem);
     font-weight: 400;
     font-style: italic;
-    color: #4A3830;
+    color: #3B2820;
     margin: 0 auto;
     max-width: 780px;
     letter-spacing: 0.02em;
@@ -60,7 +58,7 @@
     }
 
     .positioning-statement__headline {
-      font-size: 1.4rem;
+      font-size: 1.55rem;
       line-height: 1.5;
     }
 
@@ -72,7 +70,7 @@
 
 <section class="positioning-statement">
   <span class="positioning-statement__ornament" aria-hidden="true"></span>
-  <h2 class="positioning-statement__headline">{{ section.settings.headline | escape }}</h2>
+  <h2 class="positioning-statement__headline">&ldquo;{{ section.settings.headline | escape }}&rdquo;</h2>
   <hr class="positioning-statement__divider">
   {%- if section.settings.subline != blank -%}
     <p class="positioning-statement__subline">{{ section.settings.subline | escape }}</p>
