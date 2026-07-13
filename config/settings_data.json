@@ -122,7 +122,7 @@
           "374bc462-b742-4f5b-bafe-a1a1e8a1c10c": {
             "type": "announcement",
             "settings": {
-              "text": "Crafted in Brooklyn. Shipped Nationwide. | Premium Plant-Based Chocolate | Free Shipping on orders over $65 | Corporate & bulk orders: info@moritochocolates.com",
+              "text": "Due to summer heat, we're pausing shipments to keep your chocolate in perfect condition. Orders placed in July will ship starting the first week of August | Free shipping on orders over $65 | Crafted in Brooklyn. Shipped Nationwide | Premium Plant-Based Chocolate |",
               "link": ""
             }
           }
@@ -130,7 +130,10 @@
         "block_order": [
           "374bc462-b742-4f5b-bafe-a1a1e8a1c10c"
         ],
-        "settings": {}
+        "settings": {
+          "default_text": "Due to summer heat, we're pausing shipments to keep your chocolate in perfect condition. Orders placed in July will ship starting the first week of August. Free shipping on orders over $65",
+          "speed": 25
+        }
       },
       "header": {
         "type": "header",
@@ -441,12 +444,12 @@
         "type": "shopify://apps/inbox/blocks/chat/841fc607-4181-4ad1-842d-e24d7f8bad6b",
         "disabled": false,
         "settings": {
+          "greeting_message": "👋 Hi, message us with any questions. We're happy to help!",
           "button_color": "#000000",
           "button_icon": "chat_bubble",
           "button_text": "no_text",
           "button_horizontal_position": "bottom_right",
-          "button_vertical_position": "lowest",
-          "greeting_message": "👋 Hi, message us with any questions. We're happy to help!"
+          "button_vertical_position": "lowest"
         }
       }
     }
