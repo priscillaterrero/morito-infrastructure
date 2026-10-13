@@ -104,6 +104,16 @@
     "best-sellers-1": {
       "type": "best-sellers",
       "blocks": {
+        "bs-card-hbk-holiday": {
+          "type": "product_card",
+          "settings": {
+            "product": "hbk-holiday-marketplace-gift-2026",
+            "image_file": "",
+            "image_url": "",
+            "custom_title": "HBK Holiday Gift Box",
+            "custom_price": "$50.00"
+          }
+        },
         "bs-card-matcha": {
           "type": "product_card",
           "settings": {
@@ -132,6 +142,7 @@
         }
       },
       "block_order": [
+        "bs-card-hbk-holiday",
         "bs-card-hazelnut",
         "bs-card-matcha",
         "bs-card-peanut"
