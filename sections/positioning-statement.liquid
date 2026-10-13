@@ -1,109 +1,105 @@
 <style>
   .positioning-statement {
     background: #F5EFEA;
-    padding: 20px 20px 24px;
+    padding: 24px 20px 28px;
   }
 
   .positioning-statement__inner {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 32px;
-    max-width: 1240px;
+    justify-content: center;
+    gap: 36px;
+    max-width: 1100px;
     margin: 0 auto;
-    padding: 0 60px;
+    padding: 0 40px;
   }
 
   .positioning-statement__illustration {
     flex: 0 0 auto;
-    width: 152px;
+    width: 140px;
     height: auto;
     display: block;
-    opacity: 0.88;
+    opacity: 0.92;
   }
 
   .positioning-statement__text {
-    flex: 1 1 auto;
-    text-align: center;
+    flex: 0 1 auto;
+    text-align: left;
   }
 
   .positioning-statement__headline {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(2.4rem, 4.8vw, 3.8rem);
+    font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 700;
     font-style: italic;
     color: #2E221C;
-    margin: 0 auto;
-    max-width: 840px;
+    margin: 0;
     letter-spacing: 0.01em;
-    line-height: 1.35;
+    line-height: 1.3;
   }
 
   .positioning-statement__subline-text {
     font-family: 'Montserrat', 'Playfair Display', serif;
-    font-size: clamp(1.4rem, 2.2vw, 1.8rem);
+    font-size: clamp(1.1rem, 1.8vw, 1.4rem);
     font-weight: 500;
     color: #1F3F26;
-    margin: 14px auto 0;
-    max-width: 840px;
+    margin: 10px 0 0;
     letter-spacing: 0.02em;
     line-height: 1.5;
   }
 
   @media screen and (max-width: 989px) {
     .positioning-statement {
-      padding: 18px 20px 22px;
+      padding: 20px 20px 24px;
     }
 
     .positioning-statement__inner {
-      gap: 20px;
-      padding: 0 40px;
+      gap: 24px;
+      padding: 0 32px;
     }
 
     .positioning-statement__illustration {
-      width: 104px;
+      width: 110px;
     }
   }
 
   @media screen and (max-width: 749px) {
     .positioning-statement {
-      padding: 14px 16px 18px;
+      padding: 18px 16px 20px;
     }
 
     .positioning-statement__inner {
       flex-direction: row;
       align-items: center;
-      gap: 12px;
-      padding: 0 20px;
+      gap: 16px;
+      padding: 0 16px;
     }
 
     .positioning-statement__illustration {
-      width: 64px;
+      width: 80px;
     }
 
     .positioning-statement__headline {
-      font-size: clamp(1.5rem, 5vw, 1.85rem);
-      line-height: 1.4;
-      max-width: 100%;
+      font-size: clamp(1.3rem, 4.5vw, 1.7rem);
     }
 
     .positioning-statement__subline-text {
-      font-size: 1.15rem;
-      margin-top: 8px;
+      font-size: 0.95rem;
+      margin-top: 6px;
     }
   }
 
   @media screen and (max-width: 479px) {
     .positioning-statement__illustration {
-      width: 48px;
+      width: 64px;
     }
 
     .positioning-statement__headline {
-      font-size: 1.4rem;
+      font-size: 1.25rem;
     }
 
     .positioning-statement__subline-text {
-      font-size: 0.95rem;
+      font-size: 0.85rem;
     }
   }
 </style>
@@ -112,10 +108,10 @@
   <div class="positioning-statement__inner">
     <img
       src="{{ 'illustration-water-tower.png' | asset_url }}"
-      alt="Brooklyn water tower with cacao leaves"
-      class="positioning-statement__illustration positioning-statement__illustration--left"
+      alt="Brooklyn water tower"
+      class="positioning-statement__illustration"
       loading="lazy"
-      width="190"
+      width="140"
     >
     <div class="positioning-statement__text">
       {%- if section.settings.headline != blank -%}
@@ -125,13 +121,6 @@
         <p class="positioning-statement__subline-text">{{ section.settings.subline | escape }}</p>
       {%- endif -%}
     </div>
-    <img
-      src="{{ 'illustration-cacao-branch.png' | asset_url }}"
-      alt="Cacao branch with pods and flowers"
-      class="positioning-statement__illustration positioning-statement__illustration--right"
-      loading="lazy"
-      width="190"
-    >
   </div>
 </section>
 
@@ -145,7 +134,7 @@
       "type": "text",
       "id": "headline",
       "label": "Headline",
-      "default": "Where flavor begins with cacao"
+      "default": "Best Sellers / Perfect Gifting"
     },
     {
       "type": "text",
