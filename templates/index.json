@@ -97,7 +97,7 @@
     "positioning-1": {
       "type": "positioning-statement",
       "settings": {
-        "headline": "Where flavor begins with cacao",
+        "headline": "",
         "subline": "Rooted in cacao. Handcrafted in Brooklyn."
       }
     },
@@ -135,9 +135,10 @@
         "bs-card-peanut": {
           "type": "product_card",
           "settings": {
-            "product": "salted-peanut",
-            "image_file": "Salted Peanut Dark chocolate.jpeg",
-            "image_url": "https://cdn.shopify.com/s/files/1/0084/6394/1687/files/Morito_Salted_Peanut.png?v=1630616119"
+            "product": "salted-peanut-mini-cups",
+            "image_file": "",
+            "image_url": "",
+            "custom_title": "Salted Peanut Mini Cups"
           }
         }
       },
@@ -148,7 +149,7 @@
       ],
       "settings": {
         "title": "Best Sellers / Perfect Gifting",
-        "subtitle": "Our most-loved chocolate sticks and cups — handcrafted in Brooklyn.",
+        "subtitle": "Rooted in cacao. Handcrafted in Brooklyn.",
         "collection": "",
         "show_view_all": false
       }

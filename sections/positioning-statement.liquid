@@ -118,7 +118,9 @@
       width="190"
     >
     <div class="positioning-statement__text">
-      <h2 class="positioning-statement__headline">{{ section.settings.headline | escape }}</h2>
+      {%- if section.settings.headline != blank -%}
+        <h2 class="positioning-statement__headline">{{ section.settings.headline | escape }}</h2>
+      {%- endif -%}
       {%- if section.settings.subline != blank -%}
         <p class="positioning-statement__subline-text">{{ section.settings.subline | escape }}</p>
       {%- endif -%}
