@@ -1,17 +1,28 @@
 <style>
   .positioning-statement {
     background: #F5EFEA;
-    text-align: center;
-    padding: 36px 20px 42px;
+    padding: 48px 20px 52px;
   }
 
-  .positioning-statement__ornament {
+  .positioning-statement__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .positioning-statement__illustration {
+    flex: 0 0 auto;
+    width: 190px;
+    height: auto;
     display: block;
-    width: 80px;
-    height: 3px;
-    background-color: #C8652A;
-    border: none;
-    margin: 0 auto 28px;
+  }
+
+  .positioning-statement__text {
+    flex: 1 1 auto;
+    text-align: center;
   }
 
   .positioning-statement__headline {
@@ -27,81 +38,95 @@
   }
 
   .positioning-statement__subline-text {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.7rem, 3.4vw, 2.6rem);
-    font-weight: 300;
-    font-style: italic;
-    color: #6B5349;
+    font-family: 'Montserrat', 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 2.2vw, 1.8rem);
+    font-weight: 500;
+    color: #1F3F26;
     margin: 14px auto 0;
     max-width: 840px;
-    letter-spacing: 0.015em;
-    line-height: 1.45;
-  }
-
-  .positioning-statement__diamond {
-    display: block;
-    width: 10px;
-    height: 10px;
-    background-color: #C8652A;
-    border: none;
-    margin: 28px auto 0;
-    transform: rotate(45deg);
+    letter-spacing: 0.02em;
+    line-height: 1.5;
   }
 
   @media screen and (max-width: 989px) {
     .positioning-statement {
-      padding: 32px 24px 38px;
+      padding: 40px 20px 44px;
     }
 
-    .positioning-statement__ornament {
-      width: 60px;
-      margin-bottom: 22px;
+    .positioning-statement__inner {
+      gap: 20px;
     }
 
-    .positioning-statement__diamond {
-      width: 8px;
-      height: 8px;
-      margin-top: 22px;
+    .positioning-statement__illustration {
+      width: 130px;
     }
   }
 
   @media screen and (max-width: 749px) {
     .positioning-statement {
-      padding: 28px 20px 34px;
+      padding: 32px 16px 36px;
     }
 
-    .positioning-statement__ornament {
-      width: 50px;
-      height: 2px;
-      margin-bottom: 18px;
+    .positioning-statement__inner {
+      flex-direction: row;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .positioning-statement__illustration {
+      width: 80px;
     }
 
     .positioning-statement__headline {
       font-size: clamp(1.5rem, 5vw, 1.85rem);
       line-height: 1.4;
-      max-width: 90%;
+      max-width: 100%;
     }
 
     .positioning-statement__subline-text {
-      font-size: 1.35rem;
-      margin-top: 10px;
+      font-size: 1.15rem;
+      margin-top: 8px;
+    }
+  }
+
+  @media screen and (max-width: 479px) {
+    .positioning-statement__illustration {
+      width: 60px;
     }
 
-    .positioning-statement__diamond {
-      width: 7px;
-      height: 7px;
-      margin-top: 18px;
+    .positioning-statement__headline {
+      font-size: 1.4rem;
+    }
+
+    .positioning-statement__subline-text {
+      font-size: 0.95rem;
     }
   }
 </style>
 
 <section class="positioning-statement">
-  <span class="positioning-statement__ornament" aria-hidden="true"></span>
-  <h2 class="positioning-statement__headline">{{ section.settings.headline | escape }}</h2>
-  {%- if section.settings.subline != blank -%}
-    <p class="positioning-statement__subline-text">{{ section.settings.subline | escape }}</p>
-  {%- endif -%}
-  <span class="positioning-statement__diamond" aria-hidden="true"></span>
+  <div class="positioning-statement__inner">
+    <img
+      src="{{ 'illustration-water-tower.png' | asset_url }}"
+      alt="Brooklyn water tower with cacao leaves"
+      class="positioning-statement__illustration positioning-statement__illustration--left"
+      loading="lazy"
+      width="190"
+    >
+    <div class="positioning-statement__text">
+      <h2 class="positioning-statement__headline">{{ section.settings.headline | escape }}</h2>
+      {%- if section.settings.subline != blank -%}
+        <p class="positioning-statement__subline-text">{{ section.settings.subline | escape }}</p>
+      {%- endif -%}
+    </div>
+    <img
+      src="{{ 'illustration-cacao-branch.png' | asset_url }}"
+      alt="Cacao branch with pods and flowers"
+      class="positioning-statement__illustration positioning-statement__illustration--right"
+      loading="lazy"
+      width="190"
+    >
+  </div>
 </section>
 
 {% schema %}
@@ -114,13 +139,13 @@
       "type": "text",
       "id": "headline",
       "label": "Headline",
-      "default": "Cacao-Driven Confections"
+      "default": "Where flavor begins with cacao"
     },
     {
       "type": "text",
       "id": "subline",
       "label": "Subline",
-      "default": "Handcrafted in Brooklyn"
+      "default": "Rooted in cacao. Handcrafted in Brooklyn."
     }
   ],
   "presets": [
