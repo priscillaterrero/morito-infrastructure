@@ -118,11 +118,11 @@
         "bs-card-matcha": {
           "type": "product_card",
           "settings": {
-            "product": "matcha-latte-vegan-white-chocolate",
-            "image_file": "Matcha Latte.png",
-            "image_url": "https://cdn.shopify.com/s/files/1/0084/6394/1687/files/ChatGPT_Image_Feb_21_2026_at_03_54_54_PM.png?v=1773281784",
-            "custom_title": "Matcha Latte Cups",
-            "custom_price": "$12.00"
+            "product": "matcha-strawberry-mini-cups",
+            "image_file": "",
+            "image_url": "",
+            "custom_title": "Matcha Strawberry - Mini Cups",
+            "custom_price": ""
           }
         },
         "bs-card-hazelnut": {
