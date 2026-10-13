@@ -6,7 +6,7 @@
   /* ── Best Sellers Section ── */
   .best-sellers {
     background-color: #F5EFEA;
-    padding: 60px 0 80px;
+    padding: 16px 0 60px;
   }
 
   .best-sellers__header {
@@ -329,14 +329,16 @@
 </style>
 
 <section class="best-sellers" id="BestSellers-{{ section.id }}">
-  <div class="best-sellers__header page-width">
-    {%- if section.settings.title != blank -%}
-      <h2 class="best-sellers__title">{{ section.settings.title | escape }}</h2>
-    {%- endif -%}
-    {%- if section.settings.subtitle != blank -%}
-      <p class="best-sellers__subtitle">{{ section.settings.subtitle | escape }}</p>
-    {%- endif -%}
-  </div>
+  {%- if section.settings.title != blank or section.settings.subtitle != blank -%}
+    <div class="best-sellers__header page-width">
+      {%- if section.settings.title != blank -%}
+        <h2 class="best-sellers__title">{{ section.settings.title | escape }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subtitle != blank -%}
+        <p class="best-sellers__subtitle">{{ section.settings.subtitle | escape }}</p>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
 
   <div class="best-sellers__grid">
     {%- for block in section.blocks -%}

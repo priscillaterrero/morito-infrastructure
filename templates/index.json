@@ -97,7 +97,7 @@
     "positioning-1": {
       "type": "positioning-statement",
       "settings": {
-        "headline": "",
+        "headline": "Best Sellers / Perfect Gifting",
         "subline": "Rooted in cacao. Handcrafted in Brooklyn."
       }
     },
@@ -148,8 +148,8 @@
         "bs-card-peanut"
       ],
       "settings": {
-        "title": "Best Sellers / Perfect Gifting",
-        "subtitle": "Rooted in cacao. Handcrafted in Brooklyn.",
+        "title": "",
+        "subtitle": "",
         "collection": "",
         "show_view_all": false
       }
