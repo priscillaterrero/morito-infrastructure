@@ -13,7 +13,7 @@
       "type": "contact-form",
       "settings": {
         "heading": "CONTACT MORITO CHOCOLATES",
-        "desc_contact": "<p>Reach us at <a href=\"mailto:info@moritochocolates.com\" style=\"color:#003a13;text-decoration:underline;\">info@moritochocolates.com</a>. We reply within 24 business hours.</p>",
+        "desc_contact": "<p><strong>Send us a note</strong> — we reply within 24 business hours. Reach us at <a href=\"mailto:info@moritochocolates.com\">info@moritochocolates.com</a></p>",
         "heading_size": "h1",
         "color_scheme": "background-1",
         "padding_top": 12,
